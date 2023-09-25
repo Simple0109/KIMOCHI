@@ -29,3 +29,6 @@ Matoiではこれまでドメスティックブランドに興味がなかった
 * タグ検索
 * レコメンド機能
 * 実店舗住所地図表示機能
+
+## 画面遷移図
+figma:https://www.figma.com/file/cOl2b174KOs5giqCjVDpyu/PF%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?type=design&node-id=0%3A1&mode=design&t=RRUHsVqO6lon3aRK-1
