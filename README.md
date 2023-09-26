@@ -29,3 +29,31 @@ Matoiではこれまでドメスティックブランドに興味がなかった
 * タグ検索
 * レコメンド機能
 * 実店舗住所地図表示機能
+
+## 使用技術
+### バックエンド
+* ruby on rails 7.0.7
+* ruby 3.2.2
+
+### フロントエンド
+* Vue.js v3.3.4
+* Tailwind CSS
+
+### GEM
+* sorcery(ログイン機能)
+* kaminari(ページネーション)
+* Active Admin(管理画面)
+* ActiveStorage(ファイルアップロード、保存)
+* MiniMagick(画像編集)
+* rubocop(lintチェック)
+* RSpec(テスト)
+* letter_opener_web(ユーザーEmail,password再設定)
+* acts-as-taggable-on(タグ機能)
+* Tgify(タグ機能)
+* geocoder(位置情報)
+
+### API
+* Google Maps Platform(位置情報取得)
+
+### デプロイ
+* Firebase
