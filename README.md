@@ -64,3 +64,7 @@ graph TD
 
 ### デプロイ
 * Firebase
+
+## 画面遷移図
+[figma](https://www.figma.com/file/sd5Sa6ScSJaa9vY1S6LSNU/PF(KIMOCHI%EF%BC%89?type=design&node-id=0%3A1&mode=design&t=gUPB3r8R1ZEGAyfV-1))
+
