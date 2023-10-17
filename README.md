@@ -69,4 +69,4 @@ graph TD
 [figma](https://www.figma.com/file/sd5Sa6ScSJaa9vY1S6LSNU/PF(KIMOCHI%EF%BC%89?type=design&node-id=0%3A1&mode=design&t=gUPB3r8R1ZEGAyfV-1))
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/a6fd7b5312d86756ef82abf8a97b7433.png)](https://gyazo.com/a6fd7b5312d86756ef82abf8a97b7433)
+[![Image from Gyazo](https://i.gyazo.com/a345dbb6ad20d3e827b611bf19a2759e.png)](https://gyazo.com/a345dbb6ad20d3e827b611bf19a2759e)
