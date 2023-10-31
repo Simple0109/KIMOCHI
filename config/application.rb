@@ -11,6 +11,12 @@ module Kimochi3
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.generators do |g|
+      g.asset false
+      g.skip_routes false
+      g.test_framework false
+    end
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
