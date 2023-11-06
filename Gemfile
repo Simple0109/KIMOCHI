@@ -75,5 +75,5 @@ group :test do
 end
 
 gem "devise"
-
 gem "importmap-rails"
+gem "better_errors"
