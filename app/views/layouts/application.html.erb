@@ -12,7 +12,12 @@
 
   <body>
     <%= render "shared/header" %>
-    <%= yield %>
+    <div class="flex lg:flex-row">
+      <%= render "shared/sidebar"%>
+      <div class="flex-grow">
+        <%= yield %>
+      </div>
+    </div>
     <%= render "shared/footer" %>
   </body>
 </html>

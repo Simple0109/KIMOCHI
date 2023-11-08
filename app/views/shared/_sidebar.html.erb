@@ -1,0 +1,33 @@
+<div class="flex overflow-y-auto bg-white rounded-lg">
+  <div class="hidden md:flex md:flex-shrink-0">
+    <div class="flex flex-col w-64">
+      <div class="flex flex-col flex-grow pt-5 overflow-y-auto bg-white border-r border-gray-50">
+        <div class="flex flex-col items-center flex-shrink-0 px-4">
+            <a class="px-8 text-left focus:outline-none">
+                <h2 class="block p-2 text-md font-medium tracking-tighter text-gray-900 transition duration-500 ease-in-out transform hover:text-gray-900">現在のグループ:</h2>
+            </a>
+        </div>
+        <div class="flex flex-col flex-grow px-4 mt-5">
+          <nav class="flex-1 space-y-1 bg-white">
+            <p class="px-4 pt-4 font-medium text-gray-900 uppercase">グループ一覧</p>
+              <% current_user.groups.each do |group| %>
+                <ul>
+                  <li>
+                    <a class="inline-flex items-center w-full px-4 py-2 mt-1 text-base text-gray-900 transition duration-500 ease-in-out transform rounded-lg bg-gray-50 focus:shadow-outline" white="" 70="" href="#">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                      </svg>
+                      <div class="ml-4">
+                        <%= group.name %>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              <% end %>
+            </p>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
