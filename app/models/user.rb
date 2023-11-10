@@ -12,8 +12,7 @@ class User < ApplicationRecord
 
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
-  has_many :request_approvals
-  has_many :request, through: :request_approvals
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

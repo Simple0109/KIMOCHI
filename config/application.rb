@@ -14,7 +14,7 @@ module Kimochi3
     config.generators do |g|
       g.asset false
       g.skip_routes false
-      g.test_framework false
+      g.test_framework :rspec
     end
 
     # Configuration for the application, engines, and railties goes here.
