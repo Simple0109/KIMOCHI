@@ -1,0 +1,41 @@
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    <!-- text - start -->
+    <div class="mb-10 md:mb-16">
+      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Requests</h2>
+
+      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">ここにリクエスト書いてみよか〜</p>
+    </div>
+    <!-- text - end -->
+
+    <!-- フォームスタート -->
+    <%= form_with model: @request, url: requests_path, local: true do |f| %>
+      <div class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+        <div class="sm:col-span-2">
+          <%= f.label :group, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
+          <%= f.collection_select :group_id, current_user.groups, :id, :name, prompt: "グループを選んでください" %>
+        </div>
+        <div class="sm:col-span-2">
+          <%= f.label :take, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
+          <%= f.text_field :take, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300" %>
+        </div>
+        <div class="sm:col-span-2">
+          <%= f.label :execution_date, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
+          <%= f.datetime_field :execution_date, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300" %>
+        </div>
+        <div class="sm:col-span-2">
+          <%= f.label :image, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
+          <%= f.file_field :image, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
+        </div>
+        <div class="sm:col-span-2">
+          <%= f.label :comment, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
+          <%= f.text_area :comment, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
+        </div>
+        <div>
+            <%= f.submit class: "w-1/2 px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+      <!-- フォーム終わり -->
