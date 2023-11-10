@@ -13,7 +13,9 @@
   <body>
     <%= render "shared/header" %>
     <div class="flex lg:flex-row">
-      <%= render "shared/sidebar"%>
+      <%  if user_signed_in? %>
+        <%= render "shared/sidebar"%>
+      <%end%>
       <div class="flex-grow">
         <%= yield %>
       </div>
