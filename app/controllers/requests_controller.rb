@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:edit, :show, :update, :destroy]
 
   def index
-    @requests = Request.where(user_id: current_user.id)
+    @requests = Request.where(user_id: current_user.id, group_id: params[:group_id])
   end
 
   def new
@@ -13,9 +13,8 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
-    binding.b
     if @request.save
-      redirect_to root_path
+      redirect_to groups_path
     else
       render :new
     end
@@ -25,7 +24,7 @@ class RequestsController < ApplicationController
 
   def update
     if @request.update(request_params)
-      redirect_to root_path
+      redirect_to group_path(@group)
     else
       render :edit
     end
@@ -39,7 +38,7 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:group_id, :take, :execution_date, :image, :comment).merge(user_id: current_user.id)
+    params.require(:request).permit(:group_id, :user_id, :take, :execution_date, :image, :comment,).merge(user_id: current_user.id)
   end
 
   def set_request

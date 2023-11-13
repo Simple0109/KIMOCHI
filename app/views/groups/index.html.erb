@@ -15,7 +15,7 @@
                 <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
               </svg>
             </div>
-            <h1 class="text-xl font-semibold leading-none tracking-tighter text-neutral-600"><%= group.name %></h1>
+            <h1 class="text-xl font-semibold leading-none tracking-tighter text-blue-600 lg:mb-0 hover:text-neutral-600"><%= link_to group.name, group_requests_path(group) %></h1>
           </div>
           <p class="mx-auto text-base leading-relaxed text-gray-500"><%= group.description %></p>
           <div class="mt-4">

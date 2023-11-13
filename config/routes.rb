@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :groups
-  resources :requests
+  resources :groups do
+    resources :requests
+  end
 
 end
