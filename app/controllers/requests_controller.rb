@@ -3,6 +3,7 @@ class RequestsController < ApplicationController
 
   def index
     @requests = Request.where(user_id: current_user.id, group_id: params[:group_id])
+    @group = Group.find(params[:group_id])
   end
 
   def new
@@ -14,7 +15,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     if @request.save
-      redirect_to groups_path
+      redirect_to group_requests_path
     else
       render :new
     end
