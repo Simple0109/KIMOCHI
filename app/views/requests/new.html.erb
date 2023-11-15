@@ -9,11 +9,12 @@
     <!-- text - end -->
 
     <!-- フォームスタート -->
-    <%= form_with model: @request, url: requests_path, local: true do |f| %>
+    <%= form_with model: @request, url: group_requests_path, local: true do |f| %>
       <div class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
         <div class="sm:col-span-2">
-          <%= f.label :group, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
-          <%= f.collection_select :group_id, current_user.groups, :id, :name, prompt: "グループを選んでください" %>
+          <%= f.hidden_field :group_id, value: params[:group_id] %>
+          <%#= f.label :group, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
+          <%#= f.collection_select :group_id, current_user.groups, :id, :name, prompt: "グループを選んでください" %>
         </div>
         <div class="sm:col-span-2">
           <%= f.label :take, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>

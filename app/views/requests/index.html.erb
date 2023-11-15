@@ -1,0 +1,136 @@
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-xl px-4 md:px-8">
+    <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl xl:mb-12"><%= "#{@group.name} : リクエスト一覧" %></h2>
+      <div class="bg-white py-6 sm:py-8 lg:py-12">
+        <div class="mx-auto max-w-screen-xl px-4 md:px-8">
+        
+          <div class="mb-6 grid gap-6 sm:grid-cols-2 md:mb-8 lg:grid-cols-4 lg:gap-8">
+            <!-- plan - start 下書きリスト -->
+            <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
+              <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
+                下書きリスト
+              </div>
+              <div class="flex flex-1 flex-col p-6 pt-8">
+                <div class="mb-12">
+                  <div class="mb-2 text-center text-2xl font-bold text-gray-800">さんぷる</div>
+
+                  <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
+
+                  <div class="space-y-4">
+                    <% @requests.select { |request| request.status == "drift" }.each do |request| %>
+                    <!-- check - start -->
+                    <div class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="8" fill="currentColor" class="text-gray-300" />
+                        <circle cx="8" cy="8" r="3" fill="currentColor" class="text-gray-500" />
+                      </svg>
+                      <div class="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
+                      <%= link_to request.take, group_request_path(request.group, request) %>
+                      </div>
+                    </div>
+                    <!-- check - end -->
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- plan - start 未承認リスト -->
+            <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
+              <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
+                未承認リスト
+              </div>
+              <div class="flex flex-1 flex-col p-6 pt-8">
+                <div class="mb-12">
+                  <div class="mb-2 text-center text-2xl font-bold text-gray-800">さんぷる</div>
+
+                  <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
+
+                  <div class="space-y-4">
+                    <% @requests.select { |request| request.status == "not_authorized" }.each do |request| %>
+                    <!-- check - start -->
+                    <div class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="8" fill="currentColor" class="text-gray-300" />
+                        <circle cx="8" cy="8" r="3" fill="currentColor" class="text-gray-500" />
+                      </svg>
+                      <div class="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
+                      <%= link_to request.take, group_request_path(request.group, request) %>
+                      </div>
+                    </div>
+                    <!-- check - end -->
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- plan - start 承認済みリスト -->
+            <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
+              <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
+                承認済リスト
+              </div>
+              <div class="flex flex-1 flex-col p-6 pt-8">
+                <div class="mb-12">
+                  <div class="mb-2 text-center text-2xl font-bold text-gray-800">さんぷる</div>
+
+                  <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
+
+                  <div class="space-y-4">
+                    <% @requests.select { |request| request.status == "authorized" }.each do |request| %>
+                    <!-- check - start -->
+                    <div class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="8" fill="currentColor" class="text-gray-300" />
+                        <circle cx="8" cy="8" r="3" fill="currentColor" class="text-gray-500" />
+                      </svg>
+                      <div class="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
+                      <%= link_to request.take, group_request_path(request.group, request) %>
+                      </div>
+                    </div>
+                    <!-- check - end -->
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- plan - start 完了済リスト -->
+            <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
+              <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
+                完了済リスト
+              </div>
+              <div class="flex flex-1 flex-col p-6 pt-8">
+                <div class="mb-12">
+                  <div class="mb-2 text-center text-2xl font-bold text-gray-800">さんぷる</div>
+
+                  <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
+
+                  <div class="space-y-4">
+                    <% @requests.select { |request| request.status == "approved" }.each do |request| %>
+                    <!-- check - start -->
+                    <div class="flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="8" fill="currentColor" class="text-gray-300" />
+                        <circle cx="8" cy="8" r="3" fill="currentColor" class="text-gray-500" />
+                      </svg>
+                      <div class="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
+                      <%= link_to request.take, group_request_path(request.group, request) %>
+                      </div>
+                    </div>
+                    <!-- check - end -->
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class=" flex justify-center items-end mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
+            <%= link_to "新規リクエスト作成", new_group_request_path(@group) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

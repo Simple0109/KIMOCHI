@@ -5,7 +5,7 @@ class CreateRequests < ActiveRecord::Migration[7.0]
       t.datetime :execution_date
       t.string :image
       t.text :comment
-      t.integer :status
+      t.integer :status, null: false, default: 0
       t.references :user, null: false, foreign_key: true
       t.references :group, null: false, foreign_key: true
 

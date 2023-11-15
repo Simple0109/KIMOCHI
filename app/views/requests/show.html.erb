@@ -1,0 +1,13 @@
+<div class="bg-gray-50 p-4 max-w-5xl mx-auto">
+  <h1 class="text-xl font-bold">承認状況 : <%= @request.status%></h1>
+  <h1 class="text-xl font-bold">take : <%= @request.take%></h1>
+  <div class="grid gap-4">
+    <div>execution_date : <%= @request.execution_date%></div>
+  </div>
+  <div class="grid gap-4">
+    <div>comment(説明)</div>
+    <div class="flex-col border p-4 w-1/2 h-32 bg-white"><%= @request.comment%></div>
+    <div>created_at : <%= @request.created_at%></div>
+    <div>updated_at : <%= @request.updated_at%></div>
+  </div>
+</div>

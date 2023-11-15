@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_120106) do
     t.datetime "execution_date"
     t.string "image"
     t.text "comment"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
     t.datetime "created_at", null: false
