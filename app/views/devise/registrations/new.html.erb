@@ -7,11 +7,6 @@
             </div>
             <%= form_with model:@user, url: user_registration_path, method: :post do |f| %>
             <div class="mb-6">
-              <%= f.label :name, class: "block mb-2 text-sm text-gray-600 dark:text-gray-400" %>
-              <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "らんてくん",
-                class: "w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" %>
-            </div>
-            <div class="mb-6">
               <%= f.label :email, class: "block mb-2 text-sm text-gray-600 dark:text-gray-400" %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "test@exemple.com",
                 class: "w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" %>

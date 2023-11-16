@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_08_120106) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_16_120557) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,6 +28,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_120106) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "avatar"
+    t.integer "role", default: 0, null: false
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -50,10 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_120106) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name", null: false
-    t.string "avatar"
-    t.integer "role", default: 0, null: false
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -62,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_08_120106) do
 
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
+  add_foreign_key "profiles", "users"
   add_foreign_key "requests", "groups"
   add_foreign_key "requests", "users"
 end

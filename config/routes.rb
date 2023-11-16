@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resource :profile
+
   resources :groups do
     resources :requests
   end
