@@ -1,7 +1,5 @@
 class ProfilesController < ApplicationController
-  def new
-    @profile = Profile.new
-  end
+  before_action :set_current_user_profile, only: [:show, :edit, :update]
 
   def show
   end
@@ -19,14 +17,22 @@ class ProfilesController < ApplicationController
   end
 
   def update
-  end
-
-  def destroy
+    if @profile.update(profile_params)
+      redirect_to profile_path
+    else
+      render :edit
+    end
   end
 
   private
 
   def profile_params
-    params.require(:profile).permit(:name, :avatar, :role, :description).merge(user_id: current_user.id)
+    params.require(:profile).permit(:name, :avatar, :description)
   end
+
+  def set_current_user_profile
+    @user = current_user
+    @profile = @user.profile
+  end
+
 end
