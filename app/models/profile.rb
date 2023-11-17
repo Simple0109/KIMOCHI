@@ -1,5 +1,5 @@
 class Profile < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   validates :name, presence: true, length: { maximum: 20 }
   validates :role, presence: true
 
