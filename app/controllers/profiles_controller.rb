@@ -4,15 +4,6 @@ class ProfilesController < ApplicationController
   def show
   end
 
-  def create
-    @profile = Profile.new(profile_params)
-    if @profile.save
-      redirect_to new_user_session_path
-    else
-      render :new
-    end
-  end
-
   def edit
   end
 
