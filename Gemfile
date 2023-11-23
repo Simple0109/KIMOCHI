@@ -75,6 +75,8 @@ group :test do
 end
 
 gem "devise"
+gem "devise_invitable"
 gem "importmap-rails"
 gem "better_errors"
 gem "activestorage-validator"
+gem "binding_of_caller"
