@@ -5,6 +5,8 @@
 
       <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"><%= @group.description %></p>
 
+      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">招待コード:<%=@group.invite_password %></p>
+
     </div>
     <div class="flex justify-end space-x-4">
       <div><%= link_to "編集", edit_group_path, class: "btn btn-warning" %></div>

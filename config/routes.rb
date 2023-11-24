@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :requests
   end
 
+  resources :invites, only: [:new, :create]
+
 end
