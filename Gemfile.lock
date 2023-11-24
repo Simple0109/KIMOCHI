@@ -105,9 +105,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise_invitable (2.0.9)
-      actionmailer (>= 5.0)
-      devise (>= 4.6)
     erubi (1.12.0)
     ffi (1.16.3)
     globalid (1.2.1)
@@ -259,7 +256,6 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
-  devise_invitable
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
