@@ -2,14 +2,13 @@
     <div class="container mx-auto">
         <div class="max-w-md mx-auto my-10">
             <div class="text-center">
-                <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">Sign up</h1>
-                <p class="text-gray-500 dark:text-gray-400">アカウント新規登録</p>
+                <h1 class="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200"><%= t(".title")%></h1>
             </div>
             <%= form_with model:@user, url: user_registration_path, method: :post do |f| %>
 
               <%= f.fields_for :profile do |profile_f| %>
                 <div class="mb-6">
-                  <%= profile_f.label :name, class: "block mb-2 text-sm text-gray-600 dark:text-gray-400" %><br />
+                  <%= profile_f.label :name, class: "block mb-2 text-sm text-gray-600 dark:text-gray-400" %>
                   <%= profile_f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "らんてくん",
                   class: "w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" %>
                 </div>
@@ -34,16 +33,13 @@
             </div>
 
             <div class="mb-6">
-              <%= f.submit "Sign up", class: "w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
+              <%= f.submit t("defaults.register"), class: "w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
             </div>
 
             <% end %>
 
             <div>
-              <%= link_to "パスワードを忘れた場合はこちらへ", "#", class: "text-sm text-gray-400 focus:outline-none focus:text-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-300"%>
-            </div>
-            <div>
-              <%= link_to "すでにアカウントをお持ちのかたはこちらへ", new_user_session_path, class: "text-sm text-gray-400 focus:outline-none focus:text-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-300"%>
+              <%= link_to t(".to_login_page"), new_user_session_path, class: "text-sm text-gray-400 focus:outline-none focus:text-indigo-500 hover:text-indigo-500 dark:hover:text-indigo-300"%>
             </div>
         </div>
     </div>

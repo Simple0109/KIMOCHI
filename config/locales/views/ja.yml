@@ -1,0 +1,15 @@
+ja:
+  defaults:
+    login: ログイン
+    register: 登録
+    logout: ログアウト
+  devise:
+    registrations:
+      new:
+        title: アカウント登録
+        to_login_page: すでにアカウントをお持ちの方はこちらへ
+    sessions:
+      new:
+        title: ログイン
+        forget_password: パスワードを忘れた場合はこちらへ
+        new_user_register: アカウント未登録の人はこちらへ
