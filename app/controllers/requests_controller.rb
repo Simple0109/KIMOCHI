@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :set_request, only: [:edit, :show, :update, :destroy]
 
   def index
-    @requests = Request.where(user_id: current_user.id, group_id: params[:group_id])
+    @requests = Request.where(group_id: params[:group_id])
     @group = Group.find(params[:group_id])
   end
 
