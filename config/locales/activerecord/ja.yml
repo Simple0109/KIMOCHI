@@ -1,0 +1,25 @@
+ja:
+  activerecord:
+    models:
+      user:
+      profile:
+      group:
+      request:
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+      profile:
+        name: 名前
+        avatar: アバター
+        description: 自己紹介
+      request:
+        take: 報酬
+        execution_date: 実行日
+        image: 画像
+        comment: コメント
+      group:
+        name: グルームネーム
+        description: 説明
+        invite_password: 招待コード
+

@@ -11,11 +11,20 @@
   </head>
 
   <body>
+    
     <%= render "shared/header" %>
+
+    <% flash.each do |key, message| %>
+      <div class="alert alert-<%= key %>">
+        <%= message %>
+      </div>
+    <% end %>
+    
     <div class="flex lg:flex-row">
       <%  if user_signed_in? %>
         <%= render "shared/sidebar"%>
       <%end%>
+
       <div class="flex-grow">
         <%= yield %>
       </div>
