@@ -1,13 +1,79 @@
-<div class="bg-gray-50 p-4 max-w-5xl mx-auto">
-  <h1 class="text-xl font-bold">承認状況 : <%= @request.status%></h1>
-  <h1 class="text-xl font-bold">take : <%= @request.take%></h1>
-  <div class="grid gap-4">
-    <div>execution_date : <%= @request.execution_date%></div>
-  </div>
-  <div class="grid gap-4">
-    <div>comment(説明)</div>
-    <div class="flex-col border p-4 w-1/2 h-32 bg-white"><%= @request.comment%></div>
-    <div>created_at : <%= @request.created_at%></div>
-    <div>updated_at : <%= @request.updated_at%></div>
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    <!-- text - start -->
+    <div class="mb-10 md:mb-16">
+      <div class="mb-4 text-stert text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
+        <p>GIVE & TAKE DETAIL</p><nobr class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">下記条件を承認したときはチェックボックスにチェックを入れて、承認ボタンを押しましょう！</nobr>
+      </div>
+    </div>
+    <!-- text - end -->
+
+    <div class="grid gap-4 sm:grid-cols-2 md:gap-8 xl:grid-cols-3">
+      <!-- feature - start -->
+      <div class=" bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
+        <h3 class="mb-2 text-lg font-semibold md:text-xl">take</h3>
+        <p class="mb-4 text-gray-500"><%= @request.take%></p>
+        <h3 class="mb-2 text-lg font-semibold md:text-xl">execution_date</h3>
+        <p class="mb-4 text-gray-500"><%= @request.execution_date%></p>
+        <h3 class="mb-2 text-lg font-semibold md:text-xl">create_user</h3>
+        <p class="mb-4 text-gray-500"><%= @request.user.profile.name%></p>
+      </div>
+      <!-- feature - end -->
+
+      <!-- feature - start -->
+      <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
+        <h3 class="mb-2 text-lg font-semibold md:text-xl">give</h3>
+        <div class="mb-4 text-gray-500">
+          <ul class="list-disc list-inside">
+          <li><%= @request.give1%></li>
+          <% if @request.give2.present?%>
+            <li><%= @request.give2%></li>
+          <%end%>
+          <% if @request.give3.present?%>
+            <li><%= @request.give3%></li>
+          <%end%>
+          </ul>
+        </div>
+      </div>
+      <!-- feature - end -->
+
+      <!-- feature - start -->
+      <% if @request.image.present?%>
+        <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
+          <h3 class="mb-2 text-lg font-semibold md:text-xl">image</h3>
+          <%= image_tag @request.image_thumbnail %>
+        </div>
+      <% end %>
+      <!-- feature - end -->
+
+      <!-- feature - start -->
+      <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
+        <h3 class="mb-2 text-lg font-semibold md:text-xl">comment</h3>
+        <p class="mb-4 text-gray-500"><%= @request.comment%></p>
+      </div>
+      <!-- feature - end -->
+
+      <!-- feature - start -->
+      <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
+        <h3 class="mb-2 text-lg font-semibold md:text-xl">created_at & updated_at</h3>
+        <p class="mb-4 text-gray-500"><%= @request.created_at%></p>
+        <p class="mb-4 text-gray-500"><%= @request.updated_at%></p>
+      </div>
+      <!-- feature - end -->
+
+      <!-- feature - start -->
+      <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
+        <h3 class="mb-2 text-lg font-semibold md:text-xl">group_menber</h3>
+        <dev class="mb-4 text-gray-500">
+          <% @group_members.each do |member| %>
+            <%= member.profile.name%></p>
+          <%end%>
+        </div>
+      </div>
+      <!-- feature - end -->
+      <%%>
+    </div>
   </div>
 </div>
+
+
