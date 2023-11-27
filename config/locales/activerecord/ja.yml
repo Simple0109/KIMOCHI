@@ -18,6 +18,9 @@ ja:
         execution_date: 実行日
         image: 画像
         comment: コメント
+        give1: 対価1
+        give2: 対価2
+        give3: 対価3
       group:
         name: グルームネーム
         description: 説明

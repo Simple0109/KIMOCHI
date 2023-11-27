@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:edit, :show, :update, :destroy]
+  before_action :set_request, only: [:edit, :update, :destroy]
 
   def index
     @requests = Request.where(group_id: params[:group_id])
@@ -10,7 +10,10 @@ class RequestsController < ApplicationController
     @request = Request.new
   end
 
-  def show;end
+  def show
+    @request = Request.includes(user: :profile).find(params[:id])
+    @group_members = Group.find(params[:group_id]).users.includes(:profile)
+  end
 
   def create
     @request = Request.new(request_params)
@@ -39,11 +42,11 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:group_id, :user_id, :take, :execution_date, :image, :comment,).merge(user_id: current_user.id)
+    params.require(:request).permit(:group_id, :user_id, :take, :execution_date, :comment, :image, :give1, :give2, :give3).merge(user_id: current_user.id)
   end
 
   def set_request
-    @request = Request.find(params[:id])
+    @request = Request.includes(user: :profile).find(params[:id])
   end
 
 end
