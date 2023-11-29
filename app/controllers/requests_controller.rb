@@ -8,12 +8,11 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
-    @group = Group.find(params[:group_id])
+    @group = Group.includes(users: :profile).find(params[:group_id])
   end
 
   def show
     @request = Request.includes(user: :profile).find(params[:id])
-    @group_members = Group.find(params[:group_id]).users.includes(:profile)
   end
 
   def create
