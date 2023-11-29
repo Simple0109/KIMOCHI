@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_27_025558) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_29_020827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_025558) do
     t.index ["user_id"], name: "index_profiles_on_user_id_unique", unique: true
   end
 
+  create_table "request_users", force: :cascade do |t|
+    t.bigint "request_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "approval_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["request_id", "user_id"], name: "index_request_users_on_request_id_and_user_id", unique: true
+    t.index ["request_id"], name: "index_request_users_on_request_id"
+    t.index ["user_id"], name: "index_request_users_on_user_id"
+  end
+
   create_table "requests", force: :cascade do |t|
     t.string "take"
     t.datetime "execution_date"
@@ -106,6 +117,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_025558) do
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "request_users", "requests"
+  add_foreign_key "request_users", "users"
   add_foreign_key "requests", "groups"
   add_foreign_key "requests", "users"
 end
