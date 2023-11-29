@@ -42,6 +42,12 @@
           <%= f.label :comment, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
           <%= f.text_area :comment, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
         </div>
+        <div class="sm:col-span-2">
+           <%= f.label :member %>
+            <%= collection_check_boxes(:request, :authorizer_ids, @group.users, :id, proc{ |user| user.profile.name }) do |a|%>
+              <%= a.label {a.check_box + a.text}%>
+            <% end %>
+        </div>
         <div>
             <%= f.submit class: "w-1/2 px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
         </div>

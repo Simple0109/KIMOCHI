@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
+  has_many :request_users, dependent: :destroy
+  has_many :requests, through: :request_users
+
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 

@@ -65,7 +65,7 @@
       <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
         <h3 class="mb-2 text-lg font-semibold md:text-xl">group_menber</h3>
         <dev class="mb-4 text-gray-500">
-          <% @group_members.each do |member| %>
+          <% @request.authorizers.each do |member| %>
             <%= member.profile.name%></p>
           <%end%>
         </div>
@@ -74,6 +74,10 @@
       <%%>
     </div>
   </div>
+
+  <!-- button_zone -->
+  <div class="flex">
+    </div>
 </div>
 
 

@@ -8,6 +8,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
+    @group = Group.find(params[:group_id])
   end
 
   def show
@@ -17,7 +18,14 @@ class RequestsController < ApplicationController
 
   def create
     @request = Request.new(request_params)
+    @authorizer_ids = params[:request][:authorizer_ids].map(&:to_i)
+    @authorizer_ids.shift
+
     if @request.save
+      @authorizer_ids.each do |authorizer_id|
+        authorizer = User.find(authorizer_id)
+        @request.authorizers << authorizer
+      end
       redirect_to group_requests_path
     else
       render :new
