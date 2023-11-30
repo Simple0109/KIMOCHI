@@ -108,6 +108,8 @@ GEM
     devise-i18n (1.12.0)
       devise (>= 4.9.0)
     devise-i18n-views (0.3.7)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.12.0)
     ffi (1.16.3)
     globalid (1.2.1)
@@ -264,6 +266,7 @@ DEPENDENCIES
   devise
   devise-i18n
   devise-i18n-views
+  enum_help
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

@@ -17,7 +17,7 @@
                   <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
 
                   <div class="space-y-4">
-                    <% @requests.select { |request| request.status == "drift" }.each do |request| %>
+                    <% @requests.select { |request| request.status == "draft" }.each do |request| %>
                     <!-- check - start -->
                     <div class="flex items-center gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
@@ -47,7 +47,7 @@
                   <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
 
                   <div class="space-y-4">
-                    <% @requests.select { |request| request.status == "not_authorized" }.each do |request| %>
+                    <% @requests.select { |request| request.status == "unauthorized" }.each do |request| %>
                     <!-- check - start -->
                     <div class="flex items-center gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
@@ -107,7 +107,7 @@
                   <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
 
                   <div class="space-y-4">
-                    <% @requests.select { |request| request.status == "approved" }.each do |request| %>
+                    <% @requests.select { |request| request.status == "possible" }.each do |request| %>
                     <!-- check - start -->
                     <div class="flex items-center gap-2">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
