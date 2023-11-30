@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:edit, :update, :destroy]
+  before_action :set_request, only: [:show, :edit, :update, :destroy]
+  before_action :set_group, only: [ :new , :show]
 
   def index
     @requests = Request.where(group_id: params[:group_id])
@@ -8,11 +9,11 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
-    @group = Group.includes(users: :profile).find(params[:group_id])
   end
 
   def show
-    @request = Request.includes(user: :profile).find(params[:id])
+    @subject_authorizer = RequestUser.find_by(request_id: @request.id, user_id: current_user.id)
+
   end
 
   def create
@@ -54,6 +55,10 @@ class RequestsController < ApplicationController
 
   def set_request
     @request = Request.includes(user: :profile).find(params[:id])
+  end
+
+  def set_group
+    @group = Group.includes(users: :profile).find(params[:group_id])
   end
 
 end

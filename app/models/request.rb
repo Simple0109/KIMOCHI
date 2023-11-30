@@ -2,7 +2,7 @@ class Request < ApplicationRecord
   validates :take, :status, :give1, presence: true
   validates :image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
-  enum status: { drift: 0, not_authorized: 1, authorized: 2, approved: 3 }
+  enum status: { draft: 0, unauthorized: 1, authorized: 2, possible: 3 }
 
   has_one_attached :image
 
@@ -15,6 +15,11 @@ class Request < ApplicationRecord
     if image.attached?
       image.variant(resize_to_fit: [720, 600]).processed
     end
+  end
+
+
+  def authorizers_check(user)
+    self.authorizers.where(id: user.id).exists?
   end
 
 end
