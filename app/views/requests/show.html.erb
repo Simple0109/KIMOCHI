@@ -64,7 +64,7 @@
 
       <!-- feature - start -->
       <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
-        <h3 class="mb-2 text-lg font-semibold md:text-xl">group_menber</h3>
+        <h3 class="mb-2 text-lg font-semibold md:text-xl">authorizers</h3>
         <dev class="mb-4 text-gray-500">
           <% @request.authorizers.each do |member| %>
             <%= member.profile.name%></p>
@@ -78,25 +78,35 @@
   <!-- button_zone -->
   <div class="flex justify-center gap-4">
     <% if @request.user_id == current_user.id && @request.draft? %>
+    <div class="btn btn-primary">
+      <%= button_to "編集", edit_group_request_path(@group, @request), method: :get %>
+    </div>
+    <% end %>
+
+    <% if @request.user_id == current_user.id && @request.draft? %>
       <div class="btn btn-primary">
         <%= button_to "申請", group_request_apply_path(@group, @request) , method: :post %>
       </div>
     <% end %>
+
     <% if @request.user_id == current_user.id && !@request.draft? %>
       <div class="btn btn-primary">
         <%= button_to "申請取下", group_request_cancel_apply_path(@group, @request) , method: :post %>
       </div>
     <% end %>
+
     <% if @request.authorizers_check(current_user) && @subject_authorizer.unauthorized? && @request.unauthorized? %>
     <div class="btn btn-primary">
       <%= button_to "承認", group_request_admit_path(@group, @request), method: :post %>
     </div>
     <% end %>
+
     <% if @request.authorizers_check(current_user) && @subject_authorizer.authorized? && @request.authorized?%>
     <div class="btn btn-primary">
       <%= button_to "承認取消", group_request_cancel_admit_path(@group, @request), method: :post %>
     </div>
     <% end %>
+
   </div>
 </div>
 
