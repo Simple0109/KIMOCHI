@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :description, :invite_password)
+    params.require(:group).permit(:name, :description, :invite_token)
   end
 
   def set_group
