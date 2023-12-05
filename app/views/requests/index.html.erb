@@ -8,27 +8,25 @@
             <!-- plan - start 下書きリスト -->
             <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
               <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
-                下書きリスト
+                <%= t("groups.requests.index.draft") %>
               </div>
               <div class="flex flex-1 flex-col p-6 pt-8">
                 <div class="mb-12">
-                  <div class="mb-2 text-center text-2xl font-bold text-gray-800">さんぷる</div>
-
-                  <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
-
                   <div class="space-y-4">
-                    <% @requests.select { |request| request.status == "draft" }.each do |request| %>
-                    <!-- check - start -->
-                    <div class="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8" fill="currentColor" class="text-gray-300" />
-                        <circle cx="8" cy="8" r="3" fill="currentColor" class="text-gray-500" />
-                      </svg>
-                      <div class="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
-                      <%= link_to request.take, group_request_path(request.group, request) %>
+                    <% @requests.select { |request| (request.status == "draft") && (request.own?(current_user)) }.each do |request| %>
+                      <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <div class="text-base font-bold text-gray-800 dark:text-white">
+                          <%= link_to request.take, group_request_path(request.group, request) %>
+                        </div>
+                        <% if request.execution_date.present? %>
+                          <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
+                            <%= "実行日時 #{l request.execution_date}" %>
+                          </div>
+                        <% end %>
+                        <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                          <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
+                        </div>
                       </div>
-                    </div>
-                    <!-- check - end -->
                     <%end%>
                   </div>
                 </div>
@@ -38,27 +36,25 @@
             <!-- plan - start 未承認リスト -->
             <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
               <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
-                未承認リスト
+                <%= t("groups.requests.index.unauthorized")%>
               </div>
               <div class="flex flex-1 flex-col p-6 pt-8">
                 <div class="mb-12">
-                  <div class="mb-2 text-center text-2xl font-bold text-gray-800">さんぷる</div>
-
-                  <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
-
                   <div class="space-y-4">
-                    <% @requests.select { |request| request.status == "unauthorized" }.each do |request| %>
-                    <!-- check - start -->
-                    <div class="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8" fill="currentColor" class="text-gray-300" />
-                        <circle cx="8" cy="8" r="3" fill="currentColor" class="text-gray-500" />
-                      </svg>
-                      <div class="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
-                      <%= link_to request.take, group_request_path(request.group, request) %>
+                    <% @requests.select { |request| (request.status == "unauthorized") && (request.authorizers_check(current_user) || request.own?(current_user)) }.each do |request| %>
+                      <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <div class="text-base font-bold text-gray-800 dark:text-white">
+                          <%= link_to request.take, group_request_path(request.group, request) %>
+                        </div>
+                        <% if request.execution_date.present? %>
+                          <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
+                            <%= "実行日時 #{l request.execution_date}" %>
+                          </div>
+                        <% end %>
+                        <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                          <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
+                        </div>
                       </div>
-                    </div>
-                    <!-- check - end -->
                     <%end%>
                   </div>
                 </div>
@@ -68,27 +64,25 @@
             <!-- plan - start 承認済みリスト -->
             <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
               <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
-                承認済リスト
+                <%= t("groups.requests.index.authorized")%>
               </div>
               <div class="flex flex-1 flex-col p-6 pt-8">
                 <div class="mb-12">
-                  <div class="mb-2 text-center text-2xl font-bold text-gray-800">さんぷる</div>
-
-                  <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
-
                   <div class="space-y-4">
-                    <% @requests.select { |request| request.status == "authorized" }.each do |request| %>
-                    <!-- check - start -->
-                    <div class="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8" fill="currentColor" class="text-gray-300" />
-                        <circle cx="8" cy="8" r="3" fill="currentColor" class="text-gray-500" />
-                      </svg>
-                      <div class="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
-                      <%= link_to request.take, group_request_path(request.group, request) %>
+                    <% @requests.select { |request| (request.status == "authorized") && (request.authorizers_check(current_user) || request.own?(current_user)) }.each do |request| %>
+                      <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <div class="text-base font-bold text-gray-800 dark:text-white">
+                          <%= link_to request.take, group_request_path(request.group, request) %>
+                        </div>
+                        <% if request.execution_date.present? %>
+                          <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
+                            <%= "実行日時 #{l request.execution_date}" %>
+                          </div>
+                        <% end %>
+                        <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                          <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
+                        </div>
                       </div>
-                    </div>
-                    <!-- check - end -->
                     <%end%>
                   </div>
                 </div>
@@ -98,27 +92,25 @@
             <!-- plan - start 完了済リスト -->
             <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
               <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
-                完了済リスト
+                <%= t("groups.requests.index.possible")%>
               </div>
               <div class="flex flex-1 flex-col p-6 pt-8">
                 <div class="mb-12">
-                  <div class="mb-2 text-center text-2xl font-bold text-gray-800">さんぷる</div>
-
-                  <p class="mx-auto mb-8 px-8 text-center text-gray-500">さんぷる</p>
-
                   <div class="space-y-4">
                     <% @requests.select { |request| request.status == "possible" }.each do |request| %>
-                    <!-- check - start -->
-                    <div class="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0" fill="none" viewBox="0 0 16 16">
-                        <circle cx="8" cy="8" r="8" fill="currentColor" class="text-gray-300" />
-                        <circle cx="8" cy="8" r="3" fill="currentColor" class="text-gray-500" />
-                      </svg>
-                      <div class="inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
-                      <%= link_to request.take, group_request_path(request.group, request) %>
+                      <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                        <div class="text-base font-bold text-gray-800 dark:text-white">
+                          <%= link_to request.take, group_request_path(request.group, request) %>
+                        </div>
+                        <% if request.execution_date.present? %>
+                          <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
+                            <%= "実行日時 #{l request.execution_date}" %>
+                          </div>
+                        <% end %>
+                        <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                          <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
+                        </div>
                       </div>
-                    </div>
-                    <!-- check - end -->
                     <%end%>
                   </div>
                 </div>

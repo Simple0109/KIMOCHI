@@ -14,13 +14,14 @@ ja:
         avatar: アバター
         description: 自己紹介
       request:
-        take: 報酬
-        execution_date: 実行日
-        image: 画像
+        take: したいこと
+        execution_date: 実行する日
+        image: 参考画像
         comment: コメント
-        give1: 対価1
-        give2: 対価2
+        give1: 
+        give2: 
         give3: 対価3
+        authorizers: 承認者
       group:
         name: グルームネーム
         description: 説明

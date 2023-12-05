@@ -18,8 +18,12 @@ class Request < ApplicationRecord
   end
 
 
-  def authorizers_check(user)
-    self.authorizers.where(id: user.id).exists?
+  def authorizers_check(current_user)
+    self.authorizers.where(id: current_user.id).exists?
+  end
+
+  def own?(current_user)
+    self.user_id == current_user.id
   end
 
 end

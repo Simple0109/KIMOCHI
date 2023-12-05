@@ -4,7 +4,15 @@
     <!-- text - start -->
     <div class="mb-10 md:mb-16">
       <div class="mb-4 text-stert text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">
-        <p>GIVE & TAKE DETAIL</p><nobr class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">下記条件を承認したときはチェックボックスにチェックを入れて、承認ボタンを押しましょう！</nobr>
+        <p>GIVE & TAKE DETAIL</p>
+      </div>
+        <div class="mx-auto text-left text-gray-500 md:text-lg">
+          <% if @request.status == "draft" %>
+            <div>内容に間違いなければ申請ボタンを押して申請しましょう!</div>
+            <div>内容を修正するときは編集ボタンを押しましょう!</div>
+          <% else %>
+            <div>下記条件を承認したときはチェックボックスにチェックを入れて、承認ボタンを押しましょう!</div>
+          <%end%>
       </div>
     </div>
     <!-- text - end -->

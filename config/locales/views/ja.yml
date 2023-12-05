@@ -3,6 +3,11 @@ ja:
     login: ログイン
     register: 登録
     logout: ログアウト
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      short: "%m/%d"
+      time: "%Y/%m/%d %H:%M:%S"
   devise:
     registrations:
       new:
@@ -13,3 +18,11 @@ ja:
         title: ログイン
         forget_password: パスワードを忘れた場合はこちらへ
         new_user_register: アカウント未登録の人はこちらへ
+  groups:
+    requests:
+      index:
+        draft: 下書き
+        unauthorized: 未承認
+        authorized: 承認
+        possible: 実行可能
+
