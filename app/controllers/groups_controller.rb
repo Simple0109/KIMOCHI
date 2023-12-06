@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
 
 
   def index
-    @user_groups = current_user.groups.order(created_at: :desc)
+    @user_groups = current_user.groups.order(created_at: :desc).order(created_at: :desc).page(params[:page])
   end
 
   def new
