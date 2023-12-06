@@ -3,7 +3,7 @@ class RequestsController < ApplicationController
   before_action :set_group, only: [:new, :edit, :update, :show]
 
   def index
-    all_requests = Request.where(group_id: params[:group_id])
+    all_requests = Request.where(group_id: params[:group_id]).order(updated_at: :desc)
     @draft_requests = Kaminari.paginate_array(all_requests.select { |request| (request.status == "draft") && (request.own?(current_user)) }).page(params[:draft_page])
     @unauthorized_requests = Kaminari.paginate_array(all_requests.select { |request| (request.status == "unauthorized") && (request.authorizers_check(current_user) || request.own?(current_user))}).page(params[:unauthorized_page])
     @authorized_requests = Kaminari.paginate_array(all_requests.select { |request| (request.status == "authorized") && (request.authorizers_check(current_user) || request.own?(current_user))}).page(params[:authorized_page])
