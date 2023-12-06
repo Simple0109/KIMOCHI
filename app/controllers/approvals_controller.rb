@@ -6,7 +6,7 @@ class ApprovalsController < ApplicationController
   def apply
     if @request.user_id == current_user.id
       @request.unauthorized!
-      redirect_to group_request_path(@group, @request), notice: "リクエストの申請を行いました"
+      redirect_to group_requests_path, notice: "リクエストの申請を行いました"
     else
       redirect_to group_request_path(@request), notice: "リクエストの申請に失敗しました"
     end
@@ -20,7 +20,7 @@ class ApprovalsController < ApplicationController
       authorizers.each do |authorizer|
         authorizer.unauthorized!
       end
-      redirect_to group_request_path(@group, @request), notice: "リクエストの申請を取り消しました"
+      redirect_to group_requests_path, notice: "リクエストの申請を取り消しました"
     else
       redirect_to group_request_path(@request), notice: "リクエストの申請取り消しに失敗しました"
     end
@@ -34,7 +34,7 @@ class ApprovalsController < ApplicationController
       if @request.authorizers.pluck(:approval_status).sum == @request.authorizers.count
         @request.authorized!
       end
-      redirect_to group_request_path(@group, @request), notice: "承認しました"
+      redirect_to group_requests_path, notice: "承認しました"
     else
       redirect_to group_request_path(@group, @request), notice: "承認に失敗しました"
 
@@ -49,7 +49,7 @@ class ApprovalsController < ApplicationController
       if @request.authorizers.pluck(:approval_status).sum <= @request.authorizers.count
         @request.unauthorized!
       end
-      redirect_to group_request_path(@group, @request), notice: "承認を取り消しました"
+      redirect_to group_requests_path, notice: "承認を取り消しました"
     else
       redirect_to group_request_path(@group, @request), notice: "承認取り消しに失敗しました"
     end
