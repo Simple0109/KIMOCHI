@@ -3,32 +3,33 @@
     <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl xl:mb-12"><%= "#{@group.name} : リクエスト一覧" %></h2>
       <div class="bg-white py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-xl px-4 md:px-8">
-        
+
           <div class="mb-6 grid gap-6 sm:grid-cols-2 md:mb-8 lg:grid-cols-4 lg:gap-8">
             <!-- plan - start 下書きリスト -->
-            <div class="flex flex-col overflow-hidden rounded-lg border-2 border-indigo-500 flex-1">
+            <div class="flex flex-col overflow-auto rounded-lg border-2 border-indigo-500 flex-1">
               <div class="bg-indigo-500 py-2 text-center text-sm font-semibold uppercase tracking-widest text-white">
                 <%= t("groups.requests.index.draft") %>
               </div>
               <div class="flex flex-1 flex-col p-6 pt-8">
-                <div class="mb-12">
-                  <div class="space-y-4">
-                    <% @requests.select { |request| (request.status == "draft") && (request.own?(current_user)) }.each do |request| %>
-                      <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
-                        <div class="text-base font-bold text-gray-800 dark:text-white">
-                          <%= link_to request.take, group_request_path(request.group, request) %>
-                        </div>
-                        <% if request.execution_date.present? %>
-                          <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
-                            <%= "実行日時 #{l request.execution_date}" %>
-                          </div>
-                        <% end %>
-                        <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                          <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
-                        </div>
+                <div class="space-y-4">
+                  <% @draft_requests.each do |request| %>
+                    <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                      <div class="text-base font-bold text-gray-800 dark:text-white">
+                        <%= link_to request.take, group_request_path(request.group, request) %>
                       </div>
-                    <%end%>
-                  </div>
+                      <% if request.execution_date.present? %>
+                        <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
+                          <%= "実行日時 #{l request.execution_date}" %>
+                        </div>
+                      <% end %>
+                      <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
+                      </div>
+                    </div>
+                  <%end%>
+                </div>
+                <div class="mt-5 text-center">
+                  <%= paginate @draft_requests, param_name: "draft_page" %>
                 </div>
               </div>
             </div>
@@ -39,24 +40,25 @@
                 <%= t("groups.requests.index.unauthorized")%>
               </div>
               <div class="flex flex-1 flex-col p-6 pt-8">
-                <div class="mb-12">
-                  <div class="space-y-4">
-                    <% @requests.select { |request| (request.status == "unauthorized") && (request.authorizers_check(current_user) || request.own?(current_user)) }.each do |request| %>
-                      <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
-                        <div class="text-base font-bold text-gray-800 dark:text-white">
-                          <%= link_to request.take, group_request_path(request.group, request) %>
-                        </div>
-                        <% if request.execution_date.present? %>
-                          <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
-                            <%= "実行日時 #{l request.execution_date}" %>
-                          </div>
-                        <% end %>
-                        <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                          <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
-                        </div>
+                <div class="space-y-4">
+                  <% @unauthorized_requests.each do |request| %>
+                    <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                      <div class="text-base font-bold text-gray-800 dark:text-white">
+                        <%= link_to request.take, group_request_path(request.group, request) %>
                       </div>
-                    <%end%>
-                  </div>
+                      <% if request.execution_date.present? %>
+                        <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
+                          <%= "実行日時 #{l request.execution_date}" %>
+                        </div>
+                      <% end %>
+                      <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
+                      </div>
+                    </div>
+                  <%end%>
+                </div>
+                <div class="mt-5 text-center">
+                  <%= paginate @unauthorized_requests, param_name: "unauthorized_page" %>
                 </div>
               </div>
             </div>
@@ -67,24 +69,25 @@
                 <%= t("groups.requests.index.authorized")%>
               </div>
               <div class="flex flex-1 flex-col p-6 pt-8">
-                <div class="mb-12">
-                  <div class="space-y-4">
-                    <% @requests.select { |request| (request.status == "authorized") && (request.authorizers_check(current_user) || request.own?(current_user)) }.each do |request| %>
-                      <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
-                        <div class="text-base font-bold text-gray-800 dark:text-white">
-                          <%= link_to request.take, group_request_path(request.group, request) %>
-                        </div>
-                        <% if request.execution_date.present? %>
-                          <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
-                            <%= "実行日時 #{l request.execution_date}" %>
-                          </div>
-                        <% end %>
-                        <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                          <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
-                        </div>
+                <div class="space-y-4">
+                  <% @authorized_requests.each do |request| %>
+                    <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                      <div class="text-base font-bold text-gray-800 dark:text-white">
+                        <%= link_to request.take, group_request_path(request.group, request) %>
                       </div>
-                    <%end%>
-                  </div>
+                      <% if request.execution_date.present? %>
+                        <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
+                          <%= "実行日時 #{l request.execution_date}" %>
+                        </div>
+                      <% end %>
+                      <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
+                      </div>
+                    </div>
+                  <%end%>
+                </div>
+                <div class="mt-5 text-center">
+                  <%= paginate @authorized_requests, param_name: "authorize_page" %>
                 </div>
               </div>
             </div>
@@ -95,24 +98,25 @@
                 <%= t("groups.requests.index.possible")%>
               </div>
               <div class="flex flex-1 flex-col p-6 pt-8">
-                <div class="mb-12">
-                  <div class="space-y-4">
-                    <% @requests.select { |request| request.status == "possible" }.each do |request| %>
-                      <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
-                        <div class="text-base font-bold text-gray-800 dark:text-white">
-                          <%= link_to request.take, group_request_path(request.group, request) %>
-                        </div>
-                        <% if request.execution_date.present? %>
-                          <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
-                            <%= "実行日時 #{l request.execution_date}" %>
-                          </div>
-                        <% end %>
-                        <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                          <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
-                        </div>
+                <div class="space-y-4">
+                  <% @possible_requests.each do |request| %>
+                    <div class="flex flex-col bg-white border shadow-sm rounded-xl p-4 md:p-5 dark:bg-slate-900 dark:border-gray-700">
+                      <div class="text-base font-bold text-gray-800 dark:text-white">
+                        <%= link_to request.take, group_request_path(request.group, request) %>
                       </div>
-                    <%end%>
-                  </div>
+                      <% if request.execution_date.present? %>
+                        <div class="mt-1 text-xs font-medium uppercase text-gray-500 dark:text-gray-500">
+                          <%= "実行日時 #{l request.execution_date}" %>
+                        </div>
+                      <% end %>
+                      <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        <%= "approved_count: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}"%>
+                      </div>
+                    </div>
+                  <%end%>
+                </div>
+                <div class="mt-5 text-center">
+                  <%= paginate @possible_requests, param_name: "possile_page" %>
                 </div>
               </div>
             </div>
