@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
+    3.times {@request.gives.build}
   end
 
   def show
@@ -60,7 +61,7 @@ class RequestsController < ApplicationController
       # 案2
       existing_authorizer_records.each do |record|
         # 取得したuser_idが既存レコードのuser_idに含まれていない場合、その既存レコードを削除
-        record.delete unless authorizer_ids.include?(record.user_id)
+        record.destroy unless authorizer_ids.include?(record.user_id)
       end
       # 取得したuser_idの配列から既存レコードのuser_idを差し引く　-> 新規登録したいuser_idを特定しnew_user_idsに格納
       new_authorizer_ids = authorizer_ids - existing_authorizer_records.pluck(:user_id)
@@ -84,7 +85,8 @@ class RequestsController < ApplicationController
   private
 
   def request_params
-    params.require(:request).permit(:group_id, :user_id, :take, :execution_date, :comment, :image, :give1, :give2, :give3).merge(user_id: current_user.id)
+    params.require(:request).permit(:group_id, :user_id, :take, :execution_date, :comment, :image,
+      gives_attributes: [:id, :content, :deadline]).merge(user_id: current_user.id)
   end
 
   def set_request

@@ -10,8 +10,12 @@
           <% if @request.status == "draft" %>
             <div>内容に間違いなければ申請ボタンを押して申請しましょう!</div>
             <div>内容を修正するときは編集ボタンを押しましょう!</div>
-          <% else %>
+          <% elsif @request.status == "unauthorized" %>
             <div>下記条件を承認したときはチェックボックスにチェックを入れて、承認ボタンを押しましょう!</div>
+          <% elsif%>
+            <div>giveを実行してpossibleにしましょう</div>
+          <% else %>
+            <div>possible状態文言まだ考えてない</div>
           <%end%>
       </div>
     </div>
@@ -34,13 +38,9 @@
         <h3 class="mb-2 text-lg font-semibold md:text-xl">give</h3>
         <div class="mb-4 text-gray-500">
           <ul class="list-disc list-inside">
-          <li><%= @request.give1%></li>
-          <% if @request.give2.present?%>
-            <li><%= @request.give2%></li>
-          <%end%>
-          <% if @request.give3.present?%>
-            <li><%= @request.give3%></li>
-          <%end%>
+            <% @request.gives.each do |give| %>
+              <li><%= give.content %>: <%= give.deadline %></li>
+            <%end%>
           </ul>
         </div>
       </div>

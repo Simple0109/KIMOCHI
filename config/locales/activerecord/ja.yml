@@ -18,9 +18,6 @@ ja:
         execution_date: 実行する日
         image: 参考画像
         comment: コメント
-        give1: 
-        give2: 
-        give3: 対価3
         authorizers: 承認者
       group:
         name: グルームネーム
