@@ -97,6 +97,12 @@
       </div>
     <% end %>
 
+    <% if @request.user_id == current_user.id && @request.draft? %>
+      <div class="btn btn-primary">
+      <%= button_to "削除", group_request_path, method: :delete %>
+    </div>
+    <% end %>
+
     <% if @request.user_id == current_user.id && !@request.draft? %>
       <div class="btn btn-primary">
         <%= button_to "申請取下", group_request_cancel_apply_path(@group, @request) , method: :post %>

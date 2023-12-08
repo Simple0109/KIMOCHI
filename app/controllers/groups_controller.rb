@@ -35,6 +35,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    return unless @group.group_users.exists?(user_id: current_user.id)
     @group.destroy
     redirect_to groups_path
   end
