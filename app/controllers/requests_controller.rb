@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: [:show, :edit, :update, :destroy]
-  before_action :set_group, only: [:new, :edit, :update, :show]
+  before_action :set_group, only: [:new, :edit, :update, :show, :destroy]
 
   def index
     all_requests = Request.where(group_id: params[:group_id]).order(updated_at: :desc)
@@ -78,8 +78,9 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    return unless @request.own?(current_user)
     @request.destroy
-    redirect_to root_path
+    redirect_to group_requests_path(@group, @request)
   end
 
   private
