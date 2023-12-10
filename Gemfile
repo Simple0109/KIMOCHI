@@ -74,10 +74,6 @@ group :test do
 
 end
 
-group :product do
-  gem "pg", "~> 1.1"
-end
-
 gem "devise"
 gem "importmap-rails"
 gem "better_errors"
@@ -88,3 +84,4 @@ gem "devise-i18n"
 gem "devise-i18n-views"
 gem "enum_help"
 gem "kaminari"
+gem "yarn"
