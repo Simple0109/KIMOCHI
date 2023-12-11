@@ -13,6 +13,7 @@
     "tailwindcss": "^3.3.5"
   },
   "scripts": {
+    "start": "bundle exec rails server",
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   }
 }
