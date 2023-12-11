@@ -11,10 +11,10 @@
   },
   "scripts": {
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
-    "start": "node application.js"
+    "start": "bin/dev"
   },
   "engines": {
-    "node": "20.5.0",
-    "yarn": "1.22.19"
+    "node": "14.17.6",
+    "yarn": "1.22.17"
   }
 }
