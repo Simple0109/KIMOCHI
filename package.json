@@ -10,7 +10,8 @@
     "tailwindcss": "^3.3.5"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "start": "node application.js"
   },
   "engines": {
     "node": "20.5.0",
