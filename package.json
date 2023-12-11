@@ -1,6 +1,9 @@
 {
   "name": "app",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "@hotwired/turbo-rails": "^7.3.0",
     "alpinejs": "^3.13.2",
