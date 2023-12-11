@@ -1,6 +1,6 @@
 {
   "name": "app",
-  "private": "true",
+  "private": true,
   "dependencies": {
     "@hotwired/turbo-rails": "^7.3.0",
     "alpinejs": "^3.13.2",
@@ -11,5 +11,9 @@
   },
   "scripts": {
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+  },
+  "engines": {
+    "node": "14.x",
+    "yarn": "1.22.19"
   }
 }
