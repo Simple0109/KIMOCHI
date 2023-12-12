@@ -3,5 +3,5 @@
 
 //= link_tree ../../../vendor/javascript .js
 
-//= link application.css
+//= link application.tailwind.css
 //= link application.js 
