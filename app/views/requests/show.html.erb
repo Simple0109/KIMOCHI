@@ -12,7 +12,7 @@
             <div>内容を修正するときは編集ボタンを押しましょう!</div>
           <% elsif @request.status == "unauthorized" %>
             <div>下記条件を承認したときはチェックボックスにチェックを入れて、承認ボタンを押しましょう!</div>
-          <% elsif%>
+          <% elsif @request.status == "authorized" %>
             <div>giveを実行してpossibleにしましょう</div>
           <% else %>
             <div>possible状態文言まだ考えてない</div>
