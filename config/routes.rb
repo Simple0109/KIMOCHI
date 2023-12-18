@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root "top_page#top"
 
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    omniauth_callbacks: "omniauth_callbacks"
+  }
   resource :profile, only:[:show, :edit, :update]
 
   resources :groups do
@@ -15,6 +18,5 @@ Rails.application.routes.draw do
       post "cancel_admit", to: "approvals#cancel_admit"
     end
   end
-
 
 end
