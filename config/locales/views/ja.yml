@@ -5,7 +5,7 @@ ja:
     logout: ログアウト
   time:
     formats:
-      default: "%Y/%m/%d %H:%M"
+      default: "%m/%d %H:%M"
       short: "%m/%d"
       time: "%Y/%m/%d %H:%M:%S"
   devise:
