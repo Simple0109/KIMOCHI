@@ -1,14 +1,14 @@
-<div class="bg-white my-5">
-  <div class="mx-auto max-w-screen-xl px-4 md:px-8">
+<div class="bg-white my-5 px-8">
+  <div class="mx-auto max-w-screen-xl">
     <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-8 lg:text-3xl xl:mb-12">
       <%= "#{@group.name} : おねがい" %>
     </h2>
 
-    <div class="mb-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-      <%= render "/requests/shared/requests_list", title: t("groups.requests.index.draft"), requests: @draft_requests, paginate_param: "draft_page" %>
-      <%= render "/requests/shared/requests_list", title: t("groups.requests.index.unauthorized"), requests: @unauthorized_requests, paginate_param: "unauthorized_page" %>
-      <%= render "/requests/shared/requests_list", title: t("groups.requests.index.authorized"), requests: @authorized_requests, paginate_param: "authorize_page" %>
-      <%= render "/requests/shared/requests_list", title: t("groups.requests.index.possible"), requests: @possible_requests, paginate_param: "possile_page" %>
+    <div class="flex justify-between gap-4">
+      <div class="flex-1"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.draft"), requests: @draft_requests, paginate_param: "draft_page" %></div>
+      <div class="flex-1"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.unauthorized"), requests: @unauthorized_requests, paginate_param: "unauthorized_page" %></div>
+      <div class="flex-1"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.authorized"), requests: @authorized_requests, paginate_param: "authorize_page" %></div>
+      <div class="flex-1"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.possible"), requests: @possible_requests, paginate_param: "possile_page" %></div>
     </div>
 
     <div class="flex justify-center items-end mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600">
