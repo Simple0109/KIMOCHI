@@ -21,106 +21,98 @@
     </div>
     <!-- text - end -->
 
-    <div class="grid gap-4 sm:grid-cols-2 md:gap-8 xl:grid-cols-3">
-      <!-- feature - start -->
-      <div class=" bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
-        <h3 class="mb-2 text-lg font-semibold md:text-xl">take</h3>
-        <p class="mb-4 text-gray-500"><%= @request.take%></p>
-        <h3 class="mb-2 text-lg font-semibold md:text-xl">execution_date</h3>
-        <p class="mb-4 text-gray-500"><%= @request.execution_date%></p>
-        <h3 class="mb-2 text-lg font-semibold md:text-xl">create_user</h3>
-        <p class="mb-4 text-gray-500"><%= @request.user.profile.name%></p>
-      </div>
-      <!-- feature - end -->
-
-      <!-- feature - start -->
-      <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
-        <h3 class="mb-2 text-lg font-semibold md:text-xl">give</h3>
-        <div class="mb-4 text-gray-500">
-          <ul class="list-disc list-inside">
-            <% @request.gives.each do |give| %>
-              <li><%= give.content %>: <%= give.deadline %></li>
-            <%end%>
-          </ul>
+    <div class="grid grid-rows-3 grid-flow-col gap-2">
+    <!-- take情報 -->
+      <div class="row-span-2 bg-red-100 px-2 py-2 flex items-center">
+        <div class="flex-1 w-40">
+          <div class="mb-2"><%= "投稿者:#{@request.user.profile.name}"%></div>
+          <div>あの〜…</div>
+          <div class="mb-2"><%= @request.take%></div>
+          <div class="mb-2"><%= "日時:#{l @request.execution_date, format: :default}"%></div>
+          <div class="mb-2"><%= @request.comment %></div>
+        </div>
+        <div class="px-5 py-5">
+          <% if @request.image.present?%>
+              <%= image_tag @request.image_thumbnail %>
+          <% end %>
         </div>
       </div>
-      <!-- feature - end -->
 
-      <!-- feature - start -->
-      <% if @request.image.present?%>
-        <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
-          <h3 class="mb-2 text-lg font-semibold md:text-xl">image</h3>
-          <%= image_tag @request.image_thumbnail %>
+
+      <div class="row-span-1 bg-red-100  px-2 py-2">これやります！
+        <ul class="list-disc list-inside">
+          <% @request.gives.each do |give| %>
+            <% if @request.authorized? %>
+              <ol>
+              <%= check_box_tag "gives[]", give.id %>
+              <%= label_tag "#{give.content}:#{l give.deadline, format: :short}" %>
+              </ol>
+            <%else%>
+              <li><%= give.content %>:<%=l give.deadline, format: :short %></li>
+            <%end%>
+          <%end%>
+        </ul>
+      </div>
+
+      <div class="row-span-1 bg-blue-200  px-2 py-2">
+        <div class="mb-2">承認者</div>
+        <ul class="mb-2 list-disc list-inside">
+          <% @request.authorizers.each do |member| %>
+            <% if @request.unauthorized?%>
+              <%= check_box_tag "authorizers[]", member.id %>
+              <%= label_tag "#{member.profile.name}" %>
+            <%else%>
+             <li><%= member.profile.name%></li>
+            <%end%>
+          <%end%>
+        </ul>
+      </div>
+
+      <div class="row-span-2 bg-green-200  px-2 py-2">chat
+
+      </div>
+    </div>
+
+
+
+    <!-- button_zone -->
+    <div class="flex justify-center gap-4 py-5">
+      <% if @request.user_id == current_user.id && @request.draft? %>
+      <div class="btn btn-primary">
+        <%= button_to "編集", edit_group_request_path(@group, @request), method: :get %>
+      </div>
+      <% end %>
+
+      <% if @request.user_id == current_user.id && @request.draft? %>
+        <div class="btn btn-primary">
+          <%= button_to "申請", group_request_apply_path(@group, @request) , method: :post %>
         </div>
       <% end %>
-      <!-- feature - end -->
 
-      <!-- feature - start -->
-      <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
-        <h3 class="mb-2 text-lg font-semibold md:text-xl">comment</h3>
-        <p class="mb-4 text-gray-500"><%= @request.comment%></p>
+      <% if @request.user_id == current_user.id && @request.draft? %>
+        <div class="btn btn-primary">
+        <%= button_to "削除", group_request_path, method: :delete %>
       </div>
-      <!-- feature - end -->
+      <% end %>
 
-      <!-- feature - start -->
-      <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
-        <h3 class="mb-2 text-lg font-semibold md:text-xl">created_at & updated_at</h3>
-        <p class="mb-4 text-gray-500"><%= @request.created_at%></p>
-        <p class="mb-4 text-gray-500"><%= @request.updated_at%></p>
-      </div>
-      <!-- feature - end -->
-
-      <!-- feature - start -->
-      <div class="bg-sky-50 flex flex-col rounded-lg border p-4 md:p-6">
-        <h3 class="mb-2 text-lg font-semibold md:text-xl">authorizers</h3>
-        <dev class="mb-4 text-gray-500">
-          <% @request.authorizers.each do |member| %>
-            <%= member.profile.name%></p>
-          <%end%>
+      <% if @request.user_id == current_user.id && !@request.draft? %>
+        <div class="btn btn-primary">
+          <%= button_to "申請取下", group_request_cancel_apply_path(@group, @request) , method: :post %>
         </div>
-      </div>
-      <!-- feature - end -->
-    </div>
-  </div>
+      <% end %>
 
-  <!-- button_zone -->
-  <div class="flex justify-center gap-4">
-    <% if @request.user_id == current_user.id && @request.draft? %>
-    <div class="btn btn-primary">
-      <%= button_to "編集", edit_group_request_path(@group, @request), method: :get %>
-    </div>
-    <% end %>
-
-    <% if @request.user_id == current_user.id && @request.draft? %>
+      <% if @request.authorizers_check(current_user) && @subject_authorizer.unauthorized? && @request.unauthorized? %>
       <div class="btn btn-primary">
-        <%= button_to "申請", group_request_apply_path(@group, @request) , method: :post %>
+        <%= button_to "承認", group_request_admit_path(@group, @request), method: :post %>
       </div>
-    <% end %>
+      <% end %>
 
-    <% if @request.user_id == current_user.id && @request.draft? %>
+      <% if @request.authorizers_check(current_user) && @subject_authorizer.authorized? && @request.authorized?%>
       <div class="btn btn-primary">
-      <%= button_to "削除", group_request_path, method: :delete %>
-    </div>
-    <% end %>
-
-    <% if @request.user_id == current_user.id && !@request.draft? %>
-      <div class="btn btn-primary">
-        <%= button_to "申請取下", group_request_cancel_apply_path(@group, @request) , method: :post %>
+        <%= button_to "承認取消", group_request_cancel_admit_path(@group, @request), method: :post %>
       </div>
-    <% end %>
-
-    <% if @request.authorizers_check(current_user) && @subject_authorizer.unauthorized? && @request.unauthorized? %>
-    <div class="btn btn-primary">
-      <%= button_to "承認", group_request_admit_path(@group, @request), method: :post %>
+      <% end %>
     </div>
-    <% end %>
-
-    <% if @request.authorizers_check(current_user) && @subject_authorizer.authorized? && @request.authorized?%>
-    <div class="btn btn-primary">
-      <%= button_to "承認取消", group_request_cancel_admit_path(@group, @request), method: :post %>
-    </div>
-    <% end %>
-
   </div>
 </div>
 

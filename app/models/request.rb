@@ -14,8 +14,8 @@ class Request < ApplicationRecord
   accepts_nested_attributes_for :gives, allow_destroy: true, reject_if: :all_blank, limit: 3
 
   def image_thumbnail
-    if image.attached?
-      image.variant(resize_to_fit: [720, 600]).processed
+    if self.image.attached?
+      self.image.variant(resize_to_fill: [160, 120]).processed
     end
   end
 
