@@ -40,8 +40,7 @@ graph TD
 
 
 ### その後の機能
-* 他のユーザーが承認をもらうためにどのような条件提示をしているか確認できる機能
-* チャット機能(ActionCable)
+* リアルタイムチャット機能(ActionCable)
 
 ## 使用技術
 ### バックエンド
@@ -49,21 +48,20 @@ graph TD
 * ruby 3.2.2
 
 ### フロントエンド
-* Vue.js v3.3.4
 * Tailwind CSS
 
 ### GEM
 * device(ログイン・認証機能)
-* devise_invitable(認証機能)
+* omniauth-line, omniauth-rails_csrf_protection(LINEログイン)
 * kaminari(ページネーション)
 * Active Admin(管理画面)
 * ActiveStorage(ファイルアップロード、保存)
-* MiniMagick(画像リサイズ、ファイル容量一律化)
+* image_processing(画像リサイズ、ファイル容量一律化)
 * rubocop(lintチェック)
 * RSpec(テスト)
 
 ### デプロイ
-* Firebase
+* heroku
 
 ## 画面遷移図
 [figma](https://www.figma.com/file/sd5Sa6ScSJaa9vY1S6LSNU/PF(KIMOCHI%EF%BC%89?type=design&node-id=0%3A1&mode=design&t=gUPB3r8R1ZEGAyfV-1))
