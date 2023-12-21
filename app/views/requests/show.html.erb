@@ -28,7 +28,9 @@
           <div class="mb-2"><%= "投稿者:#{@request.user.profile.name}"%></div>
           <div>あの〜…</div>
           <div class="mb-2"><%= @request.take%></div>
-          <div class="mb-2"><%= "日時:#{l @request.execution_date, format: :default}"%></div>
+          <% if @request.execution_date.present? %>
+            <div class="mb-2"><%= "日時:#{l @request.execution_date, format: :default}"%></div>
+          <% end %>
           <div class="mb-2"><%= @request.comment %></div>
         </div>
         <div class="px-5 py-5">
@@ -45,10 +47,10 @@
             <% if @request.authorized? %>
               <ol>
               <%= check_box_tag "gives[]", give.id %>
-              <%= label_tag "#{give.content}:#{l give.deadline, format: :short}" %>
+              <%= label_tag "#{give.content}" %>
               </ol>
             <%else%>
-              <li><%= give.content %>:<%=l give.deadline, format: :short %></li>
+              <li><%= give.content %></li>
             <%end%>
           <%end%>
         </ul>
