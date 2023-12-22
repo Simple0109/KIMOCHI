@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class Profile < ApplicationRecord
   before_create :set_default_avatar
 
@@ -16,13 +18,16 @@ class Profile < ApplicationRecord
   private
 
   def set_default_avatar
-    unless avatar.attached?
-      avatar.attach(
-        io: File.open(Rails.root.join("public", "default_avatar.png")),
-        filename: "default_avatar.png",
-        content_type: "image/png"
-      )
-    end
+    return if avatar.attached?
+
+    avatar.attach(
+      io: URI.open(default_avatar_url),
+      filename: 'default_avatar.png',
+      content_type: 'image/png'
+    )
   end
 
+  def default_avatar_url
+    ENV['DEFAULT_AVATAR_URL']
+  end
 end
