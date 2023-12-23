@@ -1,10 +1,10 @@
-<div class="mx-auto grid max-w-screen-md gap-4">
+<div class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
   <div class="sm:col-span-2">
     <%= f.hidden_field :group_id, value: params[:group_id] %>
   </div>
   <div class="sm:col-span-2">
     <%= f.label :take, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
-    <%= f.text_field :take, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300" %>
+    <%= f.text_field :take, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300", placeholder: "例：麻雀がしたい🀄️" %>
   </div>
   <div class="sm:col-span-2">
     <%= f.label :execution_date, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
@@ -18,7 +18,7 @@
   <%= f.fields_for :gives do |give_f| %>
     <div class="sm:col-span-2">
       <%= give_f.label :content, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
-      <%= give_f.text_field :content, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
+      <%= give_f.text_field :content, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition", placeholder: "例：風呂掃除" %>
     </div>
     <div class="sm:col-span-2">
       <%= give_f.label :deadline, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
@@ -28,7 +28,7 @@
 
   <div class="sm:col-span-2">
     <%= f.label :comment, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
-    <%= f.text_area :comment, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
+    <%= f.text_area :comment, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition", placeholder: "例：バスマジックリンも買ってきます！" %>
   </div>
   <div class="sm:col-span-2">
     <%= f.label :authorizers, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
@@ -39,6 +39,6 @@
       </div>
   </div>
   <div>
-    <%= f.submit class: "px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
+    <%= f.submit class: "w-1/2 px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
   </div>
 </div>
