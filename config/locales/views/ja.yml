@@ -8,6 +8,7 @@ ja:
       default: "%m/%d %H:%M"
       short: "%m/%d"
       time: "%Y/%m/%d %H:%M:%S"
+      japan: "%-m月%-d日 %-H時%-M分"
   devise:
     registrations:
       new:
@@ -21,8 +22,11 @@ ja:
   groups:
     requests:
       index:
-        draft: 下書き
         unauthorized: 未承認
-        authorized: 承認
-        possible: 実行可能
+        authorized: 承認済
+        possible: 完了
+      show:
+        unauthorized: 未承認
+        authorized: 承認済
+        possible: 完了
 
