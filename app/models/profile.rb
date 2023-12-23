@@ -1,8 +1,4 @@
-require 'open-uri'
-
 class Profile < ApplicationRecord
-  before_create :set_default_avatar
-
   belongs_to :user
 
   has_one_attached :avatar
@@ -12,22 +8,6 @@ class Profile < ApplicationRecord
   validates :avatar, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
   def avatar_thumbnail
-    avatar.variant(resize_to_limit: [1200, 400]).processed
-  end
-
-  private
-
-  def set_default_avatar
-    return if avatar.attached?
-
-    avatar.attach(
-      io: URI.open(default_avatar_url),
-      filename: 'default_avatar.png',
-      content_type: 'image/png'
-    )
-  end
-
-  def default_avatar_url
-    ENV['DEFAULT_AVATAR_URL']
+    avatar.variant(resize_to_fit: [400, 400]).processed
   end
 end
