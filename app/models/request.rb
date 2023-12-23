@@ -2,7 +2,7 @@ class Request < ApplicationRecord
   validates :take, :status, presence: true
   validates :image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
-  enum status: { draft: 0, unauthorized: 1, authorized: 2, possible: 3 }
+  enum status: { unauthorized: 0, authorized: 1, possible: 2 }
 
   has_one_attached :image
 
@@ -15,7 +15,7 @@ class Request < ApplicationRecord
 
   def image_thumbnail
     if self.image.attached?
-      self.image.variant(resize_to_fill: [160, 120]).processed
+      self.image.variant(resize_to_fit: [400, 300]).processed
     end
   end
 

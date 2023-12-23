@@ -14,11 +14,15 @@ ja:
         avatar: アバター
         description: 自己紹介
       request:
-        take: したいこと
-        execution_date: 実行する日
-        image: 参考画像
-        comment: コメント
-        authorizers: 承認者
+        take: あの〜…
+        execution_date: いつ？？？
+        image: 参考画像あれば
+        comment: 一言コメント
+        authorizers: 承認者選択
+
+      give:
+        content: 代わりにします！！！
+        deadline: 期限
       group:
         name: グルームネーム
         description: 説明

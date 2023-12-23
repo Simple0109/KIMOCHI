@@ -10,17 +10,19 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="flex flex-col min-h-screen overflow-y-auto">
-  <header  class="bg-blue-50 fixed top-0 w-full z-auto">
+  <body>
+  <header  class="bg-blue-50 fixed top-0 w-full z-auto ">
     <%= render "shared/header" %>
   </header>
-
-  <% flash.each do |key, message| %>
-  <div class="alert alert-<%= key %>">
-    <%= message %>
+  <div class="pt-24">
+    <% flash.each do |key, message| %>
+    <div class="alert alert-<%= key %>">
+      <%= message %>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-  <div class="flex flex-row bg-white pt-24 pb-20">
+
+  <div class="flex flex-row bg-white pb-20 min-h-screen overflow-y-auto">
     <%  if user_signed_in? %>
       <%= render "shared/sidebar"%>
     <%end%>
