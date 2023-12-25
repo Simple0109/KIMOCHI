@@ -11,15 +11,16 @@
     
     <div class="flex flex-row gap-5 mb-4">
       <!-- File Attachment -->
-      <div>
-        <div class="border rounded-lg p-2">
-          <% if @request.image.present?%>
-            <%= image_tag @request.image_thumbnail %>
-          <% end %>
+
+      <% if @request.image.present?%>
+        <div class="mr-5">
+          <div class="border rounded-lg p-2">
+              <%= image_tag @request.image_thumbnail %>
+          </div>
         </div>
-      </div>
+      <% end %>
       <!-- Request Deteal -->
-      <div class="w-96">
+      <div class="w-full">
         <div>
           <p>日時</p>
           <div class="mb-2 border rounded-lg p-2">
