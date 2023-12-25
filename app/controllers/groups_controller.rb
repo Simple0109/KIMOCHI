@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!, only: %i[index new show create edit destroy update]
   before_action :set_group, only: %i[show edit update destroy]
 
   def index

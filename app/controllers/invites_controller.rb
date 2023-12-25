@@ -1,4 +1,5 @@
 class InvitesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new]
   def new
     @group = Group.find(params[:group_id])
 

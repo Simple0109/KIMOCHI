@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+  before_action :authenticate_user!, only: %i[index new show create edit update destroy]
   before_action :set_request, only: %i[show edit update destroy]
   before_action :set_group, only: %i[new edit update show destroy]
 
