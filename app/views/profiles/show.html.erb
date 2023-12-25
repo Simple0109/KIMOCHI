@@ -9,8 +9,13 @@
 
     </div>
     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"><%= "Name : #{@user.profile.name}" %> </h1>
-      <p class="mb-8 leading-relaxed"><%= "Description : #{@user.profile.description}" %></p>
+      <h1 class="mb-5 leading-relaxed">
+        <%= "#{t('users.profiles.name')}: #{@user.profile.name}" %>
+      </h1>
+      
+      <p class="mb-8 leading-relaxed">
+        <%= "#{t('users.profiles.description')}: #{@user.profile.description}" %>
+      </p>
       <!-- グループリスト始まり -->
       <% @user.groups.each do |group| %>
       <li class="flex space-x-3 mb-5">
