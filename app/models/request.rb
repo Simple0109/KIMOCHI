@@ -16,7 +16,7 @@ class Request < ApplicationRecord
   def image_thumbnail
     return unless image.attached?
 
-    image.variant(resize_to_fit: [400, 300]).processed
+    image.variant(resize_and_pad: [550, 550]).processed
   end
 
   def authorizers_check(current_user)
