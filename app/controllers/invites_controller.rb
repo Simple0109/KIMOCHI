@@ -1,8 +1,5 @@
 class InvitesController < ApplicationController
-
-  #get
   def new
-    @group =Group.new
     @group = Group.find(params[:group_id])
 
     if @group.invite_token.present?
@@ -12,12 +9,11 @@ class InvitesController < ApplicationController
     end
   end
 
-  #post
   def generate_token
     group = Group.find(params[:group_id])
     invite_token = Devise.friendly_token
     group.update(invite_token: invite_token )
-    redirect_to group_invite_new_path(group_id: group.id)
+    redirect_to groups_path
   end
 
   def process_invite_link
