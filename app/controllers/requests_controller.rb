@@ -34,6 +34,8 @@ class RequestsController < ApplicationController
     authorizer_ids = params[:request][:authorizer_ids].map(&:to_i)
     authorizer_ids.shift
 
+    request.user_uid = current_user.uid
+
     if request.save
       authorizer_ids.each do |authorizer_id|
         authorizer = User.find(authorizer_id)
