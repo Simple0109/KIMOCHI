@@ -1,37 +1,38 @@
-<div class="flex flex-row p-2 mx-auto items-center justify-between px-8">
-  <div class="flex flex-row items-center justify-between lg:justify-start">
+<div class="flex flex-row p-2 mx-auto items-center justify-between px-8 h-20">
+  <div class="flex flex-row items-center justify-start">
     <%= link_to "KIMOCHI", "/", class: "text-5xl font-bold text-blue-600 pr-8" %>
   </div>
   <% if user_signed_in? %>
     <div class="flex-row mx-auto">
       <ul class="inline-flex grid-cols-5 gap-x-2 list-none justify-center items-center">
         <li>
-          <%= link_to "マイページ", profile_path, class: "px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
+          <%= link_to "マイページ", profile_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
         </li>
         <li>
-          <%= link_to "新規グループ作成", new_group_path, class: "px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
+          <%= link_to "新規グループ作成", new_group_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
         </li>
         <li>
-          <%= link_to "所属グループ一覧", groups_path, class: "px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
+          <%= link_to "所属グループ一覧", groups_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
         </li>
         <li>
-          <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
+          <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
         </li>
         <li>
-        <%= link_to "LINE友達追加", "https://lin.ee/9glV1vJ", class: "px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
+        <%= link_to "LINE友達追加", "https://lin.ee/9glV1vJ", class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
         </li>
       </ul>
-    </nav>
+    </div>
   <%else%>
-    <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden lg:justify-center md:flex md:justify-center md:flex-row">
-      <ul class="space-y-2 list-none lg:space-y-0 lg:items-center lg:inline-flex">
+
+    <div class="flex-row mx-auto">
+      <ul class="inline-flex grid-cols-2 gap-x-2 list-none justify-center items-center">
         <li>
-          <%= link_to "新規登録", new_user_registration_path, class: "px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] md:px-3 text-gray-500 hover:text-blue-500" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "px-6  py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] text-gray-500 hover:text-blue-500" %>
         </li>
         <li>
-          <%= link_to "ログイン", new_user_session_path, class: "px-2 lg:px-6 py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] md:px-3 text-gray-500 hover:text-blue-500" %>
+          <%= link_to "ログイン", new_user_session_path, class: "px-6 py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] text-gray-500 hover:text-blue-500" %>
         </li>
       </ul>
-    </nav>
+    </div>
   <%end%>
 </div>
