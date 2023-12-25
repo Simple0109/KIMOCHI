@@ -1,13 +1,21 @@
 class RequestsController < ApplicationController
-  before_action :set_request, only: [:show, :edit, :update, :destroy]
-  before_action :set_group, only: [:new, :edit, :update, :show, :destroy]
+  before_action :set_request, only: %i[show edit update destroy]
+  before_action :set_group, only: %i[new edit update show destroy]
 
   def index
     all_requests = Request.where(group_id: params[:group_id]).order(updated_at: :desc)
-    @draft_requests = Kaminari.paginate_array(all_requests.select { |request| (request.status == "draft") && (request.own?(current_user)) }).page(params[:draft_page])
-    @unauthorized_requests = Kaminari.paginate_array(all_requests.select { |request| (request.status == "unauthorized") && (request.authorizers_check(current_user) || request.own?(current_user))}).page(params[:unauthorized_page])
-    @authorized_requests = Kaminari.paginate_array(all_requests.select { |request| (request.status == "authorized") && (request.authorizers_check(current_user) || request.own?(current_user))}).page(params[:authorized_page])
-    @possible_requests = Kaminari.paginate_array(all_requests.select { |request| (request.status == "possible")}).page(params[:possible_page])
+    @draft_requests = Kaminari.paginate_array(all_requests.select do |request|
+                                                (request.status == 'draft') && request.own?(current_user)
+                                              end).page(params[:draft_page])
+    @unauthorized_requests = Kaminari.paginate_array(all_requests.select do |request|
+                                                       (request.status == 'unauthorized') && (request.authorizers_check(current_user) || request.own?(current_user))
+                                                     end).page(params[:unauthorized_page])
+    @authorized_requests = Kaminari.paginate_array(all_requests.select do |request|
+                                                     (request.status == 'authorized') && (request.authorizers_check(current_user) || request.own?(current_user))
+                                                   end).page(params[:authorized_page])
+    @possible_requests = Kaminari.paginate_array(all_requests.select do |request|
+                                                   (request.status == 'possible')
+                                                 end).page(params[:possible_page])
 
     @group = Group.find(params[:group_id])
   end
@@ -19,7 +27,6 @@ class RequestsController < ApplicationController
 
   def show
     @subject_authorizer = RequestUser.find_by(request_id: @request.id, user_id: current_user.id)
-
   end
 
   def create
@@ -38,7 +45,7 @@ class RequestsController < ApplicationController
     end
   end
 
-  def edit;end
+  def edit; end
 
   def update
     # 受け取ったidをinteger型に変換し、再びauthorizer_idsに格納
@@ -49,15 +56,13 @@ class RequestsController < ApplicationController
     existing_authorizer_records = RequestUser.where(request_id: @request.id)
 
     if @request.update(request_params)
-=begin
-      # 案1
-      @request.authorizers.delete_all
-      authorizer_ids.each do |authorizer_id|
-        authorizer = User.find(authorizer_id)
-        @request.authorizers << authorizer
-      end
-=end
-#=begin
+      #       # 案1
+      #       @request.authorizers.delete_all
+      #       authorizer_ids.each do |authorizer_id|
+      #         authorizer = User.find(authorizer_id)
+      #         @request.authorizers << authorizer
+      #       end
+      #=begin
       # 案2
       existing_authorizer_records.each do |record|
         # 取得したuser_idが既存レコードのuser_idに含まれていない場合、その既存レコードを削除
@@ -70,8 +75,8 @@ class RequestsController < ApplicationController
         new_authorizer = User.find(new_user_id)
         @request.authorizers << new_authorizer
       end
-#=end
-      redirect_to group_request_path(@group, @request), notice: "更新しました"
+      #=end
+      redirect_to group_request_path(@group, @request), notice: '更新しました'
     else
       render :edit
     end
@@ -79,6 +84,7 @@ class RequestsController < ApplicationController
 
   def destroy
     return unless @request.own?(current_user)
+
     @request.destroy
     redirect_to group_requests_path(@group, @request)
   end
@@ -87,7 +93,7 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:group_id, :user_id, :take, :execution_date, :comment, :image,
-      gives_attributes: [:id, :content, :deadline]).merge(user_id: current_user.id)
+                                    gives_attributes: %i[id content deadline]).merge(user_id: current_user.id)
   end
 
   def set_request
@@ -97,5 +103,4 @@ class RequestsController < ApplicationController
   def set_group
     @group = Group.includes(users: :profile).find(params[:group_id])
   end
-
 end

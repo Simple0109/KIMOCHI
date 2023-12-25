@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Kimochi3
   class Application < Rails::Application
-    config.time_zone = "Asia/Tokyo"
+    config.time_zone = 'Asia/Tokyo'
     config.active_record.default_timezone = :local
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
@@ -16,7 +16,6 @@ module Kimochi3
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
     config.assets.initialize_on_precompile = false
     config.active_storage.variant_processor = :vips
-
 
     config.generators do |g|
       g.asset false

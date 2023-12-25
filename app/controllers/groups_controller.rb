@@ -1,6 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_group, only: %i[show edit update destroy]
 
   def index
     @user_groups = current_user.groups.order(updated_at: :desc).page(params[:page])
@@ -10,8 +9,7 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def show
-  end
+  def show; end
 
   def create
     @group = Group.new(group_params)
@@ -23,19 +21,19 @@ class GroupsController < ApplicationController
     end
   end
 
-  def edit;end
+  def edit; end
 
   def update
     if @group.update(group_params)
       redirect_to groups_path
     else
-       render :edit
+      render :edit
     end
-
   end
 
   def destroy
     return unless @group.group_users.exists?(user_id: current_user.id)
+
     @group.destroy
     redirect_to groups_path
   end
@@ -49,5 +47,4 @@ class GroupsController < ApplicationController
   def set_group
     @group = Group.includes(:users).find(params[:id])
   end
-
 end

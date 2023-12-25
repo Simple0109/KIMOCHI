@@ -1,18 +1,18 @@
 class ApprovalsController < ApplicationController
-  before_action :set_group, only: [:apply, :cancel_apply, :admit, :cancel_admit]
-  before_action :set_request, only: [:apply, :cancel_apply, :admit, :cancel_admit]
+  before_action :set_group, only: %i[apply cancel_apply admit cancel_admit]
+  before_action :set_request, only: %i[apply cancel_apply admit cancel_admit]
 
   # 申請
   def apply
     if @request.user_id == current_user.id
       @request.unauthorized!
-      redirect_to group_requests_path, notice: "リクエストの申請を行いました"
+      redirect_to group_requests_path, notice: 'リクエストの申請を行いました'
     else
-      redirect_to group_request_path(@request), notice: "リクエストの申請に失敗しました"
+      redirect_to group_request_path(@request), notice: 'リクエストの申請に失敗しました'
     end
   end
 
-  #申請取消(同時にrequest_usersのapproval_statusも全てunauthorizedに変更)
+  # 申請取消(同時にrequest_usersのapproval_statusも全てunauthorizedに変更)
   def cancel_apply
     authorizers = RequestUser.where(request_id: @request.id)
     if @request.user_id == current_user.id
@@ -20,9 +20,9 @@ class ApprovalsController < ApplicationController
       authorizers.each do |authorizer|
         authorizer.unauthorized!
       end
-      redirect_to group_requests_path, notice: "リクエストの申請を取り消しました"
+      redirect_to group_requests_path, notice: 'リクエストの申請を取り消しました'
     else
-      redirect_to group_request_path(@request), notice: "リクエストの申請取り消しに失敗しました"
+      redirect_to group_request_path(@request), notice: 'リクエストの申請取り消しに失敗しました'
     end
   end
 
@@ -31,12 +31,10 @@ class ApprovalsController < ApplicationController
     subject_authorizer = RequestUser.find_by(request_id: @request.id, user_id: current_user.id)
     if current_user.id == subject_authorizer.user_id && subject_authorizer.unauthorized?
       subject_authorizer.authorized!
-      if @request.authorizers.pluck(:approval_status).sum == @request.authorizers.count
-        @request.authorized!
-      end
-      redirect_to group_requests_path, notice: "承認しました"
+      @request.authorized! if @request.authorizers.pluck(:approval_status).sum == @request.authorizers.count
+      redirect_to group_requests_path, notice: '承認しました'
     else
-      redirect_to group_request_path(@group, @request), notice: "承認に失敗しました"
+      redirect_to group_request_path(@group, @request), notice: '承認に失敗しました'
 
     end
   end
@@ -46,12 +44,10 @@ class ApprovalsController < ApplicationController
     subject_authorizer = RequestUser.find_by(request_id: @request.id, user_id: current_user.id)
     if current_user.id == subject_authorizer.user_id && subject_authorizer.authorized?
       subject_authorizer.unauthorized!
-      if @request.authorizers.pluck(:approval_status).sum <= @request.authorizers.count
-        @request.unauthorized!
-      end
-      redirect_to group_requests_path, notice: "承認を取り消しました"
+      @request.unauthorized! if @request.authorizers.pluck(:approval_status).sum <= @request.authorizers.count
+      redirect_to group_requests_path, notice: '承認を取り消しました'
     else
-      redirect_to group_request_path(@group, @request), notice: "承認取り消しに失敗しました"
+      redirect_to group_request_path(@group, @request), notice: '承認取り消しに失敗しました'
     end
   end
 

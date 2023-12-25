@@ -10,22 +10,20 @@ class Request < ApplicationRecord
   belongs_to :group
   has_many :request_users, dependent: :destroy
   has_many :authorizers, through: :request_users, source: :user
-  has_many :gives, class_name: "Give", dependent: :destroy
+  has_many :gives, class_name: 'Give', dependent: :destroy
   accepts_nested_attributes_for :gives, allow_destroy: true, reject_if: :all_blank, limit: 3
 
   def image_thumbnail
-    if self.image.attached?
-      self.image.variant(resize_to_fit: [400, 300]).processed
-    end
+    return unless image.attached?
+
+    image.variant(resize_to_fit: [400, 300]).processed
   end
 
-
   def authorizers_check(current_user)
-    self.authorizers.where(id: current_user.id).exists?
+    authorizers.where(id: current_user.id).exists?
   end
 
   def own?(current_user)
-    self.user_id == current_user.id
+    user_id == current_user.id
   end
-
 end
