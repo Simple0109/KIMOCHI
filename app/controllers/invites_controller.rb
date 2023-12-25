@@ -2,17 +2,17 @@ class InvitesController < ApplicationController
   def new
     @group = Group.find(params[:group_id])
 
-    if @group.invite_token.present?
-      @invite_link = group_invite_link_url(invite_token: @group.invite_token)
-    else
-      @invite_link = ""
-    end
+    @invite_link = if @group.invite_token.present?
+                     group_invite_link_url(invite_token: @group.invite_token)
+                   else
+                     ''
+                   end
   end
 
   def generate_token
     group = Group.find(params[:group_id])
     invite_token = Devise.friendly_token
-    group.update(invite_token: invite_token )
+    group.update(invite_token:)
     redirect_to groups_path
   end
 
@@ -30,5 +30,4 @@ class InvitesController < ApplicationController
       redirect_to user_session_path
     end
   end
-
 end

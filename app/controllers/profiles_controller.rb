@@ -1,11 +1,9 @@
 class ProfilesController < ApplicationController
-  before_action :set_current_user_profile, only: [:show, :edit, :update]
+  before_action :set_current_user_profile, only: %i[show edit update]
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @profile.update(profile_params)
@@ -25,5 +23,4 @@ class ProfilesController < ApplicationController
     @user = current_user
     @profile = @user.profile
   end
-
 end
