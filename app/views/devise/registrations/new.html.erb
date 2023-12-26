@@ -36,6 +36,10 @@
               <%= f.submit t("defaults.register"), class: "w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
             </div>
 
+            <div class="flex mb-6">
+              <%= link_to "LINEアカウントで登録", user_line_omniauth_authorize_path, method: :post, class: "px-3 py-4 w-full text-white text-center bg-green-500 rounded-md" %>
+            </div>
+
             <% end %>
 
             <div>
