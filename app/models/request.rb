@@ -2,7 +2,7 @@ class Request < ApplicationRecord
   validates :take, :status, presence: true
   validates :image, blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..5.megabytes }
 
-  enum status: { unauthorized: 0, authorized: 1, possible: 2 }
+  enum status: { unauthorized: 0, authorized: 1, possible: 2, completed: 3 }
 
   has_one_attached :image
 

@@ -42,7 +42,6 @@ class ApplicationController < ActionController::Base
     else
       session[:group_id] = nil
       group.update(invite_token: nil)
-      flash[:notice] = "#{group.name}グループに追加されました"
     end
 
     super
