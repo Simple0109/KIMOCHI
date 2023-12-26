@@ -23,7 +23,7 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
-    @request.gives.build
+    3.times {@request.gives.build}
   end
 
   def show

@@ -14,17 +14,21 @@
     <%= f.label :image, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
     <%= f.file_field :image, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
   </div>
-  
+
+  <div class="sm:col-span-2 border-b-2"></div>
+
   <%= f.fields_for :gives do |give_f| %>
-    <div class="sm:col-span-2">
+    <div class="sm:col-span-1">
       <%= give_f.label :content, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
       <%= give_f.text_field :content, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition", placeholder: "例：風呂掃除" %>
     </div>
-    <div class="sm:col-span-2">
+    <div class="sm:col-span-1">
       <%= give_f.label :deadline, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
       <%= give_f.datetime_field :deadline, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
     </div>
   <%end%>
+
+  <div class="sm:col-span-2 border-b-2"></div>
 
   <div class="sm:col-span-2">
     <%= f.label :comment, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
