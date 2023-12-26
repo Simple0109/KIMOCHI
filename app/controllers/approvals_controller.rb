@@ -1,7 +1,7 @@
 class ApprovalsController < ApplicationController
-  before_action :authenticate_user!, only: %i[admit cancel_admit]
-  before_action :set_group, only: %i[admit cancel_admit]
-  before_action :set_request, only: %i[admit cancel_admit]
+  before_action :authenticate_user!, only: %i[admit cancel_admit task_completed]
+  before_action :set_group, only: %i[admit cancel_admit task_completed]
+  before_action :set_request, only: %i[admit cancel_admit task_completed]
 
   # 承認(authorizersのレコードの数と承認の数が一致したとき、request.statusをpossibleに更新)
   def admit
@@ -26,6 +26,11 @@ class ApprovalsController < ApplicationController
     else
       redirect_to group_request_path(@group, @request), notice: '承認取り消しに失敗しました'
     end
+  end
+
+  def task_completed
+    @request.completed! if @request.possible?
+    redirect_to group_requests_path, notice: 'タスクを完了しました'
   end
 
   private
