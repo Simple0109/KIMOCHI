@@ -28,9 +28,12 @@ ja:
       index:
         unauthorized: 未承認
         authorized: 承認済
-        possible: 完了
+        possible: タスク実行可能
+        completed: タスク完了
       show:
         unauthorized: 未承認
         authorized: 承認済
-        possible: 完了
+        possible: タスク実行可能
+        completed: タスク完了
+
 
