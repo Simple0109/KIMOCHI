@@ -10,17 +10,14 @@
       </div>
     </div>
     
-    <div class="flex flex-row gap-5 mb-4">
+    <% if @request.image.present?%>
+    <div class="flex flex-row gap-2 mb-4">
       <!-- File Attachment -->
-
-      <% if @request.image.present?%>
-        <div class="mr-5">
-          <div class="border rounded-lg p-2">
-              <%= image_tag @request.image_thumbnail %>
-          </div>
+      <div>
+        <div class="border rounded-lg p-2">
+            <%= image_tag @request.image_thumbnail %>
         </div>
-      <% end %>
-      <!-- Request Deteal -->
+      </div>
       <div class="w-full">
         <div>
           <p>日時</p>
@@ -33,70 +30,135 @@
           </div>
 
           <p>コメント</p>
-          <div class="mb-2 border overflow-y-auto rounded-lg h-44 p-2">
+          <div class="border overflow-y-auto rounded-lg h-[200px] p-2">
+            <%= @request.comment%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% else %>
+    <div class="flex flex-row gap-2 mb-4">
+      <!-- File Attachment -->
+      <div class="w-full">
+        <div>
+          <p>日時</p>
+          <div class="mb-2 border rounded-lg p-2">
+            <% if @request.execution_date.present?%>
+              <%= l @request.execution_date, format: :japan %>
+            <% else %>
+              <p>要相談</p>
+            <% end %>
+          </div>
+
+          <p>コメント</p>
+          <div class="border overflow-y-auto rounded-lg h-[200px] p-2">
             <%= @request.comment%>
           </div>
         </div>
       </div>
     </div>
 
+    <% end %>
 
-    <div class="flex gap-2">
-      <div class="w-1/2 mb-2 border bg-red-100 rounded-lg p-2">
-        <ul class="list-none">
-            <% @uncompleted_gives.each do |give| %>
-              <li>
-                <% if give.deadline.present? %>
-                  <div class="flex justify-between gap-2">
-                    <%= "#{give.content} : #{l give.deadline}" %>
-                    <div class="flex gap-2">
-                      <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn  btn-info btn-xs" %>
+
+    <% if @request.authorized? || @request.possible?%>
+      <div class="flex gap-2">
+        <div class="w-1/2 mb-2 border bg-red-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
+              <% @uncompleted_gives.each do |give| %>
+                <li>
+                  <% if give.deadline.present? %>
+                    <div class="flex justify-between gap-2">
+                      <%= "#{give.content} : #{l give.deadline}" %>
+                      <div class="flex gap-2">
+                        <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn  btn-info btn-xs" %>
+                      </div>
                     </div>
-                  </div>
-                <%else%>
-                  <div class="flex justify-between gap-2">
-                    <%= "#{give.content} : 日時未定" %>
-                    <div class="flex gap-2">
-                      <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-info btn-xs" %>
+                  <%else%>
+                    <div class="flex justify-between gap-2">
+                      <%= "#{give.content} : 日時未定" %>
+                      <div class="flex gap-2">
+                        <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-info btn-xs" %>
+                      </div>
                     </div>
-                  </div>
-                <%end%>
-              </li>
-            <%end%>
-        </ul>
+                  <%end%>
+                </li>
+              <%end%>
+          </ul>
+        </div>
+
+        <div class=" w-1/2 mb-2 border bg-blue-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
+              <% @completed_gives.each do |give| %>
+                <li>
+                  <% if give.deadline.present? %>
+                    <div class="flex justify-between gap-2">
+                      <%= "#{give.content} : #{l give.deadline}" %>
+                      <div class="flex gap-2">
+                        <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-error btn-xs" %>
+                      </div>
+                    </div>
+                  <%else%>
+                    <div class="flex justify-between gap-2">
+                      <%= "#{give.content} : 日時未定" %>
+                      <div class="flex gap-2">
+                        <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-error btn-xs" %>
+                      </div>
+                    </div>
+                  <%end%>
+                </li>
+              <%end%>
+          </ul>
+        </div>
       </div>
 
-      <div class=" w-1/2 mb-2 border bg-blue-100 rounded-lg p-2">
-        <ul class="list-none">
-            <% @completed_gives.each do |give| %>
-              <li>
-                <% if give.deadline.present? %>
-                  <div class="flex justify-between gap-2">
-                    <%= "#{give.content} : #{l give.deadline}" %>
-                    <div class="flex gap-2">
-                      <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-error btn-xs" %>
+    <%else%>
+    
+      <div class="flex flex-row gap-2">
+        <div class="flex w-1/2 mb-2 border bg-red-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
+              <% @uncompleted_gives.each do |give| %>
+                <li>
+                  <% if give.deadline.present? %>
+                    <div class="flex justify-between gap-2">
+                      <%= "#{give.content} : #{l give.deadline}" %>
                     </div>
-                  </div>
-                <%else%>
-                  <div class="flex justify-between gap-2">
-                    <%= "#{give.content} : 日時未定" %>
-                    <div class="flex gap-2">
-                      <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-error btn-xs" %>
+                  <%else%>
+                    <div class="flex justify-between gap-2">
+                      <%= "#{give.content} : 日時未定" %>
                     </div>
-                  </div>
-                <%end%>
-              </li>
-            <%end%>
-        </ul>
+                  <%end%>
+                </li>
+              <%end%>
+          </ul>
+        </div>
+
+        <div class="flex w-1/2 mb-2 border bg-blue-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
+              <% @completed_gives.each do |give| %>
+                <li>
+                  <% if give.deadline.present? %>
+                    <div class="flex justify-between gap-2">
+                      <%= "#{give.content} : #{l give.deadline}" %>
+                    </div>
+                  <%else%>
+                    <div class="flex justify-between gap-2">
+                      <%= "#{give.content} : 日時未定" %>
+                    </div>
+                  <%end%>
+                </li>
+              <%end%>
+          </ul>
+        </div>
       </div>
+    <%end%>
 
-    </div>
 
-    <!-- User and Search -->
+    <!-- menber -->
       <div>
         メンバー
       </div>
-      <ul class="flex mb-4 list-none list-inside">
+      <ul class="flex mb-4 list-none list-inside border rounded-lg p-6">
         <% @request.authorizers.each do |authorizer| %>
           <% request_user = @request.request_users.find_by(user_id: authorizer.id) %>
           <li class="mr-2">
@@ -166,6 +228,12 @@
         </div>
       <% end %>
 
+      <% if @request.own?(current_user) && @request.possible? %>
+        <div class="btn btn-success">
+          <%= button_to "完了", group_request_task_completed_path(@group, @request), method: :post %>
+        </div>
+      <% end %>
+
       <% if @request.authorizers_check(current_user) && @subject_authorizer.unauthorized? %>
       <div class="btn btn-primary">
         <%= button_to "承認", group_request_admit_path(@group, @request), method: :post %>
@@ -178,5 +246,5 @@
       </div>
       <% end %>
     </div>
-
   </div>
+</div>

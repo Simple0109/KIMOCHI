@@ -16,7 +16,7 @@
       <%= render "shared/header" %>
     </header>
 
-    <div class="pt-20">
+    <div class="mt-20">
       <% flash.each do |key, message| %>
       <div class="alert alert-<%= key %>">
         <%= message %>
@@ -24,7 +24,7 @@
       <% end %>
     </div>
 
-    <div class="flex flex-row bg-white pb-20 min-h-screen overflow-y-auto">
+    <div class="flex flex-row bg-white mb-14 min-h-screen overflow-y-auto">
       <%  if user_signed_in? %>
         <%= render "shared/sidebar"%>
       <%end%>
