@@ -8,9 +8,4 @@
       <%= "#{l request.execution_date, format: :short}" %>
     <% end %>
   </div>
-  <div class="text-xs text-gray-500">
-    <% request.gives.each do |give| %>
-      <check_box><%= give.content %>
-    <%end%>
-  </div>
 </div>
