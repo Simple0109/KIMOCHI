@@ -18,14 +18,10 @@
             <h1 class="text-xl font-semibold leading-none tracking-tighter text-blue-600 lg:mb-0 hover:text-neutral-600"><%= link_to group.name, group_requests_path(group) %></h1>
           </div>
           <p class="mx-auto text-base leading-relaxed text-gray-500"><%= group.description %></p>
-          <% if group.invite_token %>
-            <p class="mx-auto text-base leading-relaxed text-gray-500"><%= group.invite_token %></p>
-          <%end%>
 
           <div class="flex gap-4 mt-4">
             <div><%= link_to "詳細", group_path(group), class: "inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
             <div><%= link_to "編集", edit_group_path(group), class: "inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
-            <div><%= button_to "招待リンク作成", group_generate_token_path(group), method: :post, class: "inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
           </div>
 
         </div>

@@ -10,7 +10,11 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def show; end
+  def show
+    return unless @group.invite_token.present?
+
+    @invite_link = group_invite_link_url(@group, invite_token: @group.invite_token)
+  end
 
   def create
     @group = Group.new(group_params)
