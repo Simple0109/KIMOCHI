@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     resources :requests do
       post 'admit', to: 'approvals#admit'
       post 'cancel_admit', to: 'approvals#cancel_admit'
+      resources :gives, only: [] do
+        member do
+          post 'update_status_completed', to: 'gives#update_status_completed'
+          post 'update_status_uncompleted', to: 'gives#update_status_uncompleted'
+        end
+      end
     end
   end
 end
