@@ -1,7 +1,7 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!, only: %i[index new show create edit update destroy]
   before_action :set_request, only: %i[show edit update destroy]
-  before_action :set_group, only: %i[new edit update show destroy]
+  before_action :set_group, only: %i[new show edit update destroy]
 
   def index
     all_requests = Request.where(group_id: params[:group_id]).order(updated_at: :desc)
@@ -23,11 +23,15 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
-    @request.gives.build
+    3.times {@request.gives.build}
   end
 
   def show
     @subject_authorizer = RequestUser.find_by(request_id: @request.id, user_id: current_user.id)
+
+    @gives = Give.where(request_id: @request.id)
+    @uncompleted_gives = @gives.where(status: 0).order(:id)
+    @completed_gives = @gives.where(status: 1).order(:id)
   end
 
   def create

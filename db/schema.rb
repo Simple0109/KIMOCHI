@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_25_030250) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_26_052015) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_25_030250) do
   create_table "gives", force: :cascade do |t|
     t.string "content"
     t.datetime "deadline"
-    t.string "status", default: "0"
+    t.integer "status", default: 0
     t.bigint "request_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
