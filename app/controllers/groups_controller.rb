@@ -6,15 +6,17 @@ class GroupsController < ApplicationController
     @user_groups = current_user.groups.order(created_at: :asc).page(params[:page])
   end
 
-  def new
-    @group = Group.new
-  end
-
   def show
     return unless @group.invite_token.present?
 
     @invite_link = group_invite_link_url(@group, invite_token: @group.invite_token)
   end
+
+  def new
+    @group = Group.new
+  end
+
+  def edit; end
 
   def create
     @group = Group.new(group_params)
@@ -25,8 +27,6 @@ class GroupsController < ApplicationController
       render :new
     end
   end
-
-  def edit; end
 
   def update
     if @group.update(group_params)
