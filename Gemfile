@@ -62,11 +62,10 @@ gem 'dotenv-rails'
 gem 'enum_help'
 gem 'importmap-rails'
 gem 'kaminari'
+gem 'line-bot-api'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
-gem 'line-bot-api'
-
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -76,9 +75,11 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   gem 'web-console'
-  gem 'rubocop'
-  gem 'rubocop-rails'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

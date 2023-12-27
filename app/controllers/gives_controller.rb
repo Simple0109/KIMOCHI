@@ -8,7 +8,7 @@ class GivesController < ApplicationController
       redirect_to group_request_path(@group, @request), notice: "#{@give.content}を完了しました"
       @request.possible! if @request.gives.pluck(:status).sum == @request.gives.count
     else
-      redirect_to group_request_path(@group, @request), alert: "更新に失敗しました"
+      redirect_to group_request_path(@group, @request), alert: '更新に失敗しました'
     end
   end
 
@@ -18,7 +18,7 @@ class GivesController < ApplicationController
       redirect_to group_request_path(@group, @request), notice: "#{@give.content}を未完了にしました"
       @request.authorized! if @request.gives.pluck(:status).sum <= @request.gives.count
     else
-      redirect_to group_request_path(@group, @request), notice: "更新に失敗しました"
+      redirect_to group_request_path(@group, @request), notice: '更新に失敗しました'
     end
   end
 

@@ -16,15 +16,15 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if session[:group_id].present?
       group = Group.find_by(id: session[:group_id])
-      if !GroupUser.find_by(group_id: group.id, user_id: resource.id).present?
+      if GroupUser.find_by(group_id: group.id, user_id: resource.id).present?
+        session[:group_id] = nil
+        group.update(invite_token: nil)
+        flash[:notice] = "すでに#{group.name}グループに参加しています"
+      else
         GroupUser.create(user_id: resource.id, group_id: group.id)
         session[:group_id] = nil
         group.update(invite_token: nil)
         flash[:notice] = "#{group.name}グループに追加されました"
-      else
-        session[:group_id] = nil
-        group.update(invite_token: nil)
-        flash[:notice] = "すでに#{group.name}グループに参加しています"
       end
     end
 

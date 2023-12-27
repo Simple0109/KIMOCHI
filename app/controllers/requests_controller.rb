@@ -21,11 +21,6 @@ class RequestsController < ApplicationController
     @group = Group.find(params[:group_id])
   end
 
-  def new
-    @request = Request.new
-    3.times {@request.gives.build}
-  end
-
   def show
     @subject_authorizer = RequestUser.find_by(request_id: @request.id, user_id: current_user.id)
 
@@ -33,6 +28,13 @@ class RequestsController < ApplicationController
     @uncompleted_gives = @gives.where(status: 0).order(:id)
     @completed_gives = @gives.where(status: 1).order(:id)
   end
+
+  def new
+    @request = Request.new
+    3.times { @request.gives.build }
+  end
+
+  def edit; end
 
   def create
     request = Request.new(request_params)
@@ -51,8 +53,6 @@ class RequestsController < ApplicationController
       render :new
     end
   end
-
-  def edit; end
 
   def update
     # 受け取ったidをinteger型に変換し、再びauthorizer_idsに格納
