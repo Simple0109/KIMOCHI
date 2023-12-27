@@ -24,7 +24,7 @@ ja:
         content: 代わりにします！！！
         deadline: 期限
       group:
-        name: グルームネーム
+        name: グループネーム
         description: 説明
         invite_token: 招待トークン
 

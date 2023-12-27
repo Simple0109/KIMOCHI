@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @user_groups = current_user.groups.order(updated_at: :desc).page(params[:page])
+    @user_groups = current_user.groups.order(created_at: :asc).page(params[:page])
   end
 
   def new
