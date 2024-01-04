@@ -43,6 +43,14 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+  def secession
+    group = Group.find(params[:group_id])
+    group_user = GroupUser.find_by(group_id: group.id, user_id: current_user.id)
+    group_user&.destroy
+    group.destroy unless group.users.exists?
+    redirect_to groups_path, notice: "#{group.name}から脱退しました"
+  end
+
   private
 
   def group_params
