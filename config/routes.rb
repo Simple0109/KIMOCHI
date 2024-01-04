@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :groups do
     post 'generate_token', to: 'invites#generate_token'
     get 'process_invite_link/:invite_token', to: 'invites#process_invite_link', as: 'invite_link'
+    delete 'secession', to: 'groups#secession'
     resources :requests do
       post 'admit', to: 'approvals#admit'
       post 'cancel_admit', to: 'approvals#cancel_admit'
