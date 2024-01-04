@@ -56,7 +56,7 @@ class User < ApplicationRecord
             "unknown"
           end
 
-    filename = "user_#{@user.id}_avatar.#{exe}"
+    filename = "user_#{self.id}_avatar.#{ext}"
     profile.avatar.attach(io: downloaded_avatar, filename: filename, content_type: mime_type.type)
     profile.save!
   end
