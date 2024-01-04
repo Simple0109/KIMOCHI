@@ -21,6 +21,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
 
       @user.set_values(@omniauth)
+      @user.set_profile_avatar(@omniauth.info.image) if @omniauth.info.image.present?
       sign_in(:user, @user)
     end
     flash[:notice] = 'ログインしました'

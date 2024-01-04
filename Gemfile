@@ -66,6 +66,7 @@ gem 'line-bot-api'
 gem 'omniauth-line'
 gem 'omniauth-rails_csrf_protection'
 gem 'rails-i18n'
+gem 'mimemagic'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
