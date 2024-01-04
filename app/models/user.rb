@@ -36,29 +36,31 @@ class User < ApplicationRecord
     credentials = credentials.to_json
   end
 
-  def set_profile_name(url)
+  def set_profile_name(name)
     profile = self.profile || build_profile
-    profile.name = info['name']
+    profile.name = name
     profile.save!
   end
 
   def set_profile_avatar(url)
     profile = self.profile || build_profile
-    downloaded_avatar = URI.open(url)
 
-    mimetype = MimeMagic.by_magic(downloaded_avatar)
-    ext = case mimetype.type
-          when "image/jpeg"
-            "jpg"
-          when "image/png"
-            "png"
-          else
-            "unknown"
-          end
+    unless profile.avatar.attached?
+      downloaded_avatar = URI.open(url)
+      mimetype = MimeMagic.by_magic(downloaded_avatar)
+      ext = case mimetype.type
+            when "image/jpeg"
+              "jpg"
+            when "image/png"
+              "png"
+            else
+              "unknown"
+            end
 
-    filename = "user_#{self.id}_avatar.#{ext}"
-    profile.avatar.attach(io: downloaded_avatar, filename: filename, content_type: mime_type.type)
-    profile.save!
+      filename = "user_#{self.id}_avatar.#{ext}"
+      profile.avatar.attach(io: downloaded_avatar, filename: filename, content_type: mimetype.type)
+      profile.save!
+    end
   end
 
   def set_values_by_raw_info(raw_info)
