@@ -10,8 +10,9 @@
     "alpinejs": "^3.13.2",
     "autoprefixer": "^10.4.16",
     "daisyui": "^3.9.4",
-    "esbuild": "^0.19.9",
-    "postcss": "^8.4.31"
+    "esbuild": "^0.19.11",
+    "postcss": "^8.4.31",
+    "stimulus": "^3.2.2"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
