@@ -12,6 +12,8 @@ export default class extends Controller {
     const preview = this.previewTarget
     // input.filesはユーザーが選択したファイルのリスト
     const files = input.files
+    const width = this.data.get('width')
+
 
     // files[0]は最初のファイルを参照する
     if (files && files[0]) {
@@ -21,7 +23,7 @@ export default class extends Controller {
       // reader.onloadは「ファイルの読み込みが完了したら次に何をするか」という指示をするもの
       reader.onload = (e) => {
         // 発火する内容を定義
-        preview.innerHTML = `<img src="${e.target.result}" style="max-width: 300px;">`
+        preview.innerHTML = `<img src="${e.target.result}" style="max-width: ${width}px;">`;
       }
       reader.readAsDataURL(files[0])
     }
