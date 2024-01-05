@@ -1,16 +1,18 @@
 <%= form_with model: @profile, url: profile_path, local: true do |f| %>
-  <section class="text-gray-600">
-    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-start">
+  <div class="text-gray-600">
+    <div class="container mx-auto flex px-5 py-24 flex-row">
 
-      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+      <div class="flex flex-col items-center justify-start w-1/2 m-5">
         <% if @profile.avatar.attached? %>
             <%= image_tag(@profile.avatar_thumbnail)%>
         <% end %>
-        <%= f.file_field :avatar, class: "object-cover object-center rounded" %>
+        <div data-controller="avatar-preview">
+          <%= f.file_field :avatar, data: { "avatar-preview-target": "input", "action": "change->avatar-preview#previewImage"}, class: "object-cover object-center rounded" %>
+          <div data-avatar-preview-target="preview" class="mt-5"></div>
+        </div>
       </div>
 
-      <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-        
+      <div class="flex flex-col flex-grow m-5 items-start justify-start w-1/2">
         <%= f.label :name, class: "leading-relaxed" %>
         <%= f.text_field :name, autofocus: true, autocomplete: "name",
                 class: "w-full px-3 py-2 mb-4 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" %>
@@ -18,11 +20,11 @@
         <%= f.label :description, class: "leading-relaxed" %>
         <%= f.text_area :description, autofocus: true, autocomplete: "description",
                 class: "w-full px-3 py-2 mb-5 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" %>
-        <div class="items-start mt-4">
+        <div class="items-center">
           <%= f.submit "再登録", class: "btn btn-success"%>
         </div>
       </div>
 
     </div>
-  </section>
+  </div>
 <% end %>
