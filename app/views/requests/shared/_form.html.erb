@@ -10,9 +10,15 @@
     <%= f.label :execution_date, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
     <%= f.datetime_field :execution_date, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300" %>
   </div>
-  <div class="sm:col-span-2">
-    <%= f.label :image, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
-    <%= f.file_field :image, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
+  
+  <div data-controller="image-preview" data-image-preview-width="200" class="sm:col-span-2 grid grid-cols-2 gap-4">
+    <!-- 左側: 画像アップロードフィールド -->
+    <div>
+      <%= f.label :image, class: "mb-2 inline-block text-sm text-gray-800 sm:text-base" %>
+      <%= f.file_field :image, data: {"image-preview-target": "input", "action": "change->image-preview#previewImage"}, class: "w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition" %>
+    </div>
+    <!-- 右側: 画像プレビュー表示 -->
+    <div data-image-preview-target="preview" class="sm:col-span-1"></div>
   </div>
 
   <div class="sm:col-span-2 border-b-2"></div>
