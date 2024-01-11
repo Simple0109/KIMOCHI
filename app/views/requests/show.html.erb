@@ -165,37 +165,31 @@
         </li>
       <% end %>
     </ul>
-  <!-- Chat Section -->
-  <div class="flex-row mb-2">
-    <div class="mb-2">
-      ログ
+
+
+
+
+<!-- Chat Demo -->
+<div data-controller="chat" data-chat-request-id-value="<%= @request.id %>" data-chat-current-user-id-value="<%= current_user.id %>">
+  <div class="mb-2">ログ</div>
+    <div class="border rounded-lg p-2 h-52 mb-4 overflow-y-auto" data-chat-target="messages">
+      <% @request.messages.each do |message| %>
+        <%= render partial: 'messages/message', locals: {message: message, current_user: current_user} %>
+      <% end %>
     </div>
-    <div class="border rounded-lg p-2 h-52 mb-4 overflow-y-auto">
-      <div class="chat chat-start">
-        <div class="chat-header">
-          hoge
-          <time class="text-xs opacity-50">12:45</time>
-        </div>
-        <div class="chat-bubble">本番リリース追加予定リアルタイムチャット機能</div>
-      </div>
-      <div class="chat chat-end">
-        <div class="chat-header">
-          fuga
-          <time class="text-xs opacity-50">12:55</time>
-        </div>
-        <div class="chat-bubble">実装できるか不安だ</div>
-      </div>
-    </div>
-  </div>
+
   <!-- Comment Section -->
-  
-    <div class="mb-2">
-      <div class="text-sm mb-2">
-        ログコメントを入力してください
-      </div>
-      <div class="flex">
-        <textarea class="w-full border rounded p-2 text-sm" rows="1"></textarea>
-        <button class="ml-2">
+  <div class="mb-2">
+    <div class="text-sm mb-2">
+      ログコメントを入力してください
+    </div>
+    <div class="flex">
+      <!-- Stimulusの機能を持たせるためにform要素を追加し、data-action属性を設定 -->
+      <form data-action="chat#send">
+        <!-- textareaをinputタイプに変更し、Stimulusのdata-chat-target属性を追加 -->
+        <textarea class="w-full border rounded p-2 text-sm" data-chat-target="newMessage" rows="1"></textarea>
+        <!-- 送信ボタンにtype="submit"を追加 -->
+        <button type="submit" class="ml-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-forward" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
@@ -203,7 +197,10 @@
             <path d="M15 11h-6" />
           </svg>
         </button>
+      </form>
     </div>
+  </div>
+</div>
   <!-- button_zone -->
   <div class="flex justify-center gap-4 py-5">
     <% if @request.own?(current_user) %>

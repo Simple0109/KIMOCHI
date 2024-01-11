@@ -9,6 +9,7 @@ ja:
       short: "%m/%d"
       time: "%Y/%m/%d %H:%M:%S"
       japan: "%-m月%-d日 %-H時%-M分"
+      chat: "%m/%d %H:%M"
   devise:
     registrations:
       new:

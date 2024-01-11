@@ -27,6 +27,7 @@ class RequestsController < ApplicationController
     @gives = Give.where(request_id: @request.id)
     @uncompleted_gives = @gives.where(status: 0).order(:id)
     @completed_gives = @gives.where(status: 1).order(:id)
+    @messages = @request.messages.all
   end
 
   def new

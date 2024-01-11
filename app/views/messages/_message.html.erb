@@ -1,0 +1,18 @@
+<% if message.user == current_user%>
+  <div class="chat chat-start">
+    <div class="chat-header">
+      <%= message.user.profile.name %>
+      <time class="text-xs opacity-50"><%= l message.created_at, format: :chat %></time>
+    </div>
+    <div class="chat-bubble"><%= message.content%></div>
+  </div>
+<%else%>
+  <div class="chat chat-end">
+    <div class="chat-header">
+      <%= message.user.profile.name %>
+      <time class="text-xs opacity-50"><%= l message.created_at, format: :chat %></time>
+    </div>
+    <div class="chat-bubble"><%= message.content%></div>
+  </div>
+<%end%>
+
