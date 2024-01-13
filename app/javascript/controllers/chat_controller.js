@@ -10,10 +10,23 @@ export default class extends Controller {
       { channel: "ChatChannel", request_id: this.requestIdValue },
       {
         received: data => {
+          // 送信者が現在のユーザーかどうかを判断
+          const isCurrentUser = data.user_id === this.currentUserIdValue;
+          const messageClass = isCurrentUser ? 'chat chat-start' : 'chat chat-end';
+        
           // ブロードキャストされたメッセージを表示
-          this.messagesTarget.innerHTML += data.message
+          this.messagesTarget.innerHTML += `
+            <div class="${messageClass}">
+              <div class="chat-header">
+                ${data.user_name}
+                <time class="text-xs opacity-50">${data.created_at}</time>
+              </div>
+              <div class="chat-bubble">${data.content}</div>
+            </div>
+          `;
+        
           this.scrollToBottom();
-          console.log("hello")
+
         }
       }
     );

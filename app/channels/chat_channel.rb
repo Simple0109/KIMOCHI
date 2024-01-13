@@ -10,12 +10,11 @@ class ChatChannel < ApplicationCable::Channel
     message = request.messages.create(content: data['message'], user: user)
 
     # 保存されたメッセージをブロードキャスト
-    ChatChannel.broadcast_to(request, message: render_message(message))
-  end
-
-  private
-
-  def render_message(message)
-    ApplicationController.renderer.render(partial: 'messages/message', locals: { message: message, current_user: current_user})
+    ChatChannel.broadcast_to(request, {
+      user_id: user.id,
+      user_name: user.profile.name,
+      created_at: message.formatted_created_at,
+      content: message.content
+                             })
   end
 end
