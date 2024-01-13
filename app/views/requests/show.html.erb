@@ -185,9 +185,9 @@
     </div>
     <div class="flex">
       <!-- Stimulusの機能を持たせるためにform要素を追加し、data-action属性を設定 -->
-      <form data-action="chat#send">
+      <form class="w-full" data-action="chat#send">
         <!-- textareaをinputタイプに変更し、Stimulusのdata-chat-target属性を追加 -->
-        <textarea class="w-full border rounded p-2 text-sm" data-chat-target="newMessage" rows="1"></textarea>
+        <textarea class="w-11/12 border rounded p-2 text-sm" data-chat-target="newMessage" rows="1"></textarea>
         <!-- 送信ボタンにtype="submit"を追加 -->
         <button type="submit" class="ml-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-forward" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
