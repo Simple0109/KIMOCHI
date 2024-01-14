@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'top_page#top'
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations',
     omniauth_callbacks: 'omniauth_callbacks'
   }
   resource :profile, only: %i[show edit update]
