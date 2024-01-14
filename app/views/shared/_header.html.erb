@@ -24,13 +24,10 @@
     </div>
   <%else%>
 
-    <div class="flex-row mx-auto">
+    <div class="flex-row items-end">
       <ul class="inline-flex grid-cols-2 gap-x-2 list-none justify-center items-center">
         <li>
-          <%= link_to "新規登録", new_user_registration_path, class: "px-6  py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] text-gray-500 hover:text-blue-500" %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path, class: "px-6 py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] text-gray-500 hover:text-blue-500" %>
+          <%= link_to "LINE登録orログイン", user_line_omniauth_authorize_path, method: :post, class: "px-6  py-6 text-sm border-b-2 border-transparent hover:border-blue-600 leading-[22px] text-gray-500 hover:text-blue-500" %>
         </li>
       </ul>
     </div>
