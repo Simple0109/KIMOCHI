@@ -1,24 +1,14 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!, only: %i[index new show create edit update destroy]
   before_action :set_request, only: %i[show edit update destroy]
-  before_action :set_group, only: %i[new show edit update destroy]
+  before_action :set_group, only: %i[index new show edit update destroy]
 
   def index
     all_requests = Request.where(group_id: params[:group_id]).order(updated_at: :desc)
-    @draft_requests = Kaminari.paginate_array(all_requests.select do |request|
-                                                (request.status == 'draft') && request.own?(current_user)
-                                              end).page(params[:draft_page])
-    @unauthorized_requests = Kaminari.paginate_array(all_requests.select do |request|
-                                                       (request.status == 'unauthorized') && (request.authorizers_check(current_user) || request.own?(current_user))
-                                                     end).page(params[:unauthorized_page])
-    @authorized_requests = Kaminari.paginate_array(all_requests.select do |request|
-                                                     (request.status == 'authorized') && (request.authorizers_check(current_user) || request.own?(current_user))
-                                                   end).page(params[:authorized_page])
-    @possible_requests = Kaminari.paginate_array(all_requests.select do |request|
-                                                   (request.status == 'possible')
-                                                 end).page(params[:possible_page])
-
-    @group = Group.find(params[:group_id])
+    @draft_requests = paginated_draft_requests(all_requests, params[:draft_page])
+    @unauthorized_requests = paginated_unauthorized_requests(all_requests, params[:unauthorized_page])
+    @authorized_requests = paginated_authorized_requests(all_requests, params[:authorized_page])
+    @possible_requests = paginated_possible_requests(all_requests, params[:possible_page])
   end
 
   def show
@@ -64,14 +54,6 @@ class RequestsController < ApplicationController
     existing_authorizer_records = RequestUser.where(request_id: @request.id)
 
     if @request.update(request_params)
-      #       # 案1
-      #       @request.authorizers.delete_all
-      #       authorizer_ids.each do |authorizer_id|
-      #         authorizer = User.find(authorizer_id)
-      #         @request.authorizers << authorizer
-      #       end
-      #=begin
-      # 案2
       existing_authorizer_records.each do |record|
         # 取得したuser_idが既存レコードのuser_idに含まれていない場合、その既存レコードを削除
         record.destroy unless authorizer_ids.include?(record.user_id)
@@ -83,7 +65,6 @@ class RequestsController < ApplicationController
         new_authorizer = User.find(new_user_id)
         @request.authorizers << new_authorizer
       end
-      #=end
       redirect_to group_request_path(@group, @request), notice: '更新しました'
     else
       render :edit
@@ -110,5 +91,25 @@ class RequestsController < ApplicationController
 
   def set_group
     @group = Group.includes(users: :profile).find(params[:group_id])
+  end
+
+  def paginated_draft_requests(requests, page)
+    filtered_requests = requests.select { |request| request.status == "draft" && request.own?(current_user)}
+    Kaminari.paginate_array(filtered_requests).page(page)
+  end
+
+  def paginated_unauthorized_requests(requests, page)
+    filtered_requests = requests.select { |request| (request.status == "unauthorized") && (request.authorizers_check(current_user) || request.own?(current_user)) }
+    Kaminari.paginate_array(filtered_requests).page(page)
+  end
+
+  def paginated_authorized_requests(requests, page)
+    filtered_requests = requests.select { |request| (request.status == "authorized") && (request.authorizers_check(current_user) || request.own?(current_user)) }
+    Kaminari.paginate_array(filtered_requests).page(page)
+  end
+
+  def paginated_possible_requests(requests, page)
+    filtered_requests = requests.select { |request| (request.status == "possible") }
+    Kaminari.paginate_array(filtered_requests).page(page)
   end
 end
