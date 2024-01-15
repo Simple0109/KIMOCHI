@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   root 'top_page#top'
+  get 'terms', to: 'top_page#terms'
+  get 'privacy', to: 'top_page#privacy'
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks'
