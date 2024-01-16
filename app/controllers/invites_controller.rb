@@ -3,6 +3,9 @@ class InvitesController < ApplicationController
     group = Group.find(params[:group_id])
     invite_token = Devise.friendly_token
     group.update(invite_token: invite_token )
+
+    InviteTokenRemovalJob.set(wait: 30.minutes).perform_later(group.id)
+
     redirect_to group_path(group)
   end
 

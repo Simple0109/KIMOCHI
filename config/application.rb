@@ -16,6 +16,7 @@ module Kimochi3
     config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.{rb,yml}").to_s]
     config.assets.initialize_on_precompile = false
     config.active_storage.variant_processor = :vips
+    config.active_job.queue_adapter = :delayed_job
 
     config.generators do |g|
       g.asset false
