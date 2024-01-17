@@ -5,6 +5,7 @@ import { Application } from "stimulus";
 import ImagePreviewController from "./controllers/image_preview_controller";
 import ChatController from "./controllers/chat_controller";
 import LogoutController from "./controllers/logout_controller";
+import ClipboardController from "./controllers/clipboard_controller";
 
 
 // Stimulusのアプリケーションインスタンスを作成
@@ -14,6 +15,7 @@ const application = Application.start();
 application.register("image-preview", ImagePreviewController);
 application.register("chat", ChatController);
 application.register("logout", LogoutController);
+application.register("clipboard", ClipboardController);
 
 
 // これ以降に、他のJavaScriptやライブラリのセットアップを行う

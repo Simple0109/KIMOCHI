@@ -1,21 +1,28 @@
+<div data-controller="clipboard">
 <div class="bg-white py-6 sm:py-8 lg:py-12">
   <div class="px-4 py-12 mx-auto bg-gray-50 max-w-7xl sm:px-6 lg:px-16">
-    <div class="rounded-lg bg-gray-50 px-4 py-6 md:py-8 lg:py-12">
-      <h1 class="mb-4 text-center text-2xl font-semibold text-indigo-500 md:mb-6 lg:text-3xl"><%= @group.name %></h1>
+    <div class="rounded-lg px-4 py-6 md:py-8 lg:py-12">
+      <h1 class="mb-6 text-center text-2xl font-semibold text-indigo-500 md:mb-6 lg:text-3xl"><%= @group.name %></h1>
 
-      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"><%= @group.description %></p>
+      <p class="mb-6 mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"><%= @group.description %></p>
       <% if @invite_link.present? %>
         <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg">下のURLをコピーして招待したい人に送ってください</p>
-        <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"><%= @invite_link %></p>
-      <%end%>
+        <div class="flex justify-center items-center space-x-4 mx-auto max-w-screen-md">
+          <div data-clipboard-target='link' class="text-gray-500 md:text-lg">
+            <%= @invite_link %>
+          </div>
+          <button data-action="clipboard#copyToClipboard" class="btn btn-sm">リンクをコピーする</button>
+        </div>
+      <% end %>
 
 
     </div>
-    <div class="flex justify-end space-x-4">
+    <div class="flex justify-center space-x-4">
       <div><%= link_to "編集", edit_group_path, class: "btn btn-warning" %></div>
       <div><%= button_to "招待リンク生成", group_generate_token_path(@group), method: :post, class: "btn btn-warning" %></div>
       <div><%= button_to "グループから抜ける", group_secession_path(@group), class: "btn btn-error", method: :delete %></div>
       <div><%= button_to "削除", group_path, class: "btn btn-error", method: :delete %></div>
     </div>
   </div>
+</div>
 </div>
