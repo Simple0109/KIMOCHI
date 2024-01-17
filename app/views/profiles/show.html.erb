@@ -1,4 +1,4 @@
-<section class="text-gray-600">
+<section class="text-gray-500">
   <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-start">
     <div class="flex justify-center items-start lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
       <% if @profile.avatar.attached? %>
@@ -28,15 +28,15 @@
           <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
           <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
         </svg>
-        <span class="text-gray-600 dark:text-white">
+        <span class="text-gray-500 dark:text-white">
           <%= group.name %>
         </span>
       </li>
       <%end%>
       <!-- グループリスト終わり -->
-      <div class="items-start">
-        <%= link_to "編集", edit_profile_path, class: "btn btn-success"%>
-      </div>
+
+      <%= link_to "編集", edit_profile_path, class: "w-36 px-3 py-4 text-center text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
+
     </div>
 
   </div>

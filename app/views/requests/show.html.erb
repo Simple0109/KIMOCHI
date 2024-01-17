@@ -66,14 +66,14 @@
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : #{l give.deadline}" %>
                     <div class="flex gap-2">
-                      <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn  btn-info btn-xs" %>
+                      <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
                     </div>
                   </div>
                 <%else%>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                     <div class="flex gap-2">
-                      <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-info btn-xs" %>
+                      <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
                     </div>
                   </div>
                 <%end%>
@@ -89,14 +89,14 @@
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : #{l give.deadline}" %>
                     <div class="flex gap-2">
-                      <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-error btn-xs" %>
+                      <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none" %>
                     </div>
                   </div>
                 <%else%>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                     <div class="flex gap-2">
-                      <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn btn-error btn-xs" %>
+                      <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none" %>
                     </div>
                   </div>
                 <%end%>
@@ -204,26 +204,26 @@
   <!-- button_zone -->
   <div class="flex justify-center gap-4 py-5">
     <% if @request.own?(current_user) %>
-      <div class="btn btn-primary">
-        <%= button_to "編集", edit_group_request_path(@group, @request), method: :get %>
+      <div>
+        <%= button_to "編集", edit_group_request_path(@group, @request), method: :get, class: "w-36 px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
       </div>
-      <div class="btn btn-error">
-        <%= button_to "削除", group_request_path, method: :delete %>
+      <div>
+        <%= button_to "削除", group_request_path, method: :delete, class: "w-36 px-3 py-4 text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none" %>
       </div>
     <% end %>
     <% if @request.own?(current_user) && @request.possible? %>
-      <div class="btn btn-success">
-        <%= button_to "完了", group_request_task_completed_path(@group, @request), method: :post %>
+      <div>
+        <%= button_to "完了", group_request_task_completed_path(@group, @request), method: :post, class: "w-36 px-3 py-4 text-white bg-teal-400 rounded-md focus:bg-teal-500 focus:outline-none"  %>
       </div>
     <% end %>
     <% if @request.authorizers_check(current_user) && @subject_authorizer.unauthorized? %>
-    <div class="btn btn-primary">
-      <%= button_to "承認", group_request_admit_path(@group, @request), method: :post %>
+    <div>
+      <%= button_to "承認", group_request_admit_path(@group, @request), method: :post, class: "w-36 px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
     </div>
     <% end %>
     <% if @request.authorizers_check(current_user) && @subject_authorizer.authorized? %>
-    <div class="btn btn-error">
-      <%= button_to "承認取消", group_request_cancel_admit_path(@group, @request), method: :post %>
+    <div>
+      <%= button_to "承認取消", group_request_cancel_admit_path(@group, @request), method: :post, class: "w-36 px-3 py-4 text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none" %>
     </div>
     <% end %>
   </div>
