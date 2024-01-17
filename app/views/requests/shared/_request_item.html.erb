@@ -2,7 +2,7 @@
   <div class="text-sm font-semibold text-gray-800 dark:text-white">
     <%= link_to request.take, group_request_path(request.group, request) %>
   </div>
-  <div class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+  <div class="mt-1 text-xs text-gray-800">
     <%= "許可数: #{request.request_users.where(approval_status: 1).count}/#{request.request_users.count}" %>
     <% if request.execution_date.present? %>
       <%= "#{l request.execution_date, format: :short}" %>
