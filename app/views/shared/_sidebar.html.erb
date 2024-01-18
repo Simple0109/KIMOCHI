@@ -1,12 +1,12 @@
-<div class="flex bg-white rounded-lg">
+<div class="flex rounded-lg">
   <div class="flex flex-col">
     <ul class="overflow-y-auto bg-gray-50 w-52 h-full">
       <li class="menu-title text-xl text-black mt-8 mb-4 text-center">グループ</li>
-        <% current_user.groups.order(:created_at).each do |group| %>
-          <div class="break-words w-44 ml-4 mb-4 text-gray-500 text-center hover:text-blue-500">
-            <%= link_to group.name, group_requests_path(group) %>
-          </div>
-        <%end%>
+<% current_user.groups.order(:created_at).each do |group| %>
+  <div class="break-words w-44 ml-4 mb-4 text-center hover:text-blue-500">
+    <%= link_to group.name, group_requests_path(group), class: sidebar_link_class(group) %>
+  </div>
+<% end %>
     </ul>
   </div>
 </div>
