@@ -6,13 +6,13 @@
     <div class="flex-row mx-auto">
       <ul class="inline-flex grid-cols-5 gap-x-2 list-none justify-center items-center">
         <li>
-          <%= link_to "マイページ", profile_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
+          <%= link_to "マイページ", profile_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] #{ header_profile_class } hover:text-blue-500" %>
         </li>
         <li>
-          <%= link_to "新規グループ作成", new_group_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
+          <%= link_to "新規グループ作成", new_group_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] #{ header_group_new_class } hover:text-blue-500" %>
         </li>
         <li>
-          <%= link_to "所属グループ一覧", groups_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
+          <%= link_to "所属グループ一覧", groups_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] #{ header_group_index_class } hover:text-blue-500" %>
         </li>
         <li>
           <%= button_to "ログアウト", destroy_user_session_path, method: :delete, data: {controller: "logout" }, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
