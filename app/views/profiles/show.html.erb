@@ -1,5 +1,8 @@
 <section class="text-gray-500">
-  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-start">
+  <div class="mt-14">
+    <div class="text-center text-3xl font-bold text-gray-800"><%= t("users.profiles.mypage") %></div>
+  </div>
+  <div class="container mx-auto flex px-5 py-20 md:flex-row flex-col items-start">
     <div class="flex justify-center items-start lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
       <% if @profile.avatar.attached? %>
         <%= image_tag(@profile.avatar_thumbnail)%>

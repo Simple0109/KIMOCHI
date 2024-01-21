@@ -1,5 +1,5 @@
-<div class="text-center">
-    <h1 class="mt-5 text-3xl font-semibold text-gray-800 dark:text-gray-200">Group Create</h1>
+<div class="mt-10">
+  <div class="text-center text-3xl font-bold text-gray-800"><%=t("groups.new")  %></div>
 </div>
 
 <%= render partial: "form", locals: { group: @group, form_url: groups_path }%>

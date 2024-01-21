@@ -24,8 +24,15 @@ ja:
     profiles:
       name: 名前
       description: 自己紹介
+      mypage: マイページ
+      mypage_edit: マイページ編集
   groups:
+    new: グループ新規作成
+    edit: グループ情報編集
+    index: グループ一覧
     requests:
+      new: リクエスト新規作成
+      edit: リクエスト情報編集
       index:
         unauthorized: 未承認
         authorized: 承認済
