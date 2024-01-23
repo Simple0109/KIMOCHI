@@ -43,5 +43,10 @@ ja:
         authorized: 承認済
         possible: タスク実行可能
         completed: タスク完了
+      completed_requests:
+        take: 概要
+        create_user_name: 投稿者
+        created_at: 作成日時
+        link: リンク
 
 

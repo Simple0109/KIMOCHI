@@ -4,11 +4,16 @@ class RequestsController < ApplicationController
   before_action :set_group, only: %i[index new show edit update destroy]
 
   def index
-    all_requests = Request.where(group_id: params[:group_id]).order(updated_at: :desc)
+    all_requests = Request.includes(user: :profile).where(group_id: params[:group_id]).order(updated_at: :desc)
     @draft_requests = paginated_draft_requests(all_requests, params[:draft_page])
     @unauthorized_requests = paginated_unauthorized_requests(all_requests, params[:unauthorized_page])
     @authorized_requests = paginated_authorized_requests(all_requests, params[:authorized_page])
     @possible_requests = paginated_possible_requests(all_requests, params[:possible_page])
+  end
+
+  def completed_requests
+    all_requests = Request.includes(user: :profile).where(group_id: params[:group_id]).order(updated_at: :desc)
+    @completed_requests = paginated_completed_requests(all_requests, params[:completed_page])
   end
 
   def show
@@ -94,7 +99,7 @@ class RequestsController < ApplicationController
   end
 
   def paginated_draft_requests(requests, page)
-    filtered_requests = requests.select { |request| request.status == "draft" && request.own?(current_user)}
+    filtered_requests = requests.select { |request| request.status == "draft" && request.own?(current_user) }
     Kaminari.paginate_array(filtered_requests).page(page)
   end
 
@@ -110,6 +115,11 @@ class RequestsController < ApplicationController
 
   def paginated_possible_requests(requests, page)
     filtered_requests = requests.select { |request| (request.status == "possible") }
+    Kaminari.paginate_array(filtered_requests).page(page)
+  end
+
+  def paginated_completed_requests(requests, page)
+    filtered_requests = requests.select { |request| (request.status == "completed") }
     Kaminari.paginate_array(filtered_requests).page(page)
   end
 end
