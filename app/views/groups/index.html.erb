@@ -1,4 +1,4 @@
-<div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
+<div class="items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
   <div class="my-5">
     <div class="text-center text-3xl font-bold text-gray-800"><%= t("groups.index") %></div>
   </div>
@@ -6,7 +6,7 @@
     <% @user_groups.each do |group| %>
       <div class="p-4 border-b-2">
         <div class="flex items-center mb-3">
-          <div class="inline-flex items-center justify-center flex-shrink-0 w-12 h-12 mr-3 text-blue-600 rounded-full bg-blue-50">
+          <div class="inline-flex items-center justify-center flex-shrink-0 w-12 h-12 mr-3 text-gray-500 rounded-full bg-blue-50">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00abfb" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
@@ -17,11 +17,12 @@
               <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
             </svg>
           </div>
-          <h1 class="text-xl font-semibold leading-none tracking-tighter text-blue-600 lg:mb-0 hover:text-neutral-600"><%= link_to group.name, group_requests_path(group) %></h1>
+          <h1 class="text-xl font-semibold leading-none tracking-tighter text-gray-500 lg:mb-0 hover:text-neutral-800"><%= link_to group.name, group_requests_path(group) %></h1>
         </div>
         <p class="mx-auto text-base leading-relaxed text-gray-500"><%= group.description %></p>
         <div class="flex gap-4 mt-4">
           <div><%= link_to "詳細", group_path(group), class: "inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
+          <div><%= link_to "完了リクエスト一覧", completed_group_requests_path(group), class: "inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
         </div>
       </div>
     <% end %>
