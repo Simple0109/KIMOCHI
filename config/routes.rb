@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'process_invite_link/:invite_token', to: 'invites#process_invite_link', as: 'invite_link'
     delete 'secession', to: 'groups#secession'
     resources :requests do
+      get 'completed_requests', on: :collection, to: 'requests#completed_requests', as: 'completed'
       post 'admit', to: 'approvals#admit'
       post 'cancel_admit', to: 'approvals#cancel_admit'
       post 'task_completed', to: 'approvals#task_completed'
