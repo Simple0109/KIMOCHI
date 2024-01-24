@@ -1,22 +1,25 @@
+<div class="mt-10">
+  <div class="text-center text-3xl font-bold text-gray-800"><%=t("groups.requests.completed_requests.title")  %></div>
+</div>
 <div class="bg-white my-10 px-8 text-gray-500 font-sans ">
   <div class="mx-auto max-w-screen-xl">
     <div class="overflow-x-auto">
       <table class="table">
-        <!-- head -->
         <thead class="text-center">
           <tr>
             <th>No.</th>
             <th><%= t("groups.requests.completed_requests.take")%></th>
+            <th><%= t("groups.requests.completed_requests.group_name")%></th>
             <th><%= t("groups.requests.completed_requests.create_user_name")%></th>
             <th><%= t("groups.requests.completed_requests.created_at")%></th>
           </tr>
         </thead>
         <tbody>
-          <!-- row 1 -->
           <% @completed_requests.each_with_index do |request, index| %>
           <tr data-controller="link" data-action="click->link#go" data-url="<%= group_request_path(params[:group_id], request) %>" class="hover text-center" >
             <td><%= index + 1%></td>
             <td><%= request.take %></td>
+            <td><%= request.group.name %></td>
             <td><%= request.user.profile.name %></td>
             <td><%= l request.created_at, format: :japan%></td>
           </tr>
