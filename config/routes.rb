@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks'
   }
-  resource :profile, only: %i[show edit update]
+  resource :profile, only: %i[show edit update] do
+    get 'personal_requests', to: 'profiles#personal_requests'
+  end
 
   resources :groups do
     post 'generate_token', to: 'invites#generate_token'

@@ -21,11 +21,18 @@ ja:
         forget_password: パスワードを忘れた場合はこちらへ
         new_user_register: アカウント未登録の人はこちらへ
   users:
-    profiles:
-      name: 名前
-      description: 自己紹介
-      mypage: マイページ
-      mypage_edit: マイページ編集
+  profiles:
+    name: 名前
+    description: 自己紹介
+    mypage: マイページ
+    mypage_edit: マイページ編集
+    personal_requests:
+      title: 個人リクエスト一覧
+      take: 概要
+      group_name: グループ名
+      created_at: 作成日時
+      create_user_name: 投稿者
+
   groups:
     new: 新規グループ作成
     edit: グループ情報編集
@@ -44,9 +51,10 @@ ja:
         possible: タスク実行可能
         completed: タスク完了
       completed_requests:
+        title: 完了リクエスト一覧
         take: 概要
+        group_name: グループ名
         create_user_name: 投稿者
         created_at: 作成日時
-        link: リンク
 
 

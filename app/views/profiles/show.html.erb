@@ -1,6 +1,6 @@
-<section class="text-gray-500">
+<div class="text-gray-500">
   <div class="mt-14">
-    <div class="text-center text-3xl font-bold text-gray-800"><%= t("users.profiles.mypage") %></div>
+    <div class="text-center text-3xl font-bold text-gray-800"><%= t("profiles.mypage") %></div>
   </div>
   <div class="container mx-auto flex px-5 py-20 md:flex-row flex-col items-start">
     <div class="flex justify-center items-start lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
@@ -12,35 +12,19 @@
 
     </div>
     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-      <h1 class="mb-5 leading-relaxed">
-        <%= "#{t('users.profiles.name')}: #{@user.profile.name}" %>
-      </h1>
+      <div class="mb-5 leading-relaxed">
+        <%= "#{t('profiles.name')}: #{@user.profile.name}" %>
+      </div>
       
-      <p class="mb-8 leading-relaxed">
-        <%= "#{t('users.profiles.description')}: #{@user.profile.description}" %>
-      </p>
-      <!-- グループリスト始まり -->
-      <% @user.groups.each do |group| %>
-      <li class="flex space-x-3 mb-5">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00abfb" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-          <path d="M8 21v-1a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v1" />
-          <path d="M15 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-          <path d="M17 10h2a2 2 0 0 1 2 2v1" />
-          <path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
-          <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
-        </svg>
-        <span class="text-gray-500 dark:text-white">
-          <%= group.name %>
-        </span>
-      </li>
-      <%end%>
-      <!-- グループリスト終わり -->
+      <div class="mb-8 leading-relaxed">
+        <%= "#{t('profiles.description')}: #{@user.profile.description}" %>
+      </div>
 
-      <%= link_to "編集", edit_profile_path, class: "w-36 px-3 py-4 text-center text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
-
+      <div class="flex space-x-4"> <!-- space-x-4 はボタン間のスペースを調整する -->
+        <%= link_to "編集", edit_profile_path, class: "w-36 px-3 py-4 text-center text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
+        <%= link_to "個人リクエスト一覧", personal_requests_profile_path, class: "px-3 py-4 text-center text-white text-sm bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
+      </div>
     </div>
 
   </div>
-</section>
+</div>
