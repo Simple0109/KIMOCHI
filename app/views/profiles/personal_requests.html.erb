@@ -1,0 +1,31 @@
+<div class="mt-10">
+  <div class="text-center text-3xl font-bold text-gray-800"><%=t("profiles.personal_requests.title")  %></div>
+</div>
+<div class="bg-white my-10 px-8 text-gray-500 font-sans ">
+  <div class="mx-auto max-w-screen-xl">
+    <div class="overflow-x-auto">
+      <table class="table">
+        <thead class="text-center">
+          <tr>
+            <th>No.</th>
+            <th><%= t("profiles.personal_requests.take")%></th>
+            <th><%= t("profiles.personal_requests.group_name")%></th>
+            <th><%= t("profiles.personal_requests.create_user_name")%></th>
+            <th><%= t("profiles.personal_requests.created_at")%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @personal_requests.each_with_index do |request, index| %>
+          <tr data-controller="link" data-action="click->link#go" data-url="<%= group_request_path(request.group, request) %>" class="hover text-center" >
+            <td><%= index + 1%></td>
+            <td><%= request.take %></td>
+            <td><%= request.group.name %></td>
+            <td><%= request.user.profile.name %></td>
+            <td><%= l request.created_at, format: :japan%></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

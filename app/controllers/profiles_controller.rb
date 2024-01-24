@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate_user!, only: %i[show edit update]
+  before_action :authenticate_user!, only: %i[show edit update user_requests]
   before_action :set_current_user_profile, only: %i[show edit update]
 
   def show; end
@@ -12,6 +12,10 @@ class ProfilesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def personal_requests
+    @personal_requests = Request.includes(user: :profile).where(user_id: current_user.id)
   end
 
   private
