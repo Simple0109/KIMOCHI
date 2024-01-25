@@ -1,7 +1,7 @@
 module ApplicationHelper
   def sidebar_link_class(group)
     if (params[:controller] == 'groups' && ['show', 'edit'].include?(params[:action]) && params[:id] == group.id.to_s) ||
-       (params[:controller] == 'requests' && ['index', 'show', 'new', 'edit'].include?(params[:action]) && params[:group_id] == group.id.to_s)
+       (params[:controller] == 'requests' && ['index', 'show', 'new', 'edit', 'completed_requests'].include?(params[:action]) && params[:group_id] == group.id.to_s)
       'text-blue-500'
     else
       'text-gray-500'
@@ -25,7 +25,7 @@ module ApplicationHelper
   end
 
   def header_profile_class
-    if params[:controller] == 'profiles' && ['show', 'edit'].include?(params[:action])
+    if params[:controller] == 'profiles' && ['show', 'edit', 'personal_requests'].include?(params[:action])
       'text-blue-500'
     else
       'text-gray-500'
