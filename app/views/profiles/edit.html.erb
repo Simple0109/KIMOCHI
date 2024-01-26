@@ -1,21 +1,21 @@
-<div class="mt-14">
-  <div class="text-center text-3xl font-bold text-gray-800"><%= t("users.profiles.mypage_edit") %></div>
+<div class=" mt-8 sm:mt-14">
+  <div class="text-center text-2xl sm:text-3xl font-bold text-gray-800"><%= t("profiles.mypage_edit") %></div>
 </div>
 <%= form_with model: @profile, url: profile_path, local: true do |f| %>
   <div class="text-gray-500">
-    <div class="container mx-auto flex px-5 py-24 flex-row">
+    <div class="container mx-auto flex-col items-center justify-center px-5 py-3">
 
-      <div class="flex flex-col items-center justify-start w-1/2 m-5">
+      <div class="flex flex-col items-center justify-start w-full m-5 text-sm sm:text-base">
         <% if @profile.avatar.attached? %>
             <%= image_tag(@profile.avatar_thumbnail)%>
         <% end %>
-        <div data-controller="image-preview" data-image-preview-width="300">
+        <div data-controller="image-preview" data-image-preview-width="250">
           <%= f.file_field :avatar, data: { "image-preview-target": "input", "action": "change->image-preview#previewImage"}, class: "object-cover object-center rounded" %>
           <div data-image-preview-target="preview" class="mt-5"></div>
         </div>
       </div>
 
-      <div class="flex flex-col flex-grow m-5 items-start justify-start w-1/2">
+      <div class="flex flex-col items-center justify-center m-5 w-full sm:max-w-md mx-auto">
         <%= f.label :name, class: "leading-relaxed" %>
         <%= f.text_field :name, autofocus: true, autocomplete: "name",
                 class: "w-full px-3 py-2 mb-4 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" %>
@@ -24,7 +24,7 @@
         <%= f.text_area :description, autofocus: true, autocomplete: "description",
                 class: "w-full px-3 py-2 mb-5 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" %>
         <div class="items-center">
-          <%= f.submit "再登録", class: "w-36 px-3 py-4 text-center text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"%>
+          <%= f.submit "再登録", class: "mx-auto px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-center text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"%>
         </div>
       </div>
 
