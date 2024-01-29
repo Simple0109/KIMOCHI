@@ -3,7 +3,7 @@
     <%= title %>
   </div>
   <div class="flex flex-1 flex-col p-2 overflow-auto">
-    <div class="space-y-4">
+    <div class="space-y-2 sm:space-y-4">
       <% requests.each do |request| %>
         <%= render "requests/shared/request_item", request: request %>
       <% end %>

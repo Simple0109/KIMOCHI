@@ -1,6 +1,6 @@
-<div class="items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
+<div class="items-center w-full px-2 sm:px-5 py-6 sm:py-12 mx-auto max-w-7xl">
   <div class="my-5">
-    <div class="text-center text-3xl font-bold text-gray-800"><%= t("groups.index") %></div>
+    <div class="text-center text-2xl sm:text-3xl font-bold text-gray-800"><%= t("groups.index") %></div>
   </div>
   <div class="grid w-full grid-cols-1 mb-9 mx-auto">
     <% @user_groups.each do |group| %>
@@ -17,12 +17,11 @@
               <path d="M3 13v-1a2 2 0 0 1 2 -2h2" />
             </svg>
           </div>
-          <h1 class="text-xl font-semibold leading-none tracking-tighter text-gray-500 lg:mb-0 hover:text-neutral-800"><%= link_to group.name, group_requests_path(group) %></h1>
+          <h1 class="text-lg sm:text-xl font-semibold leading-none tracking-tighter text-gray-500 sm:mb-0 hover:text-neutral-800"><%= link_to group.name, group_requests_path(group) %></h1>
         </div>
-        <p class="mx-auto text-base leading-relaxed text-gray-500"><%= group.description %></p>
-        <div class="flex gap-4 mt-4">
-          <div><%= link_to "詳細", group_path(group), class: "inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
-          <div><%= link_to "完了リクエスト一覧", completed_group_requests_path(group), class: "inline-flex items-center mt-4 font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
+        <div class="flex gap-4">
+          <div><%= link_to "詳細", group_path(group), class: "inline-flex items-center sm:font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
+          <div><%= link_to "完了リクエスト一覧", completed_group_requests_path(group), class: "inline-flex items-center sm:font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
         </div>
       </div>
     <% end %>

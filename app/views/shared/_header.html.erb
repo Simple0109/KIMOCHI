@@ -1,6 +1,6 @@
 <div class="flex flex-row p-2 mx-auto items-center justify-between px-8 h-20">
   <div class="flex flex-row items-center justify-start">
-    <%= link_to "KIMOCHI", "/", class: "text-3xl sm:text-5xl font-bold text-blue-600 pr-8" %>
+    <%= link_to "KIMOCHI", "/", class: "text-4xl sm:text-5xl font-bold text-blue-600 pr-8" %>
   </div>
   <% if user_signed_in? %>
     <div class="hidden sm:flex justify-center flex-grow items-center">
@@ -27,7 +27,7 @@
     <div class="sm:hidden">
       <div class="flex items-center justify-end">
         <details class="relative">
-          <summary class="cursor-pointer">メニュー</summary>
+          <summary class="cursor-pointer text-sm">メニュー</summary>
           <ul class="bg-gray-50 rounded-t-none w-[132px] absolute right-auto">
             <li>
               <%= link_to "マイページ", profile_path, class: "px-2 sm:px-6 py-0 sm:py-2 text-xs sm:text-sm border-b-2 border-transparent leading-[22px] #{ header_profile_class } hover:text-blue-500" %>
