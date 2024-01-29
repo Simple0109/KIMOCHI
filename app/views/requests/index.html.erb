@@ -1,17 +1,17 @@
 <div class="bg-white my-10 px-8">
   <div class="mx-auto max-w-screen-xl">
-    <h2 class="mb-10 text-center text-2xl font-bold text-gray-800">
+    <h2 class="mb-5 sm:mb-10 text-center text-2xl font-bold text-gray-800">
       <%= @group.name %>
     </h2>
 
-    <div class="flex justify-center gap-10 mb-10">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-10 mb-10">
       <div class="flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.unauthorized"), requests: @unauthorized_requests, paginate_param: "unauthorized_page" %></div>
       <div class="flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.authorized"), requests: @authorized_requests, paginate_param: "authorize_page" %></div>
       <div class="flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.possible"), requests: @possible_requests, paginate_param: "possile_page" %></div>
     </div>
 
     <div class="flex justify-center items-end mt-12 gap-4 font-semibold hover:text-neutral-600">
-      <%= link_to "新規リクエスト作成", new_group_request_path(@group), class: "w-auto px-3 py-4 text-white text-sm bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
+      <%= link_to "新規リクエスト作成", new_group_request_path(@group), class: "mx-auto px-2 sm:px-3 py-2 sm:py-4 text-xs sm:text-sm text-white text-sm bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
     </div>
   </div>
 </div>
