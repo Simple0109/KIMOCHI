@@ -4,7 +4,7 @@
       <%= message.user.profile.name %>
       <time class="text-xs opacity-50"><%= l message.created_at, format: :chat %></time>
     </div>
-    <div class="chat-bubble"><%= message.content%></div>
+    <div class="chat-bubble text-sm sm:text-base"><%= message.content%></div>
   </div>
 <%else%>
   <div class="chat chat-end">
@@ -12,7 +12,7 @@
       <%= message.user.profile.name %>
       <time class="text-xs opacity-50"><%= l message.created_at, format: :chat %></time>
     </div>
-    <div class="chat-bubble"><%= message.content%></div>
+    <div class="chat-bubble text-sm sm:text-base"><%= message.content%></div>
   </div>
 <%end%>
 
