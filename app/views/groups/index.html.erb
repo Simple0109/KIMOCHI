@@ -20,8 +20,8 @@
           <h1 class="text-lg sm:text-xl font-semibold leading-none tracking-tighter text-gray-500 sm:mb-0 hover:text-neutral-800"><%= link_to group.name, group_requests_path(group) %></h1>
         </div>
         <div class="flex gap-4">
-          <div><%= link_to "詳細", group_path(group), class: "inline-flex text-sm sm:test-base items-center sm:font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
-          <div><%= link_to "完了リクエスト一覧", completed_group_requests_path(group), class: "inline-flex text-sm sm:test-base items-center sm:font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
+          <div><%= link_to "詳細", group_path(group), class: "inline-flex text-sm sm:text-base items-center sm:font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
+          <div><%= link_to "完了リクエスト一覧", completed_group_requests_path(group), class: "inline-flex text-sm sm:text-base items-center sm:font-semibold text-blue-600 lg:mb-0 hover:text-neutral-600" %></div>
         </div>
       </div>
     <% end %>
