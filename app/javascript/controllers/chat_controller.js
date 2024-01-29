@@ -21,7 +21,7 @@ export default class extends Controller {
                 ${data.user_name}
                 <time class="text-xs opacity-50">${data.created_at}</time>
               </div>
-              <div class="chat-bubble">${data.content}</div>
+              <div class="chat-bubble text-sm sm:text-base">${data.content}</div>
             </div>
           `;
         

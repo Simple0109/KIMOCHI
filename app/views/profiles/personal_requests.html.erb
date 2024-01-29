@@ -1,10 +1,10 @@
 <div class="mt-10">
-  <div class="text-center text-3xl font-bold text-gray-800"><%=t("profiles.personal_requests.title")  %></div>
+  <div class="text-center text-2xl sm:text-3xl font-bold text-gray-800"><%=t("profiles.personal_requests.title")  %></div>
 </div>
-<div class="bg-white my-10 px-8 text-gray-500 font-sans ">
+<div class="bg-white my-10 px-4 text-gray-500 font-sans ">
   <div class="mx-auto max-w-screen-xl">
     <div class="overflow-x-auto">
-      <table class="table">
+      <table class="table min-w-full">
         <thead class="text-center">
           <tr>
             <th>No.</th>
@@ -17,13 +17,13 @@
         <tbody>
           <% @personal_requests.each_with_index do |request, index| %>
           <tr data-controller="link" data-action="click->link#go" data-url="<%= group_request_path(request.group, request) %>" class="hover text-center" >
-            <td><%= index + 1%></td>
-            <td><%= request.take %></td>
-            <td><%= request.group.name %></td>
-            <td><%= request.user.profile.name %></td>
-            <td><%= l request.created_at, format: :japan%></td>
+            <td class="truncate"><%= index + 1%></td>
+            <td class="truncate"><%= request.take %></td>
+            <td class="truncate"><%= request.group.name %></td>
+            <td class="truncate"><%= request.user.profile.name %></td>
+            <td class="truncate"><%= l request.created_at, format: :japan%></td>
           </tr>
-          <%end%>
+          <% end %>
         </tbody>
       </table>
     </div>
