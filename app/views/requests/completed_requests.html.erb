@@ -1,29 +1,29 @@
 <div class="mt-10">
-  <div class="text-center text-3xl font-bold text-gray-800"><%=t("groups.requests.completed_requests.title")  %></div>
+  <div class="text-center text-2xl sm:text-3xl font-bold text-gray-800"><%=t("groups.requests.completed_requests.title")  %></div>
 </div>
-<div class="bg-white my-10 px-8 text-gray-500 font-sans ">
+<div class="bg-white my-10 px-4 text-gray-500 font-sans text-sm sm:test-base">
   <div class="mx-auto max-w-screen-xl">
     <div class="overflow-x-auto">
-      <table class="table">
+      <table class="table min-w-full">
         <thead class="text-center">
           <tr>
             <th>No.</th>
-            <th><%= t("groups.requests.completed_requests.take")%></th>
-            <th><%= t("groups.requests.completed_requests.group_name")%></th>
-            <th><%= t("groups.requests.completed_requests.create_user_name")%></th>
-            <th><%= t("groups.requests.completed_requests.created_at")%></th>
+            <th>タイトル</th>
+            <th>グループ名</th>
+            <th>作成者</th>
+            <th>作成日</th>
           </tr>
         </thead>
         <tbody>
           <% @completed_requests.each_with_index do |request, index| %>
-          <tr data-controller="link" data-action="click->link#go" data-url="<%= group_request_path(params[:group_id], request) %>" class="hover text-center" >
-            <td><%= index + 1%></td>
-            <td><%= request.take %></td>
-            <td><%= request.group.name %></td>
-            <td><%= request.user.profile.name %></td>
-            <td><%= l request.created_at, format: :japan%></td>
+          <tr data-controller="link" data-action="click->link#go" data-url="<%= group_request_path(params[:group_id], request) %>" class="hover text-center">
+            <td class="truncate"><%= index + 1 %></td>
+            <td class="truncate"><%= request.take %></td>
+            <td class="truncate"><%= request.group.name %></td>
+            <td class="truncate"><%= request.user.profile.name %></td>
+            <td class="truncate"><%= l request.created_at, format: :japan %></td>
           </tr>
-          <%end%>
+          <% end %>
         </tbody>
       </table>
     </div>
