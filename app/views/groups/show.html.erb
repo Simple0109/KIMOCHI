@@ -27,7 +27,9 @@
       <% unless @group.owner?(current_user) %>
         <div><%= button_to "脱退", group_secession_path(@group), class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none", method: :delete %></div>
       <% end %>
-      <div><%= button_to "削除", group_path, class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none", method: :delete %></div>
+      <% if @group.owner?(current_user)%>
+        <div><%= button_to "削除", group_path, class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none", method: :delete %></div>
+      <% end %>
     </div>
   </div>
 </div>
