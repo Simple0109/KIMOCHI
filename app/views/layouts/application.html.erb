@@ -27,9 +27,11 @@
 
     <div class="flex flex-row bg-white mb-14 overflow-y-auto">
       <%  if user_signed_in? %>
-        <%= render "shared/sidebar"%>
+        <div class="min-h-screen bg-gray-50 w-28 sm:w-52">
+          <%= render "shared/sidebar"%>
+        </div>
       <%end%>
-      <div class="flex-grow overflow-auto min-h-auto">
+      <div class="flex-grow overflow-auto">
         <%= yield %>
       </div>
     </div>
