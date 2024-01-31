@@ -193,6 +193,8 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    meta-tags (2.20.0)
+      actionpack (>= 6.0.0, < 7.2)
     method_source (1.0.0)
     mimemagic (0.4.3)
       nokogiri (~> 1)
@@ -410,6 +412,7 @@ DEPENDENCIES
   jsbundling-rails
   kaminari
   line-bot-api
+  meta-tags
   mimemagic
   omniauth-line
   omniauth-rails_csrf_protection
