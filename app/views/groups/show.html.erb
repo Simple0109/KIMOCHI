@@ -23,11 +23,13 @@
 
     <div class="flex justify-center space-x-4 mt-10">
       <div><%= button_to "編集", edit_group_path,  method: :get, class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %></div>
-      <div><%= button_to "招待リンク生成", group_generate_token_path(@group), method: :post, class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-xs sm:text-base text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %></div>
+      <div><%= button_to "招待リンク生成", group_generate_token_path(@group), method: :post, class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-xs sm:text-base text-white bg-teal-400 rounded-md focus:bg-teal-500 focus:outline-none" %></div>
       <% unless @group.owner?(current_user) %>
         <div><%= button_to "脱退", group_secession_path(@group), class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none", method: :delete %></div>
       <% end %>
-      <div><%= button_to "削除", group_path, class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none", method: :delete %></div>
+      <% if @group.owner?(current_user)%>
+        <div><%= button_to "削除", group_path, class: "mx-auto sm:w-36 px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none", method: :delete %></div>
+      <% end %>
     </div>
   </div>
 </div>
