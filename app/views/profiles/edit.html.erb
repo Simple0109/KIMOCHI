@@ -23,10 +23,11 @@
         <%= f.label :description, class: "leading-relaxed" %>
         <%= f.text_area :description, autofocus: true, autocomplete: "description",
                 class: "w-full px-3 py-2 mb-5 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500" %>
-        <div class="items-center">
-          <%= f.submit "再登録", class: "mx-auto px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-center text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"%>
-        </div>
       </div>
+      <div class="flex justify-center">
+        <%= f.submit "更新", class: "w-36 px-2 sm:px-3 py-2 sm:py-4 text-sm sm:text-base text-center text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"%>
+      </div>
+
 
     </div>
   </div>
