@@ -171,7 +171,7 @@
 
   <!-- Chat Demo -->
   <div data-controller="chat" data-chat-request-id-value="<%= @request.id %>" data-chat-current-user-id-value="<%= current_user.id %>">
-    <div class="mb-2 text-sm sm:text-base">ログ</div>
+    <div class="mb-2 text-sm sm:text-base">チャット</div>
       <div class="border rounded-lg p-2 h-52 mb-4 overflow-y-auto" data-chat-target="messages">
         <% @request.messages.each do |message| %>
           <%= render partial: 'messages/message', locals: {message: message, current_user: current_user} %>
