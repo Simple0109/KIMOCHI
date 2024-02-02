@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
+    Rails.logger.info "after_sign_in_path_for called"
     if session[:group_id].present?
       group = Group.find_by(id: session[:group_id])
       if GroupUser.find_by(group_id: group.id, user_id: resource.id).present?
