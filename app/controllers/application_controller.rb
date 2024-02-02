@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     if resource.sign_in_count == 1
       root_path
     else
-      group_requests_path(resource.groups.first)
+      profile_path(resource)
     end
   end
 
