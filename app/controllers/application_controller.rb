@@ -29,6 +29,12 @@ class ApplicationController < ActionController::Base
     end
 
     super
+
+    if resource.sign_in_count == 1
+      root_path
+    else
+      group_requests_path(resource.groups.first)
+    end
   end
 
   def after_sign_up_path_for(resource)
