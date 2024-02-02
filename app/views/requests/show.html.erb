@@ -1,7 +1,7 @@
 <div class="max-w-2xl mx-auto p-4">
 
 <div class="flex flex-col justify-center items-center mb-4">
-  <div class="flex flex-row items-center justify-between font-semibold w-full">
+  <div class="flex flex-row items-center justify-between font-bold w-full">
     <div class="flex-1"></div>
     <div class="text-base sm:text-xl flex-1 text-center">
       <%= @group.name %>
@@ -27,7 +27,7 @@
     </div>
     <div class="w-full">
       <div>
-        <p class="text-sm sm:text-base mb-2">日時</p>
+        <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
         <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
           <% if @request.execution_date.present?%>
             <%= l @request.execution_date, format: :japan %>
@@ -35,7 +35,7 @@
             <p class="text-sm sm:text-base">要相談</p>
           <% end %>
         </div>
-        <p class="text-sm sm:text-base mb-2">コメント</p>
+        <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
         <div class="text-sm sm:text-base border overflow-y-auto rounded-lg sm:h-[200px] p-2">
           <%= @request.comment%>
         </div>
@@ -47,7 +47,7 @@
     <!-- File Attachment -->
     <div class="w-full">
       <div>
-        <p class="text-sm sm:text-base mb-2">日時</p>
+        <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
         <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
           <% if @request.execution_date.present?%>
             <%= l @request.execution_date, format: :japan %>
@@ -55,7 +55,7 @@
             <p class="text-sm sm:text-base">要相談</p>
           <% end %>
         </div>
-        <p class="text-sm sm:text-base mb-2">コメント</p>
+        <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
         <div class="text-sm sm:text-base border overflow-y-auto rounded-lg h-[200px] p-2">
           <%= @request.comment%>
         </div>
@@ -155,7 +155,7 @@
   <%end%>
   
   <!-- menber -->
-  <div class="text-sm sm:text-base mb-2">
+  <div class="text-sm sm:text-base mb-2 font-bold">
     承認者
   </div>
   <ul class="flex mb-4 list-none list-inside border rounded-lg p-6">
@@ -178,7 +178,7 @@
 
   <!-- Chat Demo -->
   <div data-controller="chat" data-chat-request-id-value="<%= @request.id %>" data-chat-current-user-id-value="<%= current_user.id %>">
-    <div class="text-sm sm:text-base mb-2">チャット</div>
+    <div class="text-sm sm:text-base mb-2 font-bold">チャット</div>
       <div class="border rounded-lg p-2 h-52 mb-4 overflow-y-auto" data-chat-target="messages">
         <% @request.messages.each do |message| %>
           <%= render partial: 'messages/message', locals: {message: message, current_user: current_user} %>
@@ -187,7 +187,7 @@
 
     <!-- Comment Section -->
     <div class="mb-2">
-      <div class="text-base mb-2">
+      <div class="text-base mb-2  font-bold">
         メッセージを送信してください
       </div>
       <div class="flex">
