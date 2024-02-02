@@ -24,9 +24,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.set_profile_name(@omniauth['info']['name']) if @omniauth['info']['name'].present?
       @user.set_profile_avatar(@omniauth['info']['image']) if @omniauth['info']['image'].present?
       sign_in_and_redirect @user
+    else
+      flash[:notice] = '認証に失敗しました'
+      new_user_session_path
     end
-    flash[:notice] = 'ログインしました'
-    redirect_to root_path
   end
 
   def fake_email(uid, provider)
