@@ -32,6 +32,21 @@ module ApplicationHelper
     end
   end
 
+  def status_bg_color(status)
+    case status
+    when 'unauthorized'
+      'bg-red-100'
+    when 'authorized'
+      'bg-blue-100'
+    when 'possible'
+      'bg-purple-300'
+    when 'completed'
+      'bg-teal-400'
+    else
+      'bg-gray-500'
+    end
+  end
+
   def default_meta_tags
     {
       site: 'KIMOCHI',
