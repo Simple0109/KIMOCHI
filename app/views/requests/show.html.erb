@@ -6,8 +6,10 @@
     <div class="text-base sm:text-xl flex-1 text-center">
       <%= @group.name %>
     </div>
-    <div class="text-xs sm:text-sm text-blue-600 flex-1 text-center">
-      <%= I18n.t("groups.requests.show.#{@request.status}") %>
+    <div class="flex-1 flex justify-end">
+      <div class="<%= status_bg_color(@request.status) %> text-black text-xs sm:text-sm w-auto text-center justify-end p-0.5">
+        <%= I18n.t("groups.requests.show.#{@request.status}") %>
+      </div>
     </div>
   </div>
   <div class="flex flex-col items-center text-base sm:text-xl font-semibold">
