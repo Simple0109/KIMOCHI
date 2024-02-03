@@ -67,10 +67,12 @@
   <% end %>
 
   <!-- give zone -->
-  <% if @request.authorized? || @request.possible?%>
+  <% if @request.authorized? || @request.possible? %>
     <div class="flex flex-col sm:flex-row gap-2">
-      <div class="flex w-full sm:w-1/2 mb-2 border bg-red-100 rounded-lg p-2 items-center h-28">
-        <ul class="list-none">
+      <div class="w-full sm:w-1/2 mb-2">
+        <div class="text-left mb-2 font-bold">未完了タスク</div>
+        <div class="border bg-red-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
             <% @uncompleted_gives.each do |give| %>
               <li class="mb-2 text-xs sm:text-sm">
                 <% if give.deadline.present? %>
@@ -80,20 +82,24 @@
                       <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-xs text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
                     </div>
                   </div>
-                <%else%>
+                <% else %>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                     <div class="flex gap-2">
                       <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-xs text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
                     </div>
                   </div>
-                <%end%>
+                <% end %>
               </li>
-            <%end%>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="flex w-full sm:w-1/2 mb-2 border bg-blue-100 rounded-lg p-2 items-center h-28">
-        <ul class="list-none">
+
+      <div class="w-full sm:w-1/2 mb-2">
+        <div class="text-left mb-2 font-bold">完了タスク</div>
+        <div class="border bg-blue-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
             <% @completed_gives.each do |give| %>
               <li class="mb-2 text-xs sm:text-sm">
                 <% if give.deadline.present? %>
@@ -103,59 +109,67 @@
                       <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none" %>
                     </div>
                   </div>
-                <%else%>
+                <% else %>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                     <div class="flex gap-2">
                       <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none" %>
                     </div>
                   </div>
-                <%end%>
+                <% end %>
               </li>
-            <%end%>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-    
-  <%else%>
-  
+
+  <% else %>
+
     <div class="flex flex-col sm:flex-row gap-2">
-      <div class="flex w-full sm:w-1/2 mb-2 border bg-red-100 rounded-lg p-2 items-center h-28">
-        <ul class="list-none">
+      <div class="w-full sm:w-1/2 mb-2">
+        <div class="text-left mb-2 font-bold">未完了タスク</div>
+        <div class="border bg-red-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
             <% @uncompleted_gives.each do |give| %>
-              <li class="mb-2 text-sm">
+              <li class="mb-2 text-xs sm:text-sm">
                 <% if give.deadline.present? %>
-                  <div class="flex justify-betwee text-sm gap-2">
+                  <div class="flex justify-between gap-2">
                     <%= "#{give.content} : #{l give.deadline}" %>
                   </div>
-                <%else%>
-                  <div class="flex justify-betwee text-sm gap-2">
+                <% else %>
+                  <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                   </div>
-                <%end%>
+                <% end %>
               </li>
-            <%end%>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="flex w-full sm:w-1/2 mb-2 border bg-blue-100 rounded-lg p-2 items-center h-28">
-        <ul class="list-none">
+
+      <div class="w-full sm:w-1/2 mb-2">
+        <div class="text-left mb-2 font-bold">完了タスク</div>
+        <div class="border bg-blue-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
             <% @completed_gives.each do |give| %>
-              <li class="mb-2 text-sm">
+              <li class="mb-2 text-xs sm:text-sm">
                 <% if give.deadline.present? %>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : #{l give.deadline}" %>
                   </div>
-                <%else%>
+                <% else %>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                   </div>
-                <%end%>
+                <% end %>
               </li>
-            <%end%>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  <%end%>
+  <% end %>
   
   <!-- menber -->
   <div class="text-sm sm:text-base mb-2 font-bold">
