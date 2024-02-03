@@ -16,7 +16,7 @@
         </thead>
         <tbody>
           <% @completed_requests.each_with_index do |request, index| %>
-          <tr data-controller="link" data-action="click->link#go" data-url="<%= group_request_path(params[:group_id], request) %>" class="hover text-center">
+          <tr data-controller="link" data-action="click->link#go" data-url="<%= group_request_path(params[:group_id], request) %>" class="hover hover:cursor-pointer text-center">
             <td class="truncate"><%= index + 1 %></td>
             <td class="truncate"><%= request.take %></td>
             <td class="truncate"><%= request.group.name %></td>
