@@ -1,69 +1,69 @@
 <div class="max-w-2xl mx-auto p-4">
 
-<div class="flex flex-col justify-center items-center mb-4">
-  <div class="flex flex-row items-center justify-between font-bold w-full">
-    <div class="flex-1"></div>
-    <div class="text-base sm:text-xl flex-1 text-center">
-      <%= @group.name %>
-    </div>
-    <div class="flex-1 flex justify-end">
-      <div class="<%= status_bg_color(@request.status) %> text-black text-xs sm:text-sm w-auto text-center justify-end p-0.5">
-        <%= I18n.t("groups.requests.show.#{@request.status}") %>
+  <div class="flex flex-col justify-center items-center mb-4">
+    <div class="flex flex-row items-center justify-between font-bold w-full">
+      <div class="flex-1"></div>
+      <div class="text-base sm:text-xl flex-1 text-center">
+        <%= @group.name %>
+      </div>
+      <div class="flex-1 flex justify-end">
+        <div class="<%= status_bg_color(@request.status) %> text-black text-xs sm:text-sm w-auto text-center justify-end p-0.5">
+          <%= I18n.t("groups.requests.show.#{@request.status}") %>
+        </div>
       </div>
     </div>
+    <div class="flex flex-col items-center text-base sm:text-xl font-semibold">
+      <div class=""><%= "『#{@request.take}』" %></div>
+      <div class="text-sm"><%= "投稿者:#{@request.user.profile.name}" %></div>
+    </div>
   </div>
-  <div class="flex flex-col items-center text-base sm:text-xl font-semibold">
-    <div class=""><%= "『#{@request.take}』" %></div>
-    <div class="text-sm"><%= "投稿者:#{@request.user.profile.name}" %></div>
-  </div>
-</div>
 
   <!-- deadline, comment zone -->
   <% if @request.image.present?%>
-  <div class="flex flex-col sm:flex-row gap-2 mb-4">
-    <!-- File Attachment -->
-    <div>
-      <div class="border rounded-lg p-2">
-          <%= image_tag @request.image_thumbnail %>
-      </div>
-    </div>
-    <div class="w-full">
+    <div class="flex flex-col sm:flex-row gap-2 mb-4">
+      <!-- File Attachment -->
       <div>
-        <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
-        <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
-          <% if @request.execution_date.present?%>
-            <%= l @request.execution_date, format: :japan %>
-          <% else %>
-            <p class="text-sm sm:text-base">要相談</p>
-          <% end %>
+        <div class="border rounded-lg p-2">
+            <%= image_tag @request.image_thumbnail %>
         </div>
-        <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
-        <div class="text-sm sm:text-base border overflow-y-auto rounded-lg sm:h-[200px] p-2">
-          <%= @request.comment%>
+      </div>
+      <div class="w-full">
+        <div>
+          <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
+          <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
+            <% if @request.execution_date.present?%>
+              <%= l @request.execution_date, format: :japan %>
+            <% else %>
+              <p class="text-sm sm:text-base">要相談</p>
+            <% end %>
+          </div>
+          <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
+          <div class="text-sm sm:text-base border overflow-y-auto rounded-lg sm:h-[200px] p-2">
+            <%= @request.comment%>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% else %>
-  <div class="flex flex-col sm:flex-row gap-2 mb-4">
-    <!-- File Attachment -->
-    <div class="w-full">
-      <div>
-        <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
-        <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
-          <% if @request.execution_date.present?%>
-            <%= l @request.execution_date, format: :japan %>
-          <% else %>
-            <p class="text-sm sm:text-base">要相談</p>
-          <% end %>
-        </div>
-        <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
-        <div class="text-sm sm:text-base border overflow-y-auto rounded-lg h-[200px] p-2">
-          <%= @request.comment%>
+    <div class="flex flex-col sm:flex-row gap-2 mb-4">
+      <!-- File Attachment -->
+      <div class="w-full">
+        <div>
+          <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
+          <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
+            <% if @request.execution_date.present?%>
+              <%= l @request.execution_date, format: :japan %>
+            <% else %>
+              <p class="text-sm sm:text-base">要相談</p>
+            <% end %>
+          </div>
+          <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
+          <div class="text-sm sm:text-base border overflow-y-auto rounded-lg h-[200px] p-2">
+            <%= @request.comment%>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
 
   <!-- give zone -->
@@ -116,6 +116,7 @@
         </ul>
       </div>
     </div>
+    
   <%else%>
   
     <div class="flex flex-col sm:flex-row gap-2">
