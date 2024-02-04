@@ -1,76 +1,78 @@
 <div class="max-w-2xl mx-auto p-4">
 
-<div class="flex flex-col justify-center items-center mb-4">
-  <div class="flex flex-row items-center justify-between font-bold w-full">
-    <div class="flex-1"></div>
-    <div class="text-base sm:text-xl flex-1 text-center">
-      <%= @group.name %>
-    </div>
-    <div class="flex-1 flex justify-end">
-      <div class="<%= status_bg_color(@request.status) %> text-black text-xs sm:text-sm w-auto text-center justify-end p-0.5">
-        <%= I18n.t("groups.requests.show.#{@request.status}") %>
+  <div class="flex flex-col justify-center items-center mb-4">
+    <div class="flex flex-row items-center justify-between font-bold w-full">
+      <div class="flex-1"></div>
+      <div class="text-base sm:text-xl flex-1 text-center">
+        <%= @group.name %>
+      </div>
+      <div class="flex-1 flex justify-end">
+        <div class="<%= status_bg_color(@request.status) %> text-black text-xs sm:text-sm w-auto text-center justify-end p-0.5">
+          <%= I18n.t("groups.requests.show.#{@request.status}") %>
+        </div>
       </div>
     </div>
+    <div class="flex flex-col items-center text-base sm:text-xl font-semibold">
+      <div class=""><%= "『#{@request.take}』" %></div>
+      <div class="text-sm"><%= "投稿者:#{@request.user.profile.name}" %></div>
+    </div>
   </div>
-  <div class="flex flex-col items-center text-base sm:text-xl font-semibold">
-    <div class=""><%= "『#{@request.take}』" %></div>
-    <div class="text-sm"><%= "投稿者:#{@request.user.profile.name}" %></div>
-  </div>
-</div>
 
   <!-- deadline, comment zone -->
   <% if @request.image.present?%>
-  <div class="flex flex-col sm:flex-row gap-2 mb-4">
-    <!-- File Attachment -->
-    <div>
-      <div class="border rounded-lg p-2">
-          <%= image_tag @request.image_thumbnail %>
-      </div>
-    </div>
-    <div class="w-full">
+    <div class="flex flex-col sm:flex-row gap-2 mb-4">
+      <!-- File Attachment -->
       <div>
-        <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
-        <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
-          <% if @request.execution_date.present?%>
-            <%= l @request.execution_date, format: :japan %>
-          <% else %>
-            <p class="text-sm sm:text-base">要相談</p>
-          <% end %>
+        <div class="border rounded-lg p-2">
+            <%= image_tag @request.image_thumbnail %>
         </div>
-        <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
-        <div class="text-sm sm:text-base border overflow-y-auto rounded-lg sm:h-[200px] p-2">
-          <%= @request.comment%>
+      </div>
+      <div class="w-full">
+        <div>
+          <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
+          <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
+            <% if @request.execution_date.present?%>
+              <%= l @request.execution_date, format: :japan %>
+            <% else %>
+              <p class="text-sm sm:text-base">要相談</p>
+            <% end %>
+          </div>
+          <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
+          <div class="text-sm sm:text-base border overflow-y-auto rounded-lg sm:h-[200px] p-2">
+            <%= @request.comment%>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% else %>
-  <div class="flex flex-col sm:flex-row gap-2 mb-4">
-    <!-- File Attachment -->
-    <div class="w-full">
-      <div>
-        <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
-        <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
-          <% if @request.execution_date.present?%>
-            <%= l @request.execution_date, format: :japan %>
-          <% else %>
-            <p class="text-sm sm:text-base">要相談</p>
-          <% end %>
-        </div>
-        <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
-        <div class="text-sm sm:text-base border overflow-y-auto rounded-lg h-[200px] p-2">
-          <%= @request.comment%>
+    <div class="flex flex-col sm:flex-row gap-2 mb-4">
+      <!-- File Attachment -->
+      <div class="w-full">
+        <div>
+          <p class="text-sm sm:text-base mb-2 font-bold">日時</p>
+          <div class="text-sm sm:text-base mb-2 border rounded-lg p-2">
+            <% if @request.execution_date.present?%>
+              <%= l @request.execution_date, format: :japan %>
+            <% else %>
+              <p class="text-sm sm:text-base">要相談</p>
+            <% end %>
+          </div>
+          <p class="text-sm sm:text-base mb-2 font-bold">コメント</p>
+          <div class="text-sm sm:text-base border overflow-y-auto rounded-lg h-[200px] p-2">
+            <%= @request.comment%>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
 
   <!-- give zone -->
-  <% if @request.authorized? || @request.possible?%>
+  <% if @request.authorized? || @request.possible? %>
     <div class="flex flex-col sm:flex-row gap-2">
-      <div class="flex w-full sm:w-1/2 mb-2 border bg-red-100 rounded-lg p-2 items-center h-28">
-        <ul class="list-none">
+      <div class="w-full sm:w-1/2 mb-2">
+        <div class="text-left mb-2 font-bold">未完了タスク</div>
+        <div class="border bg-red-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
             <% @uncompleted_gives.each do |give| %>
               <li class="mb-2 text-xs sm:text-sm">
                 <% if give.deadline.present? %>
@@ -80,20 +82,24 @@
                       <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-xs text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
                     </div>
                   </div>
-                <%else%>
+                <% else %>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                     <div class="flex gap-2">
                       <%= button_to "完了", update_status_completed_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-xs text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
                     </div>
                   </div>
-                <%end%>
+                <% end %>
               </li>
-            <%end%>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="flex w-full sm:w-1/2 mb-2 border bg-blue-100 rounded-lg p-2 items-center h-28">
-        <ul class="list-none">
+
+      <div class="w-full sm:w-1/2 mb-2">
+        <div class="text-left mb-2 font-bold">完了タスク</div>
+        <div class="border bg-blue-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
             <% @completed_gives.each do |give| %>
               <li class="mb-2 text-xs sm:text-sm">
                 <% if give.deadline.present? %>
@@ -103,58 +109,67 @@
                       <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none" %>
                     </div>
                   </div>
-                <%else%>
+                <% else %>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                     <div class="flex gap-2">
                       <%= button_to "取消", update_status_uncompleted_group_request_gife_path(@group, @request, give), method: :post, class: "btn-xs text-white bg-rose-400 rounded-md focus:bg-rose-500 focus:outline-none" %>
                     </div>
                   </div>
-                <%end%>
+                <% end %>
               </li>
-            <%end%>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  <%else%>
-  
+
+  <% else %>
+
     <div class="flex flex-col sm:flex-row gap-2">
-      <div class="flex w-full sm:w-1/2 mb-2 border bg-red-100 rounded-lg p-2 items-center h-28">
-        <ul class="list-none">
+      <div class="w-full sm:w-1/2 mb-2">
+        <div class="text-left mb-2 font-bold">未完了タスク</div>
+        <div class="border bg-red-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
             <% @uncompleted_gives.each do |give| %>
-              <li class="mb-2 text-sm">
+              <li class="mb-2 text-xs sm:text-sm">
                 <% if give.deadline.present? %>
-                  <div class="flex justify-betwee text-sm gap-2">
+                  <div class="flex justify-between gap-2">
                     <%= "#{give.content} : #{l give.deadline}" %>
                   </div>
-                <%else%>
-                  <div class="flex justify-betwee text-sm gap-2">
+                <% else %>
+                  <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                   </div>
-                <%end%>
+                <% end %>
               </li>
-            <%end%>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div class="flex w-full sm:w-1/2 mb-2 border bg-blue-100 rounded-lg p-2 items-center h-28">
-        <ul class="list-none">
+
+      <div class="w-full sm:w-1/2 mb-2">
+        <div class="text-left mb-2 font-bold">完了タスク</div>
+        <div class="border bg-blue-100 rounded-lg p-2 items-center h-28">
+          <ul class="list-none">
             <% @completed_gives.each do |give| %>
-              <li class="mb-2 text-sm">
+              <li class="mb-2 text-xs sm:text-sm">
                 <% if give.deadline.present? %>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : #{l give.deadline}" %>
                   </div>
-                <%else%>
+                <% else %>
                   <div class="flex justify-between gap-2">
                     <%= "#{give.content} : 日時未定" %>
                   </div>
-                <%end%>
+                <% end %>
               </li>
-            <%end%>
-        </ul>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  <%end%>
+  <% end %>
   
   <!-- menber -->
   <div class="text-sm sm:text-base mb-2 font-bold">
