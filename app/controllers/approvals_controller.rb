@@ -11,7 +11,7 @@ class ApprovalsController < ApplicationController
       @request.authorized! if @request.authorizers.pluck(:approval_status).sum == @request.authorizers.count
       redirect_to group_requests_path, notice: '承認しました'
     else
-      redirect_to group_request_path(@group, @request), notice: '承認に失敗しました'
+      redirect_to group_request_path(@group, @request), alert: '承認に失敗しました'
 
     end
   end
@@ -24,7 +24,7 @@ class ApprovalsController < ApplicationController
       @request.unauthorized! if @request.authorizers.pluck(:approval_status).sum <= @request.authorizers.count
       redirect_to group_requests_path, notice: '承認を取り消しました'
     else
-      redirect_to group_request_path(@group, @request), notice: '承認取り消しに失敗しました'
+      redirect_to group_request_path(@group, @request), alert: '承認取り消しに失敗しました'
     end
   end
 

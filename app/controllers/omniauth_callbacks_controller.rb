@@ -25,7 +25,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user.set_profile_avatar(@omniauth['info']['image']) if @omniauth['info']['image'].present?
       sign_in_and_redirect @user
     else
-      flash[:notice] = '認証に失敗しました'
+      flash[:alert] = '認証に失敗しました'
       new_user_session_path
     end
   end
