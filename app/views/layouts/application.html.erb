@@ -29,7 +29,7 @@
 
     <div class="mt-20">
       <% flash.each do |key, message| %>
-      <div class="alert alert-<%= key %>">
+      <div class="<%= flash_class_for(key) %> p-4 rounded">
         <%= message %>
       </div>
       <% end %>
