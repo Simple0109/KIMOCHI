@@ -32,6 +32,14 @@ module ApplicationHelper
     end
   end
 
+  def header_top_class
+    if params[:controller] == 'top_page' && params[:action] == 'top'
+      'text-blue-500'
+    else
+      'text-gray-500'
+    end
+  end
+
   def status_bg_color(status)
     case status
     when 'unauthorized'
