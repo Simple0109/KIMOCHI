@@ -4,18 +4,18 @@
   </div>
   <div class="col-span-2">
     <%= f.label :take, class: "mb-2 inline-block font-bold" %>
-    <%= f.text_field :take, class: "w-full rounded border bg-gray-50 px-3 py-2 outline-none ring-indigo-300", placeholder: "例：麻雀がしたい🀄️" %>
+    <%= f.text_field :take, class: "w-full rounded border bg-gray-50 px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300", placeholder: "例：麻雀がしたい🀄️" %>
   </div>
   <div class="col-span-2">
     <%= f.label :execution_date, class: "mb-2 inline-block font-bold" %>
-    <%= f.datetime_field :execution_date, class: "w-full rounded border bg-gray-50 px-3 py-2 outline-none ring-indigo-300" %>
+    <%= f.datetime_field :execution_date, class: "w-full rounded border bg-gray-50 px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" %>
   </div>
   
   <div data-controller="image-preview" data-image-preview-width="200" class="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
     <!-- 左側: 画像アップロードフィールド -->
     <div>
       <%= f.label :image, class: "mb-2 inline-block font-bold" %>
-      <%= f.file_field :image, data: {"image-preview-target": "input", "action": "change->image-preview#previewImage"}, class: "w-full rounded border bg-gray-50 px-3 py-2 outline-none ring-indigo-300 transition" %>
+      <%= f.file_field :image, data: {"image-preview-target": "input", "action": "change->image-preview#previewImage"}, class: "w-full rounded border bg-gray-50 px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 transition" %>
     </div>
     <!-- 右側: 画像プレビュー表示 -->
     <div data-image-preview-target="preview" class="col-span-1"></div>
@@ -26,11 +26,11 @@
   <%= f.fields_for :gives do |give_f| %>
     <div class="col-span-2 sm:col-span-1">
       <%= give_f.label :content, class: "mb-2 inline-block font-bold" %>
-      <%= give_f.text_field :content, class: "w-full rounded border bg-gray-50 px-3 py-2 outline-none ring-indigo-300 transition", placeholder: "例：風呂掃除" %>
+      <%= give_f.text_field :content, class: "w-full rounded border bg-gray-50 px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 transition", placeholder: "例：風呂掃除" %>
     </div>
     <div class="col-span-2 sm:col-span-1">
       <%= give_f.label :deadline, class: "mb-2 inline-block font-bold" %>
-      <%= give_f.datetime_field :deadline, class: "w-full rounded border bg-gray-50 px-3 py-2 outline-none ring-indigo-300 transition" %>
+      <%= give_f.datetime_field :deadline, class: "w-full rounded border bg-gray-50 px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 transition" %>
     </div>
   <%end%>
 
@@ -38,11 +38,11 @@
 
   <div class="col-span-2">
     <%= f.label :comment, class: "mb-2 inline-block font-bold" %>
-    <%= f.text_area :comment, class: "w-full rounded border bg-gray-50 px-3 py-2 outline-none ring-indigo-300 transition", placeholder: "例：バスマジックリンも買ってきます！" %>
+    <%= f.text_area :comment, class: "w-full rounded border bg-gray-50 px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 transition", placeholder: "例：バスマジックリンも買ってきます！" %>
   </div>
   <div class="col-span-2">
     <%= f.label :authorizers, class: "mb-2 inline-block font-bold" %>
-      <div class="w-full rounded border bg-gray-50 px-3 py-2 outline-none ring-indigo-300 transition">
+      <div class="w-full rounded border bg-gray-50 px-3 py-2 focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 transition">
         <%= collection_check_boxes(:request, :authorizer_ids, group.users.reject { |user| user == current_user }, :id, proc{ |user| user.profile.name }) do |a|%>
           <%= a.label {a.check_box + a.text}%>
         <% end %>
