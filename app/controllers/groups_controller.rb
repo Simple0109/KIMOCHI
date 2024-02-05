@@ -25,6 +25,7 @@ class GroupsController < ApplicationController
       @group.users << current_user
       redirect_to groups_path
     else
+      flash.now[:alert] = "#{@group.name}の作成に失敗しました"
       render :new
     end
   end
@@ -33,6 +34,7 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to groups_path
     else
+      flash.now[:alert] = "#{@group.name}の更新に失敗しました"
       render :edit
     end
   end

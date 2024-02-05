@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
       if GroupUser.find_by(group_id: group.id, user_id: resource.id).present?
         session[:group_id] = nil
         group.update(invite_token: nil)
-        flash[:notice] = "すでに#{group.name}グループに参加しています"
+        flash[:alert] = "すでに#{group.name}グループに参加しています"
       else
         GroupUser.create(user_id: resource.id, group_id: group.id)
         session[:group_id] = nil

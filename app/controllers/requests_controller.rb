@@ -44,7 +44,9 @@ class RequestsController < ApplicationController
         request.authorizers << authorizer
       end
       redirect_to group_requests_path
+      flash[:notice] = "#{request.take}の作成が完了しました"
     else
+      flash.now[:alert] = "#{request.take}の作成が失敗しました"
       render :new
     end
   end
@@ -64,9 +66,10 @@ class RequestsController < ApplicationController
         new_authorizer = User.find(new_user_id)
         @request.authorizers << new_authorizer
       end
-      redirect_to group_request_path(@group, @request), notice: '更新しました'
+      redirect_to group_request_path(@group, @request), notice: "#{@request.take}更新しました"
     else
       render :edit
+      flash.now[:alert] = "#{@request.take}の更新に失敗しました"
     end
   end
 
@@ -74,7 +77,7 @@ class RequestsController < ApplicationController
     return unless @request.own?(current_user)
 
     @request.destroy
-    redirect_to group_requests_path(@group, @request)
+    redirect_to group_requests_path(@group, @request), notice: "#{@request.take}の削除に成功しました"
   end
 
   private
