@@ -4,12 +4,12 @@
 
             <%= form_with model: group, url: form_url, local: true do |f| %>
             <div class="mb-6">
-              <%= f.label :name, class: "block mb-2 text-base text-gray-500" %>
+              <%= f.label :name, class: "block mb-2 text-base font-bold text-gray-500" %>
               <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "らんてっくぐるーぷ",
                 class: "w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" %>
             </div>
             <div class="mb-6">
-              <%= f.label :description, class: "block mb-2 text-base text-gray-500" %>
+              <%= f.label :description, class: "block mb-2 text-base font-bold text-gray-500" %>
               <%= f.text_area :description, autofocus: true, placeholder: "グループの説明",
                 class: "w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300" %>
             </div>
