@@ -15,7 +15,7 @@
           <%= link_to "所属グループ一覧", groups_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] #{ header_group_index_class } hover:text-blue-500" %>
         </li>
         <li>
-          <%= link_to "使い方", root_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] #{ header_group_index_class } hover:text-blue-500" %>
+          <%= link_to "使い方", root_path, class: "px-6 py-6 text-sm border-b-2 border-transparent leading-[22px] #{ header_top_class } hover:text-blue-500" %>
         </li>
         <li>
               <%= button_to "ログアウト", destroy_user_session_path, method: :delete, data: {controller: "logout" }, class: "px-2 sm:px-6 py-0 sm:py-2 text-xs sm:text-sm border-b-2 border-transparent leading-[22px] text-gray-500 hover:text-blue-500" %>
