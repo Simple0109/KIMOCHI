@@ -23,7 +23,7 @@ class GroupsController < ApplicationController
     @group.owner = current_user
     if @group.save
       @group.users << current_user
-      redirect_to groups_path
+      redirect_to groups_path, notice: "#{@group.name}グループを作成しました"
     else
       flash.now[:alert] = "#{@group.name}の作成に失敗しました"
       render :new
