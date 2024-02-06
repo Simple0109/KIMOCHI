@@ -6,7 +6,7 @@ class InvitesController < ApplicationController
 
     InviteTokenRemovalJob.set(wait: 30.minutes).perform_later(group.id)
 
-    redirect_to group_path(group)
+    redirect_to group_path(group), notice: "#{group.name}の招待リンクを作成しました。リンクをコピーして招待したい人にURLを送りましょう!"
   end
 
   def process_invite_link
