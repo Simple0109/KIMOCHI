@@ -9,9 +9,9 @@
         <% if @profile.avatar.attached? %>
             <%= image_tag(@profile.avatar_thumbnail)%>
         <% end %>
-        <div data-controller="image-preview" data-image-preview-width="250">
+        <div data-controller="image-preview" data-image-preview-width="200">
           <%= f.file_field :avatar, data: { "image-preview-target": "input", "action": "change->image-preview#previewImage"}, class: "object-cover object-center rounded" %>
-          <div data-image-preview-target="preview" class="mt-5"></div>
+          <div data-image-preview-target="preview" class="mt-5 flex justify-center"></div>
         </div>
       </div>
 
