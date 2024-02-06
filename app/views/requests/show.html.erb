@@ -175,7 +175,7 @@
   <div class="text-sm sm:text-base mb-2 font-bold">
     承認者
   </div>
-  <ul class="flex mb-4 list-none list-inside border rounded-lg p-6">
+  <ul class="flex mb-4 list-none list-inside border rounded-lg p-2">
     <% @request.authorizers.each do |authorizer| %>
       <% request_user = @request.request_users.find_by(user_id: authorizer.id) %>
       <li class="mr-2">
