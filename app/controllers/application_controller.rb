@@ -29,8 +29,6 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    super
-
     if resource.sign_in_count == 1
       root_path
     else
