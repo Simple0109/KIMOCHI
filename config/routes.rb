@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   get 'privacy', to: 'top_page#privacy'
 
   devise_for :users, controllers: {
-    omniauth_callbacks: 'omniauth_callbacks'
+    omniauth_callbacks: 'omniauth_callbacks',
+    sessions: 'users/sessions'
   }
   resource :profile, only: %i[show edit update] do
     get 'personal_requests', to: 'profiles#personal_requests'
