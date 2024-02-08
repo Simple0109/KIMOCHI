@@ -35,7 +35,7 @@ graph TD
 |プロフィール詳細画面|プロフィール編集画面|
 | ---- | ---- |
 |![readme_profile_show](https://github.com/Simple0109/kimochi3/assets/128764572/d8b3dfd8-8fff-47ea-8466-f73ef1c060c7)|![readme_profile_edit](https://github.com/Simple0109/kimochi3/assets/128764572/50c3ab4d-9815-4ac5-943b-1186a0256777)|
-|LINEアイコンの自動で自身のアイコンになるよう実装|プロフィール画像を選択した際、プレビュー画像が表示される機能実装|
+|LINEアイコンの自動で自身のアイコンになるよう実装|プレビュー画像表示表示機能実装|
 
 |グループ作成画面|グループ一覧画面|
 | ---- | ---- |
@@ -47,6 +47,25 @@ graph TD
 |![group_show](https://github.com/Simple0109/kimochi3/assets/128764572/86cb4656-ad72-479f-8ddf-2acdf9d45ab5)|![invite_group](https://github.com/Simple0109/kimochi3/assets/128764572/304ebf1b-d937-4db7-98c5-a269f75a9646)|
 |グループ詳細表示機能|招待リンクを作成し、そのリンクに他ユーザーがアクセスするとグループに所属する機能を実装|
 
+|リクエスト作成画面|リクエスト一覧画面|
+| ---- | ---- |
+|![request_new](https://github.com/Simple0109/kimochi3/assets/128764572/ebdebd5b-b829-495e-b63d-f6d29225eed0)|![request_index](https://github.com/Simple0109/kimochi3/assets/128764572/f8bdf1c8-9314-4387-91c1-d8c9efe7a051)|
+|新規リクエスト作成機能|状態別リクエスト一覧機能|
+
+|リクエスト詳細画面|リクエスト状態表示|
+| ---- | ---- |
+|![request_show](https://github.com/Simple0109/kimochi3/assets/128764572/b594bfd6-f86c-443b-b8aa-b53a8967f623)|![request_status](https://github.com/Simple0109/kimochi3/assets/128764572/42f61011-9e5b-4198-8b03-9d25a87f88f9)|
+|リクエスト詳細機能|リクエストの状態を動的に表示する機能を実装|
+
+|リアルタイムチャット画面|リクエスト承認機能|
+| ---- | ---- |
+|![realtime_chat](https://github.com/Simple0109/kimochi3/assets/128764572/7904a4e6-d215-470d-8e83-728b07df806c)|![approval](https://github.com/Simple0109/kimochi3/assets/128764572/31d84895-29bf-49bc-a5a0-fe734eda0d59)|
+|リクエスト毎にリアルタイムチャット機能実装|承認者によるリクエスト承認機能実装|
+
+|タスク完了・完了取消機能|リクエスト完了機能|
+| ---- | ---- |
+|![task_conpleted_or_uncompleted](https://github.com/Simple0109/kimochi3/assets/128764572/f02b2704-d583-494d-a925-47a125bb028d)|![request_completed](https://github.com/Simple0109/kimochi3/assets/128764572/52a78dd5-06ae-449c-af9b-c8dcd8b45364)|
+|タスク完了・完了取消機能実装(リクエストが承諾された場合表示)|リクエスト完了機能実装(タスクを全て完了した場合に出現)|
 
 ## 実装を予定している機能
 ### MVP
