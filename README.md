@@ -67,6 +67,11 @@ graph TD
 |![task_conpleted_or_uncompleted](https://github.com/Simple0109/kimochi3/assets/128764572/f02b2704-d583-494d-a925-47a125bb028d)|![request_completed](https://github.com/Simple0109/kimochi3/assets/128764572/52a78dd5-06ae-449c-af9b-c8dcd8b45364)|
 |タスク完了・完了取消機能実装(リクエストが承諾された場合表示)|リクエスト完了機能実装(タスクを全て完了した場合に出現)|
 
+|完了リクエスト一覧画面|個人リクエスト一覧画面|
+| ---- | ---- |
+|![completed_request](https://github.com/Simple0109/kimochi3/assets/128764572/ccc57154-4f78-4748-b69d-6ef3c9c178ed)|![personal_request](https://github.com/Simple0109/kimochi3/assets/128764572/adb1d85d-120f-4fc4-b6e4-2522a74615f9)|
+|グループ毎に完了したリクエスト一覧を表示する機能実装|ユーザー毎に作成したリクエスト一覧を表示する機能実装|
+
 ## 実装を予定している機能
 ### MVP
 * 会員登録
