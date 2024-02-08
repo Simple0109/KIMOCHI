@@ -20,7 +20,7 @@ class InvitesController < ApplicationController
 
       redirect_to root_path, notice: "#{@group.name}グループに追加されました"
     else
-      redirect_to user_session_path
+      redirect_to root_path
     end
   end
 end
