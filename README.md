@@ -26,6 +26,28 @@ graph TD
  H-->|不承諾| B
  ```
 
+## 機能一覧
+| トップ画面|
+| ---- |
+|![readme_toppage](https://github.com/Simple0109/kimochi3/assets/128764572/7d76a557-93ba-44d3-97af-d16b745d55bd)|
+|LINEによる外部認証を実装|
+
+|プロフィール詳細画面|プロフィール編集画面|
+| ---- | ---- |
+|![readme_profile_show](https://github.com/Simple0109/kimochi3/assets/128764572/d8b3dfd8-8fff-47ea-8466-f73ef1c060c7)|![readme_profile_edit](https://github.com/Simple0109/kimochi3/assets/128764572/50c3ab4d-9815-4ac5-943b-1186a0256777)|
+|LINEアイコンの自動で自身のアイコンになるよう実装|プロフィール画像を選択した際、プレビュー画像が表示される機能実装|
+
+|グループ作成画面|グループ一覧画面|
+| ---- | ---- |
+|![group_new](https://github.com/Simple0109/kimochi3/assets/128764572/e82541f3-7e01-4544-a98c-cd2d6df68d46)|![group_index](https://github.com/Simple0109/kimochi3/assets/128764572/c5fdf1ca-6b25-4f69-9833-52f2488ecd2a)|
+|新規グループ作成機能|所属グループ一覧表示機能|
+
+|グループ詳細画面|招待リンク作成機能|
+| ---- | ---- |
+|![group_show](https://github.com/Simple0109/kimochi3/assets/128764572/86cb4656-ad72-479f-8ddf-2acdf9d45ab5)|![invite_group](https://github.com/Simple0109/kimochi3/assets/128764572/304ebf1b-d937-4db7-98c5-a269f75a9646)|
+|グループ詳細表示機能|招待リンクを作成し、そのリンクに他ユーザーがアクセスするとグループに所属する機能を実装|
+
+
 ## 実装を予定している機能
 ### MVP
 * 会員登録
