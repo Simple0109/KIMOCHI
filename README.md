@@ -35,7 +35,7 @@ graph TD
 |プロフィール詳細画面|プロフィール編集画面|
 | ---- | ---- |
 |![readme_profile_show](https://github.com/Simple0109/kimochi3/assets/128764572/d8b3dfd8-8fff-47ea-8466-f73ef1c060c7)|![readme_profile_edit](https://github.com/Simple0109/kimochi3/assets/128764572/50c3ab4d-9815-4ac5-943b-1186a0256777)|
-|LINEアイコンの自動で自身のアイコンになるよう実装|プレビュー画像表示表示機能実装|
+|LINEアイコンが自動で自身のアイコンになるよう実装|プレビュー画像表示表示機能実装|
 
 |グループ作成画面|グループ一覧画面|
 | ---- | ---- |
@@ -72,40 +72,37 @@ graph TD
 |![completed_request](https://github.com/Simple0109/kimochi3/assets/128764572/ccc57154-4f78-4748-b69d-6ef3c9c178ed)|![personal_request](https://github.com/Simple0109/kimochi3/assets/128764572/adb1d85d-120f-4fc4-b6e4-2522a74615f9)|
 |グループ毎に完了したリクエスト一覧を表示する機能実装|ユーザー毎に作成したリクエスト一覧を表示する機能実装|
 
-## 実装を予定している機能
-### MVP
-* 会員登録
-* ログイン
-* 招待機能
-* 投稿機能
-* 投稿一覧表示機能
-* カテゴリ機能
-* アラート機能(LINE Messaging API)
+|LINEプッシュ通知画面||
+| ---- | ---- |
+|||
+|報酬の実行予定日当日9時にLINEプッシュ通知機能実装||
 
 
-### その後の機能
-* リアルタイムチャット機能(ActionCable)
 
 ## 使用技術
-### バックエンド
-* ruby on rails 7.0.7
-* ruby 3.2.2
+| Category          | Technology Stack                                     |
+| ----------------- | --------------------------------------------------   |
+| Frontend          | Stimulus(3.2.2), Tailwind CSS(3.3.6), DaisyUI(3.9.4) |
+| Backend           | Ruby(3.2.2), Ruby on Rails(7.0.8)                    |
+| Infrastructure    | Heroku                                               |
+| Database          | PostgreSQL                                           |
+| CI/CD             | GitHub Actions                                       |
+| etc.              | RuboCop, RSpec, Git, GitHub |
 
-### フロントエンド
-* Tailwind CSS
+
 
 ### GEM
 * device(ログイン・認証機能)
 * omniauth-line, omniauth-rails_csrf_protection(LINEログイン)
+* line_bot_api(LINEプッシュ通知)
 * kaminari(ページネーション)
-* Active Admin(管理画面)
 * ActiveStorage(ファイルアップロード、保存)
+* activestorage-validator(アップロードされるファイルのバリデーション設定)
 * image_processing(画像リサイズ、ファイル容量一律化)
 * rubocop(lintチェック)
 * RSpec(テスト)
+* delayed_job_active_record(招待リンクの時限式削除)
 
-### デプロイ
-* heroku
 
 ## 画面遷移図
 [figma](https://www.figma.com/file/sd5Sa6ScSJaa9vY1S6LSNU/PF(KIMOCHI%EF%BC%89?type=design&node-id=0%3A1&mode=design&t=gUPB3r8R1ZEGAyfV-1))
