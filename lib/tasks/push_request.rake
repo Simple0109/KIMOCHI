@@ -13,7 +13,7 @@ namespace :push_request do
     limit_requests.each do |r|
       message = {
         type: "text",
-        text: "今日は「#{r.take}」をの実行日です"
+        text: "今日は「#{r.take}」の実行日です"
       }
       response = client.push_message(r.user_uid, message)
     end
