@@ -42,10 +42,15 @@ graph TD
 |![group_new](https://github.com/Simple0109/kimochi3/assets/128764572/e82541f3-7e01-4544-a98c-cd2d6df68d46)|![group_index](https://github.com/Simple0109/kimochi3/assets/128764572/c5fdf1ca-6b25-4f69-9833-52f2488ecd2a)|
 |新規グループ作成機能|所属グループ一覧表示機能|
 
-|グループ詳細画面|招待リンク作成機能|
-| ---- | ---- |
-|![group_show](https://github.com/Simple0109/kimochi3/assets/128764572/86cb4656-ad72-479f-8ddf-2acdf9d45ab5)|![invite_group](https://github.com/Simple0109/kimochi3/assets/128764572/304ebf1b-d937-4db7-98c5-a269f75a9646)|
-|グループ詳細表示機能|招待リンクを作成し、そのリンクに他ユーザーがアクセスするとグループに所属する機能を実装|
+|グループ詳細画面|
+| ---- |
+|![group_show](https://github.com/Simple0109/kimochi3/assets/128764572/86cb4656-ad72-479f-8ddf-2acdf9d45ab5)|
+|グループ詳細表示機能|
+
+|招待リンク作成機能|
+| ---- |
+|![invite_group](https://github.com/Simple0109/kimochi3/assets/128764572/304ebf1b-d937-4db7-98c5-a269f75a9646)|
+|招待リンクを作成し、そのリンクに他ユーザーがアクセスするとグループに所属する機能を実装|
 
 |リクエスト作成画面|リクエスト一覧画面|
 | ---- | ---- |
