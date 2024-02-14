@@ -32,10 +32,10 @@ graph TD
 |![readme_toppage](https://github.com/Simple0109/kimochi3/assets/128764572/7d76a557-93ba-44d3-97af-d16b745d55bd)|
 |LINEによる外部認証を実装|
 
-|プロフィール詳細画面|プロフィール編集画面|
+|プロフィール詳細画面|プレビュー画像|
 | ---- | ---- |
-|![readme_profile_show](https://github.com/Simple0109/kimochi3/assets/128764572/d8b3dfd8-8fff-47ea-8466-f73ef1c060c7)|![readme_profile_edit](https://github.com/Simple0109/kimochi3/assets/128764572/50c3ab4d-9815-4ac5-943b-1186a0256777)|
-|LINEアイコンが自動で自身のアイコンになるよう実装|プレビュー画像表示表示機能実装|
+|![profile_show](https://github.com/Simple0109/kimochi3/assets/128764572/8d0f7050-bf18-4956-a850-30678c05e357)|![preview](https://github.com/Simple0109/kimochi3/assets/128764572/20514482-c7f2-422d-b6b5-42cf7faae3e5)|
+|LINEアイコンが自動で自身のアイコンになるよう実装|プレビュー画像表示機能実装|
 
 |グループ作成画面|グループ一覧画面|
 | ---- | ---- |
