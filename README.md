@@ -82,10 +82,10 @@ graph TD
 |![personal_request](https://github.com/Simple0109/kimochi3/assets/128764572/adb1d85d-120f-4fc4-b6e4-2522a74615f9)|
 |ユーザー毎に作成したリクエスト一覧を表示する機能実装|
 
-|LINEプッシュ通知画面||
-| ---- | ---- |
-|||
-|報酬の実行予定日当日9時にLINEプッシュ通知機能実装||
+|LINEプッシュ通知画面|
+| ---- |
+|![push](https://github.com/Simple0109/kimochi3/assets/128764572/9acc8043-fc64-4524-a3d0-ae25a78d42b1)|
+|報酬の実行予定日当日8時にLINEプッシュ通知機能実装||
 
 
 
