@@ -84,8 +84,8 @@ graph TD
 
 |LINEプッシュ通知画面|
 | ---- |
-|![push](https://github.com/Simple0109/kimochi3/assets/128764572/9acc8043-fc64-4524-a3d0-ae25a78d42b1)|
-|報酬の実行予定日当日8時にLINEプッシュ通知機能実装||
+|![push_mini](https://github.com/Simple0109/kimochi3/assets/128764572/60a5660d-6f8e-4e6f-a9fa-ec8cc03c5a30)|
+|報酬の実行予定日当日8時にLINEプッシュ通知機能実装|
 
 
 
