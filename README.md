@@ -32,20 +32,25 @@ graph TD
 |![readme_toppage](https://github.com/Simple0109/kimochi3/assets/128764572/7d76a557-93ba-44d3-97af-d16b745d55bd)|
 |LINEによる外部認証を実装|
 
-|プロフィール詳細画面|プロフィール編集画面|
+|プロフィール詳細画面|プレビュー画像|
 | ---- | ---- |
-|![readme_profile_show](https://github.com/Simple0109/kimochi3/assets/128764572/d8b3dfd8-8fff-47ea-8466-f73ef1c060c7)|![readme_profile_edit](https://github.com/Simple0109/kimochi3/assets/128764572/50c3ab4d-9815-4ac5-943b-1186a0256777)|
-|LINEアイコンが自動で自身のアイコンになるよう実装|プレビュー画像表示表示機能実装|
+|![profile_show](https://github.com/Simple0109/kimochi3/assets/128764572/8d0f7050-bf18-4956-a850-30678c05e357)|![preview](https://github.com/Simple0109/kimochi3/assets/128764572/20514482-c7f2-422d-b6b5-42cf7faae3e5)|
+|LINEアイコンが自動で自身のアイコンになるよう実装|プレビュー画像表示機能実装|
 
 |グループ作成画面|グループ一覧画面|
 | ---- | ---- |
 |![group_new](https://github.com/Simple0109/kimochi3/assets/128764572/e82541f3-7e01-4544-a98c-cd2d6df68d46)|![group_index](https://github.com/Simple0109/kimochi3/assets/128764572/c5fdf1ca-6b25-4f69-9833-52f2488ecd2a)|
 |新規グループ作成機能|所属グループ一覧表示機能|
 
-|グループ詳細画面|招待リンク作成機能|
-| ---- | ---- |
-|![group_show](https://github.com/Simple0109/kimochi3/assets/128764572/86cb4656-ad72-479f-8ddf-2acdf9d45ab5)|![invite_group](https://github.com/Simple0109/kimochi3/assets/128764572/304ebf1b-d937-4db7-98c5-a269f75a9646)|
-|グループ詳細表示機能|招待リンクを作成し、そのリンクに他ユーザーがアクセスするとグループに所属する機能を実装|
+|グループ詳細画面|
+| ---- |
+|![group_show](https://github.com/Simple0109/kimochi3/assets/128764572/86cb4656-ad72-479f-8ddf-2acdf9d45ab5)|
+|グループ詳細表示機能|
+
+|招待リンク作成機能|
+| ---- |
+|![invite_group](https://github.com/Simple0109/kimochi3/assets/128764572/304ebf1b-d937-4db7-98c5-a269f75a9646)|
+|招待リンクを作成し、そのリンクに他ユーザーがアクセスするとグループに所属する機能を実装|
 
 |リクエスト作成画面|リクエスト一覧画面|
 | ---- | ---- |
@@ -67,15 +72,20 @@ graph TD
 |![task_conpleted_or_uncompleted](https://github.com/Simple0109/kimochi3/assets/128764572/f02b2704-d583-494d-a925-47a125bb028d)|![request_completed](https://github.com/Simple0109/kimochi3/assets/128764572/52a78dd5-06ae-449c-af9b-c8dcd8b45364)|
 |タスク完了・完了取消機能実装(リクエストが承諾された場合表示)|リクエスト完了機能実装(タスクを全て完了した場合に出現)|
 
-|完了リクエスト一覧画面|個人リクエスト一覧画面|
-| ---- | ---- |
-|![completed_request](https://github.com/Simple0109/kimochi3/assets/128764572/ccc57154-4f78-4748-b69d-6ef3c9c178ed)|![personal_request](https://github.com/Simple0109/kimochi3/assets/128764572/adb1d85d-120f-4fc4-b6e4-2522a74615f9)|
-|グループ毎に完了したリクエスト一覧を表示する機能実装|ユーザー毎に作成したリクエスト一覧を表示する機能実装|
+|完了リクエスト一覧画面|
+| ---- |
+|![completed_request](https://github.com/Simple0109/kimochi3/assets/128764572/ccc57154-4f78-4748-b69d-6ef3c9c178ed)|
+|グループ毎に完了したリクエスト一覧を表示する機能実装|
 
-|LINEプッシュ通知画面||
-| ---- | ---- |
-|||
-|報酬の実行予定日当日9時にLINEプッシュ通知機能実装||
+|個人リクエスト一覧画面|
+| ---- |
+|![personal_request](https://github.com/Simple0109/kimochi3/assets/128764572/adb1d85d-120f-4fc4-b6e4-2522a74615f9)|
+|ユーザー毎に作成したリクエスト一覧を表示する機能実装|
+
+|LINEプッシュ通知画面|
+| ---- |
+|![push](https://github.com/Simple0109/kimochi3/assets/128764572/9acc8043-fc64-4524-a3d0-ae25a78d42b1)|
+|報酬の実行予定日当日8時にLINEプッシュ通知機能実装||
 
 
 
