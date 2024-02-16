@@ -8,7 +8,7 @@ RSpec.describe "Profile", type: :system do
       click_on 'LINEアカウントでログイン'
       visit profile_path
     end
-    context 'プロフィール詳細画面が表示されている場合' do
+    context 'プロフィール詳細' do
       it 'プロフィール名が表示されている' do
         expect(page).to have_content 'test_user'
       end
@@ -19,6 +19,23 @@ RSpec.describe "Profile", type: :system do
       it '個人リクエスト一覧ボタンを押すと個人リクエスト一覧画面に遷移する' do
         click_on '個人リクエスト一覧'
         expect(page).to have_current_path(personal_requests_profile_path)
+      end
+    end
+    context 'プロフィール編集' do
+      before do
+        visit edit_profile_path
+      end
+      fit 'フォームが正しく表示されている' do
+        expect(page).to have_field('名前', with: 'test_user')
+        expect(page).to have_field('自己紹介')
+      end
+      fit 'フォームの内容を変更して更新することができる' do
+        fill_in '名前', with: 'test_user_2'
+        fill_in '自己紹介', with: '自己紹介テスト'
+        click_on '更新'
+        expect(page).to have_current_path(profile_path)
+        expect(page).to have_content 'test_user_2'
+        expect(page).to have_content '自己紹介テスト'
       end
     end
   end
