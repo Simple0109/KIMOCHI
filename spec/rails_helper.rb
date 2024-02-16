@@ -65,5 +65,6 @@ RSpec.configure do |config|
     driven_by(:selenium_chrome_headless)
     # driven_by(:selenium_chrome)
     # driven_by(:rack_test)
+    config.include AuthHelpers, type: :system
   end
 end
