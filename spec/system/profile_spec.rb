@@ -30,15 +30,18 @@ RSpec.describe "Profile", type: :system do
       it 'フォームが正しく表示されている' do
         expect(page).to have_field('名前', with: user.profile.name)
         expect(page).to have_field('自己紹介')
+        expect(page).to have_selector("img[src$='test.png']")
       end
       it 'フォームの内容を変更して更新することができる' do
         fill_in '名前', with: 'test_user_2'
         fill_in '自己紹介', with: '自己紹介テスト'
+        attach_file 'profile[avatar]', Rails.root.join('spec/fixtures/test2.png')
 
         click_on '更新'
         expect(page).to have_current_path(profile_path)
         expect(page).to have_content 'test_user_2'
         expect(page).to have_content '自己紹介テスト'
+        expect(page).to have_selector("img[src$='test2.png']")
       end
     end
   end
