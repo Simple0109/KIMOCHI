@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Profile", type: :system do
   describe 'プロフィール' do
+    let(:user) { create(:user) }
     before do
+      Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:line]
       user_sign_in_via_line
       visit root_path
       click_on 'LINEアカウントでログイン'
@@ -10,7 +12,7 @@ RSpec.describe "Profile", type: :system do
     end
     context 'プロフィール詳細' do
       it 'プロフィール名が表示されている' do
-        expect(page).to have_content 'test_user'
+        expect(page).to have_content(user.profile.name)
       end
       it '編集ボタンを押すとプロフィール編集画面に遷移する' do
         click_on '編集'
@@ -25,13 +27,14 @@ RSpec.describe "Profile", type: :system do
       before do
         visit edit_profile_path
       end
-      fit 'フォームが正しく表示されている' do
-        expect(page).to have_field('名前', with: 'test_user')
+      it 'フォームが正しく表示されている' do
+        expect(page).to have_field('名前', with: user.profile.name)
         expect(page).to have_field('自己紹介')
       end
-      fit 'フォームの内容を変更して更新することができる' do
+      it 'フォームの内容を変更して更新することができる' do
         fill_in '名前', with: 'test_user_2'
         fill_in '自己紹介', with: '自己紹介テスト'
+
         click_on '更新'
         expect(page).to have_current_path(profile_path)
         expect(page).to have_content 'test_user_2'
