@@ -1,5 +1,5 @@
 module AuthHelpers
-  def user_sign_in_via_line
+  def user_sign_in_via_line(user)
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:line] = OmniAuth::AuthHash.new(
       provider: 'line',

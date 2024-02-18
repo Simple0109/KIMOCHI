@@ -189,6 +189,8 @@ GEM
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
+    launchy (2.5.2)
+      addressable (~> 2.8)
     line-bot-api (1.28.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -429,6 +431,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kaminari
+  launchy
   line-bot-api
   meta-tags
   mimemagic
