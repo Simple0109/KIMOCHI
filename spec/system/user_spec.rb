@@ -4,7 +4,7 @@ RSpec.describe "Users", type: :system do
   let(:user) { create(:user) }
 
   before do
-    user_sign_in_via_line
+    user_sign_in_via_line(user)
     visit root_path
   end
 
