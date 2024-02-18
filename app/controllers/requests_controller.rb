@@ -77,7 +77,7 @@ class RequestsController < ApplicationController
     return unless @request.own?(current_user)
 
     @request.destroy
-    redirect_to group_requests_path(@group, @request), notice: "#{@request.take}の削除に成功しました"
+    redirect_to group_requests_path(@group), notice: "#{@request.take}の削除に成功しました"
   end
 
   private

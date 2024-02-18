@@ -5,7 +5,7 @@ RSpec.describe "Profile", type: :system do
     let(:user) { create(:user) }
     before do
       Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:line]
-      user_sign_in_via_line
+      user_sign_in_via_line(user)
       visit root_path
       click_on 'LINEアカウントでログイン'
       visit profile_path

@@ -31,7 +31,7 @@ RSpec.describe "Group", type: :system do
         click_on '更新'
         expect(page).to have_content('テストグループ更新')
       end
-      fit 'グループの削除に成功する' do
+      it 'グループの削除に成功する' do
         visit group_path(group)
         find_button('削除').click
         expect(page).not_to have_content(group.name)
