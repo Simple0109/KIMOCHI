@@ -211,9 +211,9 @@
         <!-- Stimulusの機能を持たせるためにform要素を追加し、data-action属性を設定 -->
         <form class="w-full" data-action="chat#send">
           <!-- textareaをinputタイプに変更し、Stimulusのdata-chat-target属性を追加 -->
-          <textarea class="w-9/12 sm:w-11/12 border rounded p-2 text-sm" data-chat-target="newMessage" rows="1"></textarea>
+          <textarea class="w-9/12 sm:w-11/12 border rounded p-2 text-sm" data-chat-target="newMessage" rows="1" name="chat_text"></textarea>
           <!-- 送信ボタンにtype="submit"を追加 -->
-          <button type="submit" class="ml-2">
+          <button type="submit" class="ml-2" name="send_button">
             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-forward" width="32" height="32" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
               <path d="M4 21v-13a3 3 0 0 1 3 -3h10a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-9l-4 4" />
