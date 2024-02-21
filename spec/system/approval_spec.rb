@@ -94,12 +94,22 @@ RSpec.describe "Approval", type: :system do
         expect(page).to have_content('タスク実行可能')
       end
 
-      fit 'request.statusが2の状態から、giveの完了を取り消すと、request.statusが1(authorized)になる' do
+      it 'request.statusが2(possible)の状態から、giveの完了を取り消すと、request.statusが1(authorized)になる' do
         visit group_request_path(group, request)
         find_button('完了').click
         expect(page).to have_content('タスク実行可能')
         find_button('取消').click
         expect(page).to have_content('承認済')
+      end
+
+      it 'request.statusが2(possible)の状態から、リクエストの完了ボタンを押すとrequest.statusが3(completed)になる' do
+        visit group_request_path(group, request)
+        find_button('完了').click
+        expect(page).to have_content('タスク実行可能')
+        find_button('完了').click
+        expect(page).not_to have_content(request.take)
+        visit completed_group_requests_path(group, request)
+        expect(page).to have_content(request.take)
       end
     end
   end
