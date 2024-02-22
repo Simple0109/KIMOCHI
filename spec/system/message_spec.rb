@@ -26,7 +26,7 @@ RSpec.describe 'Message', type: :system do
     end
 
     context 'チャット送信' do
-      fit '既存チャットメッセージの表示が成功している' do
+      it '既存チャットメッセージの表示が成功している' do
         fill_in 'chat_text', with: 'テストチャット'
         find_button('send_button').click
         expect(page).to have_content('テストチャット')
@@ -37,7 +37,7 @@ RSpec.describe 'Message', type: :system do
         end
       end
 
-      fit 'チャットを送信したとき、その内容が自分と相手のチャット欄にリアルタイムで反映される', js: true do
+      it 'チャットを送信したとき、その内容が自分と相手のチャット欄にリアルタイムで反映される', js: true do
         using_session('user_1') do
           visit group_request_path(group, request)
           fill_in 'chat_text', with: 'テストチャット2'
