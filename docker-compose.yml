@@ -8,17 +8,19 @@ services:
       POSTGRES_DB: app
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      kimochi-net:
 
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    command: >
+      bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
     ports:
       - "3000:3000"
     depends_on:
       - db
-      - selenium_chrome
     stdin_open: true
     tty: true
     environment:
@@ -26,11 +28,19 @@ services:
       DB_NAME: app
       DB_USER: postgres
       DB_PASSWORD: postgres
+      SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
+    networks:
+      kimochi-net:
 
   selenium_chrome:
-    image: selenium/standalone-chrome
+    image: seleniarm/standalone-chromium
     ports:
       - 4444:4444
+    networks:
+      kimochi-net:
 
 volumes:
   db_data:
+
+networks:
+  kimochi-net:
