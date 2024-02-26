@@ -4,10 +4,27 @@
       <%= @group.name %>
     </h2>
 
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-10 mb-10">
-      <div class="flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.unauthorized"), requests: @unauthorized_requests, paginate_param: "unauthorized_page" %></div>
-      <div class="flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.authorized"), requests: @authorized_requests, paginate_param: "authorize_page" %></div>
-      <div class="flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.possible"), requests: @possible_requests, paginate_param: "possile_page" %></div>
+    <div data-controller="tab">
+
+      <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 mb-5">
+        <ul class="flex flex-wrap justify-center -mb-px">
+            <li class="mx-10" data-tab-target="tab" class="active" data-tab-status-value="unauthorized" data-action="click->tab#switchTab">
+                <div class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300">未承認</div>
+            </li>
+            <li class="mr-4" data-tab-target="tab" class="" data-tab-status-value="authorized" data-action="click->tab#switchTab">
+                <div class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300">承認済</div>
+            </li>
+            <li class="" data-tab-target="tab" class="" data-tab-status-value="possible" data-action="click->tab#switchTab">
+                <div class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300">タスク実行可能</div>
+            </li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-10 mb-10">
+        <div data-tab-target="panel" status="unauthorized" class="flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.unauthorized"), requests: @unauthorized_requests, paginate_param: "unauthorized_page" %></div>
+        <div data-tab-target="panel" status="authorized" class="hidden flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.authorized"), requests: @authorized_requests, paginate_param: "authorized_page" %></div>
+        <div data-tab-target="panel" status="possible" class="hidden flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.possible"), requests: @possible_requests, paginate_param: "possile_page" %></div>
+      </div>
     </div>
 
     <div class="flex justify-center items-end mt-12 gap-4 font-semibold hover:text-neutral-600">
