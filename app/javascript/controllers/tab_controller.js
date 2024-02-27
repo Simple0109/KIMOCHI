@@ -19,8 +19,14 @@ export default class extends Controller {
   switchTab(event) {
     event.preventDefault();
 
-    this.tabTargets.forEach(tab => tab.classList.remove("active"));
+    this.tabTargets.forEach(tab =>  {
+      tab.classList.remove("active");
+      tab.querySelector('div').classList.remove('text-blue-600');
+      tab.querySelector('div').classList.remove('border-blue-500')
+    });
     event.currentTarget.classList.add("active");
+    event.currentTarget.querySelector('div').classList.add('text-blue-600');
+    event.currentTarget.querySelector('div').classList.add('border-blue-500');
 
     this.updateTabsAndPanels();
   }
