@@ -22,11 +22,14 @@ export default class extends Controller {
     this.tabTargets.forEach(tab =>  {
       tab.classList.remove("active");
       tab.querySelector('div').classList.remove('text-blue-600');
-      tab.querySelector('div').classList.remove('border-blue-500')
+      tab.querySelector('div').classList.remove('border-blue-500');
+      tab.querySelector('div').classList.remove('font-bold');
     });
     event.currentTarget.classList.add("active");
     event.currentTarget.querySelector('div').classList.add('text-blue-600');
     event.currentTarget.querySelector('div').classList.add('border-blue-500');
+    event.currentTarget.querySelector('div').classList.add('font-bold');
+
 
     this.updateTabsAndPanels();
   }
