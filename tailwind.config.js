@@ -6,4 +6,14 @@ module.exports = {
     './app/javascript/**/*.js'
   ],
   plugins: [require("daisyui")],
+  theme: {
+    extend: {
+      order: {
+        '13': '13',
+        '14': '14',
+        '15': '15',
+        '16': '16',
+      },
+    },
+  },
 }
