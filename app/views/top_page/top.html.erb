@@ -59,105 +59,108 @@
 
 <%else%>
 
-  <div class="bg-white py-12 justify-center flex">
-    <div class="mx-auto max-w-screen-md px-4 sm:px-2">
-      <div class="mb-12">
-        <h1 class="mb-3 text-lg sm:text-3xl font-bold text-gray-800 border-b-2">
-          グループを作成しよう!
-        </h1>
+  <div class="my-10">
+    <div class="text-center text-2xl sm:text-3xl font-bold text-gray-800">使い方</div>
+  </div>
 
-        <div class="text-base text-gray-500">
+  <div class="flex justify-center text-center">
+    <div class="grid gap-6 sm:grid-cols-2 grid-cols-1 place-items-center max-w-3xl p-2 text-sm sm:text-base">
+      
+      <div class="w-auto h-auto flex flex-col justify-center">
+        <h1 class="mb-3 text-md sm:text-xl font-bold text-gray-800">
+          グループを作成しよう
+        </h1>
+        <div class="text-sm sm:text-base text-gray-500">
           ヘッダーにある「新規グループ作成」から新しいグループを作成しましょう
         </div>
       </div>
-
-      <div class="mb-12">
-        <h2 class="mb-3 text-lg sm:text-3xl font-bold text-gray-800 border-b-2">
-          メンバーを招待しよう！
-        </h2>
-
-        <div class="mb-6 text-gray-500">
-          <p class="mb-2">
-            所属グループ一覧から作成したグループの詳細から招待リンクを生成し、そのURLを招待したい人に送りましょう!
-          </p>
-
-          <div class="w-full">
-            <%= image_tag "/kimochi_top_page2.png", class: "border mb-2" %>
-          </div>
+      <div>
+        <div class="w-full h-80 flex justify-center items-center p-2 border-2 rounded">
+          <%= image_tag "/new_group.png", class: "object-contain max-w-full max-h-full" %>
         </div>
       </div>
 
-      <div class="mb-12">
-        <h2 class="mb-3 text-lg sm:text-3xl font-bold text-gray-800 border-b-2">
-          リクエストを作成しよう!
-        </h2>
-
-        <div class="mb-6 text-gray-500">
-          <p class="mb-2">
-            リクエストを作成するとグループページに作成したリクエストが表示されます
-          </p>
-
-          <div class="w-full">
-            <%= image_tag "/kimochi_top_page3.png", class: "border mb-2" %>
-          </div>
+      <div>
+        <div class="w-full h-80 flex justify-center items-center p-2 border-2 rounded">
+          <%= image_tag "/create_link.png", class: "object-contain max-w-full max-h-full" %>
+        </div>
+      </div>
+      <div class="w-auto h-auto flex flex-col justify-center">
+        <h1 class="mb-3 text-md sm:text-xl font-bold text-gray-800">
+          メンバーを招待しよう
+        </h1>
+        <div class="text-base text-gray-500">
+          所属グループ一覧から作成したグループの詳細ページに移動して、招待リンクを作成して、そのURLを招待したい人に送りましょう
         </div>
       </div>
 
-      <div class="mb-12">
-        <h2 class="mb-3 text-lg sm:text-3xl font-bold text-gray-800 border-b-2">
-          承認者はリクエスト内容を確認して承認しよう!
-        </h2>
-
-        <div class="w-full">
-          <%= image_tag "/kimochi_top_page4.png", class: "border mb-2" %>
+      <div class="h-auto flex flex-col justify-center">
+        <h1 class="mb-3 text-md sm:text-xl font-bold text-gray-800">
+          リクエストを作成しよう
+        </h1>
+        <div class="text-base text-gray-500">
+          新規リクエスト作成ボタンを押して、新しいリクエストを作りましょう
         </div>
-
-        <div class="mb-6 text-gray-500">
-          <p class="mb-2">
-            作成されたリクエストが承認されると、「承認済み」リストにリクエストが追加されます
-          </p>
-
-          <div class="w-full">
-            <%= image_tag "/kimochi_top_page5.png", class: "border mb-2" %>
-          </div>
+      </div>
+      <div>
+        <div class="w-full h-80 flex justify-center items-center p-2 border-2 rounded">
+          <%= image_tag "/request_new.png", class: "object-contain max-w-full max-h-full" %>
         </div>
       </div>
 
-      <div class="mb-12">
-        <h2 class="mb-3 text-lg sm:text-3xl font-bold text-gray-800 border-b-2">
-          条件をクリアしよう!
-        </h2>
-
-        <div class="mb-6 text-gray-500">
-          <p class="mb-2">
-            メンバーから承認してもらったリクエストは設定した条件を実行することが可能になります<br/>
-            1つ1つクリアしていきましょう!
-          </p>
-
-          <div class="w-full">
-            <%= image_tag "/kimochi_top_page6.png", class: "border mb-2" %>
-          </div>
+      <div>
+        <div class="w-full h-80 flex justify-center items-center p-2 border-2 rounded">
+          <%= image_tag "/chat_demo.png", class: "object-contain max-w-full max-h-full" %>
+        </div>
+      </div>
+      <div class="h-auto flex flex-col justify-center">
+        <h1 class="mb-3 text-md sm:text-xl font-bold text-gray-800">
+          チャット機能を使って内容の相談をしましょう
+        </h1>
+        <div class="text-base text-gray-500">
+          自分のしたいこと、そのための条件を承認者と相談して決めましょう
         </div>
       </div>
 
-      <div class="mb-12">
-        <h2 class="mb-3 text-lg sm:text-3xl font-bold text-gray-800 border-b-2">
-          リクエストを完了しよう!
-        </h2>
-
-        <div class="mb-6 text-gray-500">
-          <p class="mb-2">
-            全ての条件をクリアするとリクエスト詳細ページに「完了」ボタンが現れます<br/>
-            完了ボタンを押すとリクエストが達成され、リストからリクエストが消えます
-          </p>
-
-          <div class="w-full">
-            <%= image_tag "/kimochi_top_page7.png", class: "border mb-2" %>
-          </div>
+      <div class="h-auto flex flex-col justify-center">
+        <h1 class="mb-3 text-md sm:text-xl font-bold text-gray-800">
+          承認者はリクエスト内容を確認して承認しましょう
+        </h1>
+        <div class="text-base text-gray-500">
+          承認されたリクエストは自動で承認済みリストに移動します
+        </div>
+      </div>
+      <div>
+        <div class="w-full h-80 flex justify-center items-center p-2 border-2 rounded">
+          <%= image_tag "/request_approval.png", class: "object-contain max-w-full max-h-full" %>
         </div>
       </div>
 
+      <div>
+        <div class="w-full h-80 flex justify-center items-center p-2 border-2 rounded">
+          <%= image_tag "/task_list.png", class: "object-contain max-w-full max-h-full" %>
+        </div>
+      </div>
+      <div class="h-auto flex flex-col justify-center">
+        <h1 class="mb-3 text-md sm:text-xl font-bold text-gray-800">
+          条件をクリアしよう
+        </h1>
+        <div class="text-base text-gray-500">
+          承認者から承認してもらったリクエストは、設定した条件を実行することが可能になります。1つ1つクリアしていきましょう
+        </div>
+      </div>
 
+      <div class="h-auto flex flex-col justify-center">
+        <h1 class="mb-3 text-md sm:text-xl font-bold text-gray-800">
+          リクエストを完了しよう
+        </h1>
+        <div class="text-base text-gray-500">
+          全ての条件をクリアするとリクエスト詳細ページに「完了」ボタンが現れます。完了ボタンを押すとリクエストが達成され、リストからリクエストが消えます。
+        </div>
+      </div>
+      <div>
+        <div class="w-full h-80 flex justify-center items-center p-2 border-2 rounded">
+          <%= image_tag "/complete.png", class: "object-contain max-w-full max-h-full" %>
         </div>
       </div>
     </div>
