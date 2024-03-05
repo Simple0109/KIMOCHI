@@ -5,11 +5,8 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: app
     volumes:
       - db_data:/var/lib/postgresql/data
-    networks:
-      kimochi-net:
 
   web:
     build: .
@@ -21,26 +18,22 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - selenium_chrome
     stdin_open: true
     tty: true
     environment:
       DB_HOST: db
-      DB_NAME: app
+      DB_NAME: kimochi_development
       DB_USER: postgres
       DB_PASSWORD: postgres
       SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
-    networks:
-      kimochi-net:
 
   selenium_chrome:
     image: seleniarm/standalone-chromium
     ports:
       - 4444:4444
-    networks:
-      kimochi-net:
+
 
 volumes:
   db_data:
 
-networks:
-  kimochi-net:
