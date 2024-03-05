@@ -5,6 +5,8 @@ RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
   apt-get install -y nodejs && \
   npm install -g yarn
 
+RUN apt-get update -qq && apt-get install -y --no-install-recommends libvips42
+
 WORKDIR /app
 
 COPY Gemfile /app/Gemfile
