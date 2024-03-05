@@ -19,10 +19,10 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include FactoryBot::Syntax::Methods
   config.filter_run_when_matching :focus
-  config.before(:each, type: :system) do
-    driven_by(:selenium_chrome_headless)
+  #config.before(:each, type: :system) do
+  #  driven_by(:selenium_chrome_headless)
     # driven_by(:selenium_chrome)
     # driven_by(:rack_test)
-  end
+  #end
   config.include AuthHelpers, type: :system
 end
