@@ -17,7 +17,8 @@ RSpec.describe "Request", type: :system do
         visit group_requests_path(group)
         click_on '新規リクエスト作成'
         fill_in 'request_take', with: 'テストリクエスト'
-        fill_in 'request_execution_date', with: '2024-02-22T00:00'
+        script = "document.getElementById('request_execution_date').value = '2024-02-22T00:00:00'"
+        page.execute_script(script)
         fill_in 'request_gives_attributes_0_content', with: 'テストギブ0'
         fill_in 'request_gives_attributes_1_content', with: 'テストギブ1'
         fill_in 'request_gives_attributes_2_content', with: 'テストギブ2'

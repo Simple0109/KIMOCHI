@@ -14,6 +14,7 @@ services:
       bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
+      - ./tmp:/app/tmp # RSpec画像でデバッグできるように
     ports:
       - "3000:3000"
     depends_on:
@@ -28,8 +29,13 @@ services:
       DB_PASSWORD: postgres
       SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
 
+
   selenium_chrome:
     image: seleniarm/standalone-chromium
+    shm_size: 256m #メモリ不足を解消
+    environment:
+      - SE_NODE_MAX_SESSIONS=2 #デフォルトでは有効なセッション数は1つのみ　２つに拡張
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
     ports:
       - 4444:4444
 
