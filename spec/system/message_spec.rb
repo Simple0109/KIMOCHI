@@ -25,6 +25,10 @@ RSpec.describe 'Message', type: :system do
       end
     end
 
+    after do
+      Capybara.reset_sessions! # セッションを状態をリセット
+    end
+
     context 'チャット送信' do
       it '既存チャットメッセージの表示が成功している' do
         fill_in 'chat_text', with: 'テストチャット'
