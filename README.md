@@ -92,8 +92,8 @@ graph TD
 ## 使用技術
 | Category          | Technology Stack                                     |
 | ----------------- | --------------------------------------------------   |
-| Frontend          | Stimulus(3.2.2), Tailwind CSS(3.3.6), DaisyUI(3.9.4) |
 | Backend           | Ruby(3.2.2), Ruby on Rails(7.0.8)                    |
+| Frontend          | Stimulus(3.2.2), Tailwind CSS(3.3.6), DaisyUI(3.9.4) |
 | Infrastructure    | Heroku                                               |
 | Database          | PostgreSQL                                           |
 | CI/CD             | GitHub Actions                                       |
@@ -105,13 +105,14 @@ graph TD
 * device(ログイン・認証機能)
 * omniauth-line, omniauth-rails_csrf_protection(LINEログイン)
 * line_bot_api(LINEプッシュ通知)
+* delayed_job_active_record(招待リンクの時限式削除)
+* action_cable(リアルタイムチャット)
 * kaminari(ページネーション)
 * ActiveStorage(ファイルアップロード、保存)
 * activestorage-validator(アップロードされるファイルのバリデーション設定)
 * image_processing(画像リサイズ、ファイル容量一律化)
-* rubocop(lintチェック)
 * RSpec(テスト)
-* delayed_job_active_record(招待リンクの時限式削除)
+* rubocop(lintチェック)
 
 
 ## 画面遷移図
