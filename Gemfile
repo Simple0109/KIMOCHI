@@ -69,6 +69,7 @@ gem 'rails-i18n'
 gem 'mimemagic'
 gem 'delayed_job_active_record'
 gem 'meta-tags'
+gem 'rakuten_web_service'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
