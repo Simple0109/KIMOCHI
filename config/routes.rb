@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       post 'admit', to: 'approvals#admit'
       post 'cancel_admit', to: 'approvals#cancel_admit'
       post 'task_completed', to: 'approvals#task_completed'
+      get 'search'
       resources :gives, only: [] do
         member do
           post 'update_status_completed', to: 'gives#update_status_completed'
