@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :authenticate_user!, only: %i[index new show create edit update destroy]
+  before_action :authenticate_user!, only: %i[index new show create edit update destroy search]
   before_action :set_request, only: %i[show edit update destroy]
   before_action :set_group, only: %i[index new show edit update destroy]
 
@@ -22,6 +22,16 @@ class RequestsController < ApplicationController
     @uncompleted_gives = @gives.where(status: 0).order(:id)
     @completed_gives = @gives.where(status: 1).order(:id)
     @messages = @request.messages.all
+  end
+
+  def search
+    @group = Group.find(params[:group_id])
+    @request = Request.find(params[:request_id])
+    if params[:keyword].present?
+      @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], hits: 9)
+    else
+      redirect_to group_request_path(@group, @request), alert: "検索キーワードを入力してください"
+    end
   end
 
   def new
