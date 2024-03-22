@@ -193,7 +193,16 @@
     <% end %>
   </ul>
 
-  <!-- Chat Demo -->
+  <!-- search_form -->
+  <%= form_with url: group_request_search_path(@group, @request), method: :get, local: true do |f| %>
+  <div class="mb-6">
+    <%= f.label :keyword, "楽天市場で商品を検索", class: "text-base mb-2  font-bold" %>
+    <%= f.text_field :keyword, class: "w-9/12 sm:w-11/12 border rounded p-2 text-sm" %>
+    <%= f.submit "検索", class: "mx-auto sm:w-12 px-2 sm:px-0 py-2 sm:py-1.5 text-xs sm:text-base text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none" %>
+  </div>
+  <% end %>
+
+  <!-- Chat -->
   <div data-controller="chat" data-chat-request-id-value="<%= @request.id %>" data-chat-current-user-id-value="<%= current_user.id %>">
     <div class="text-sm sm:text-base mb-2 font-bold">チャット</div>
       <div class="border rounded-lg p-2 h-60 mb-4 overflow-y-auto" data-chat-target="messages">
