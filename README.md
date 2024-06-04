@@ -97,7 +97,7 @@ graph TD
 | Infrastructure    | Heroku                                               |
 | Database          | PostgreSQL                                           |
 | CI/CD             | GitHub Actions(自動デプロイ)                           |
-| etc.              | Docler, RuboCop, RSpec, Git, GitHub |
+| etc.              | Docker, RuboCop, RSpec, Git, GitHub |
 
 
 
