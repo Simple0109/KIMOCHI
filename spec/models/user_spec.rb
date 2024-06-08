@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'Userモデルのテスト' do
+  describe 'Userモデルのバリデーションのテスト' do
     let(:valid_user) { create(:user) }
 
     it '有効なuserの場合保存されるか' do
+      valid_user
       expect(valid_user).to be_valid
     end
 
@@ -55,5 +56,14 @@ RSpec.describe User, type: :model do
         expect(user).not_to be_valid
       end
     end
+  end
+
+  describe 'Userモデルのアソシエーションのテスト' do
+    it { should have_many(:group_users).dependent(:destroy) }
+    it { should have_many(:groups).through(:group_users) }
+    it { should have_many(:request_users).dependent(:destroy) }
+    it { should have_many(:requests).through(:request_users) }
+    it { should have_one(:profile).dependent(:destroy) }
+    it { should accept_nested_attributes_for(:profile) }
   end
 end
