@@ -369,6 +369,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    shoulda-matchers (6.2.0)
+      activesupport (>= 5.2.0)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -452,6 +454,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   selenium-webdriver
+  shoulda-matchers
   sprockets-rails
   stimulus-rails
   turbo-rails
