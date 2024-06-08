@@ -65,5 +65,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:requests).through(:request_users) }
     it { should have_one(:profile).dependent(:destroy) }
     it { should accept_nested_attributes_for(:profile) }
+    it { should have_many(:messages).dependent(:destroy) }
+    it { should have_many(:owned_groups).class_name('Group').inverse_of(:owner).dependent(:destroy) }
   end
 end
