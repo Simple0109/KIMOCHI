@@ -15,5 +15,5 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.13.15
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "KIMOCHI"
+          heroku_app_name: 'kimochi'
           heroku_email: ${{ secrets.HEROKU_APP_EMAIL }}
