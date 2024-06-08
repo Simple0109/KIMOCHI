@@ -99,4 +99,5 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   # gem 'webdriver'
+  gem "shoulda-matchers"
 end
