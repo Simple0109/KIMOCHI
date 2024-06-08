@@ -96,8 +96,8 @@ graph TD
 | Frontend          | Stimulus(3.2.2), Tailwind CSS(3.3.6), DaisyUI(3.9.4) |
 | Infrastructure    | Heroku                                               |
 | Database          | PostgreSQL                                           |
-| CI/CD             | GitHub Actions                                       |
-| etc.              | RuboCop, RSpec, Git, GitHub |
+| CI/CD             | GitHub Actions(自動デプロイ)                           |
+| etc.              | Docker, RuboCop, RSpec, Git, GitHub |
 
 
 
