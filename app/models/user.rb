@@ -4,7 +4,9 @@ require 'open-uri'
 class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true, length: { minimum: 7 }
-
+  validates :uid, presence: true, uniqueness: true
+  validates :provider, presence: true
+  
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
 
