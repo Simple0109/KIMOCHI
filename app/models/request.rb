@@ -11,7 +11,7 @@ class Request < ApplicationRecord
   has_many :request_users, dependent: :destroy
   has_many :authorizers, through: :request_users, source: :user
   has_many :gives, class_name: 'Give', dependent: :destroy
-  accepts_nested_attributes_for :gives, allow_destroy: true, reject_if: :all_blank, limit: 3
+  accepts_nested_attributes_for :gives, allow_destroy: true, limit: 3
   has_many :messages, dependent: :destroy
 
   def image_thumbnail
