@@ -102,5 +102,40 @@ RSpec.describe Request, type: :model do
         expect(request).not_to be_valid
       end
     end
+
+    context 'クラスメソッドのテスト' do
+      it 'imageがattachされていないrequestにimage_thumbnailメソッドを実行するとnilになるか' do
+        expect(valid_request.image_thumbnail).to be_nil
+      end
+
+      it 'imageが添付されている場合、image_thumbnailメソッドが正常に動作するか' do
+        valid_request.image.attach(
+          io: File.open(Rails.root.join('spec', 'fixtures', 'test.png')),
+          filename: 'test.png',
+          content_type: 'image/png'
+        )
+        expect(valid_request.image_thumbnail).to be_a(ActiveStorage::VariantWithRecord)
+      end
+
+      it 'authorizers_checkメソッドがが正常に動作しているか' do
+        user = create(:user)
+        other_user = create(:user)
+        request_user = create(:request_user, user: user, request: valid_request)
+
+        expect(valid_request.authorizers_check(user)).to be_truthy
+        expect(valid_request.authorizers_check(other_user)).to be_falsey
+      end
+
+      it 'own?メソッドが正常に動作しているか' do
+        user = create(:user)
+        other_user = create(:user)
+        request = create(:request, user: user)
+
+        expect(request.own?(user)).to be_truthy
+        expect(request.own?(other_user)).to be_falsey
+      end
+    end
   end
+
+
 end
