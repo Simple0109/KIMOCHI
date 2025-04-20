@@ -11,7 +11,9 @@ services:
   web:
     build: .
     command: >
-      bash -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+      bash -c "rm -f /app/tmp/pids/server.pid && 
+      (bundle exec rails tailwindcss:watch &) && 
+      bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/app
       - ./tmp:/app/tmp # RSpec画像でデバッグできるように
@@ -28,6 +30,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       SELENIUM_DRIVER_URL: http://selenium_chrome:4444/wd/hub
+      RAILS_ENV: development
 
 
   selenium_chrome:
