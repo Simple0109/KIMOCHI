@@ -15,6 +15,6 @@ class ChatChannel < ApplicationCable::Channel
       user_name: user.profile.name,
       created_at: message.formatted_created_at,
       content: message.content
-                             })
+    })
   end
 end

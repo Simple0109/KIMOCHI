@@ -12,7 +12,6 @@ class ApprovalsController < ApplicationController
       redirect_to group_requests_path, notice: '承認しました'
     else
       redirect_to group_request_path(@group, @request), alert: '承認に失敗しました'
-
     end
   end
 
