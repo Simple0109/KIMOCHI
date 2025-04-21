@@ -16,10 +16,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def personal_requests
-    @personal_requests = Request.includes(user: :profile).where(user_id: current_user.id)
-  end
-
   private
 
   def profile_params

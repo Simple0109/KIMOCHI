@@ -15,13 +15,13 @@
           </tr>
         </thead>
         <tbody>
-          <% @personal_requests.each_with_index do |request, index| %>
+          <% @requests.each_with_index do |request, index| %>
           <tr data-controller="link" data-action="click->link#go" data-url="<%= group_request_path(request.group, request) %>" class="hover hover:cursor-pointer text-center" >
-            <td class="truncate"><%= index + 1%></td>
+            <td class="truncate"><%= index + 1 %></td>
             <td class="truncate"><%= request.take %></td>
             <td class="truncate"><%= request.group.name %></td>
             <td class="truncate"><%= request.user.profile.name %></td>
-            <td class="truncate"><%= l request.created_at, format: :japan%></td>
+            <td class="truncate"><%= l request.created_at, format: :japan %></td>
           </tr>
           <% end %>
         </tbody>

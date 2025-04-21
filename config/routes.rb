@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     get 'personal_requests', to: 'profiles#personal_requests'
   end
 
+  resources :personal_requests, only: %i[index]
+
   resources :groups do
     post 'generate_token', to: 'invites#generate_token'
     get 'process_invite_link/:invite_token', to: 'invites#process_invite_link', as: 'invite_link'
