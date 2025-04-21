@@ -23,7 +23,7 @@
       <div class="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-10 mb-10">
         <div data-tab-target="panel" status="unauthorized" class="flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.unauthorized"), requests: @unauthorized_requests, paginate_param: "unauthorized_page" %></div>
         <div data-tab-target="panel" status="authorized" class="hidden flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.authorized"), requests: @authorized_requests, paginate_param: "authorized_page" %></div>
-        <div data-tab-target="panel" status="possible" class="hidden flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.possible"), requests: @possible_requests, paginate_param: "possile_page" %></div>
+        <div data-tab-target="panel" status="possible" class="hidden flex h-96"><%= render "/requests/shared/requests_list", title: t("groups.requests.index.possible"), requests: @possible_requests, paginate_param: "possible_page" %></div>
       </div>
 
     </div>
