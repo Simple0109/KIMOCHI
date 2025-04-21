@@ -27,4 +27,24 @@ class Request < ApplicationRecord
   def own?(current_user)
     user_id == current_user.id
   end
+
+  def self.unauthorized_for_user(user, page)
+    requests = select { |request| (request.unauthorized?) && (request.authorizers_check(user) || request.own?(user)) }
+    Kaminari.paginate_array(requests).page(page)
+  end
+
+  def self.authorized_for_user(user, page)
+    requests = select { |request| (request.authorized?) && (request.authorizers_check(user) || request.own?(user)) }
+    Kaminari.paginate_array(requests).page(page)
+  end
+
+  def self.possible_requests(page)
+    requests = select { |request| request.possible? }
+    Kaminari.paginate_array(requests).page(page)
+  end
+
+  def self.completed_requests(page)
+    requests = select { |request| request.status == "completed" }
+    Kaminari.paginate_array(requests).page(page)
+  end
 end

@@ -5,14 +5,14 @@ class RequestsController < ApplicationController
 
   def index
     all_requests = Request.includes(user: :profile).where(group_id: params[:group_id]).order(updated_at: :desc)
-    @unauthorized_requests = paginated_unauthorized_requests(all_requests, params[:unauthorized_page])
-    @authorized_requests = paginated_authorized_requests(all_requests, params[:authorized_page])
-    @possible_requests = paginated_possible_requests(all_requests, params[:possible_page])
+    @unauthorized_requests = all_requests.unauthorized_for_user(current_user, params[:unauthorized_page])
+    @authorized_requests = all_requests.authorized_for_user(current_user, params[:authorized_page])
+    @possible_requests = all_requests.possible_requests(params[:possible_page])
   end
 
   def completed_requests
     all_requests = Request.includes(user: :profile).where(group_id: params[:group_id]).order(updated_at: :desc)
-    @completed_requests = paginated_completed_requests(all_requests, params[:completed_page])
+    @completed_requests = all_requests.completed_requests(params[:completed_page])
   end
 
   def show
@@ -103,25 +103,5 @@ class RequestsController < ApplicationController
 
   def set_group
     @group = Group.includes(users: :profile).find(params[:group_id])
-  end
-
-  def paginated_unauthorized_requests(requests, page)
-    filtered_requests = requests.select { |request| (request.unauthorized?) && (request.authorizers_check(current_user) || request.own?(current_user)) }
-    Kaminari.paginate_array(filtered_requests).page(page)
-  end
-
-  def paginated_authorized_requests(requests, page)
-    filtered_requests = requests.select { |request| (request.authorized?) && (request.authorizers_check(current_user) || request.own?(current_user)) }
-    Kaminari.paginate_array(filtered_requests).page(page)
-  end
-
-  def paginated_possible_requests(requests, page)
-    filtered_requests = requests.select { |request| (request.possible?) }
-    Kaminari.paginate_array(filtered_requests).page(page)
-  end
-
-  def paginated_completed_requests(requests, page)
-    filtered_requests = requests.select { |request| (request.status == "completed") }
-    Kaminari.paginate_array(filtered_requests).page(page)
   end
 end
