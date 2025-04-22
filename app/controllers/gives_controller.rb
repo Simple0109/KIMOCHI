@@ -13,7 +13,6 @@ class GivesController < ApplicationController
   end
 
   def update_status_uncompleted
-    @give = Give.find(params[:id])
     if @give.update(status: 0)
       redirect_to group_request_path(@group, @request), notice: "#{@give.content}を未完了にしました"
       @request.authorized! if @request.gives.pluck(:status).sum <= @request.gives.count
